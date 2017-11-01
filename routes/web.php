@@ -18,3 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware(["auth"])->group(function () {
+
+    Route::get('/upload', 'SongController@create')->name('song.create');
+    Route::post('/upload', 'SongController@upload')->name('song.upload');
+
+
+});
