@@ -23,7 +23,7 @@ Sprint Goal cần đặt ở nơi dễ thấy nhất của bảng Sprint Backlog
 Daily Meeting
 ---
 
-Diễn ra vào 15:00 hàng ngày. Daily Meeting dùng để đồng bộ hóa việc tiến tới Sprint Goal của nhóm 
+Diễn ra vào 08:45 hàng ngày. Daily Meeting dùng để đồng bộ hóa việc tiến tới Sprint Goal của nhóm 
 phát triển. Vào phiên daily meeting, mỗi thành viên của nhóm phát triển có nhiệm vụ tự trả lời to rõ 
 ba câu hỏi sau:
 
@@ -38,10 +38,12 @@ ra bảng Sprint Backlog và nói lời xin lỗi mục tiêu, đồng thời v�
 Quy trình tạo/review/merge nhánh
 ---
 
-- Nhánh issue đuợc tách CHỈ từ nhánh dev.
-- Sau khi dev cảm thấy nhánh đã ở trạng thái có thể merge được thì tạo merge request tới nhánh dev và chuyển trạng thái issue sang Need Verify.
+- Nhánh issue đuợc tách CHỈ từ nhánh `dev`.
+- Sau khi dev cảm thấy nhánh đã ở trạng thái có thể merge được thì tạo merge request tới nhánh `dev` để 
+review.
 - Mã đuợc approve bởi ít nhất một người trong đội phát triển và sau đó được gán nhãn Approved.
-- Nhánh được merge --no-ff vào dev.
+- Nhánh được `merge --no-ff` vào `dev`.
+- Issue được chuyển sang trạng thái "Testing"
 
 Định nghĩa hoàn thành
 ---
@@ -51,6 +53,7 @@ Những mục sau cần được xác nhận trước khi bất cứ một công
 - Giao diện tuân theo final prototype
 - Sử dụng màu mặc định của Bootstrap
 - Code đã đuợc review chéo
+- Tất cả code đã tuân thủ đúng coding convention
 - Đã refactor sau khi review chéo ít nhất 1 lần
 - Dữ liệu seeding đẹp
 - Chức năng đã đưọc test chéo
@@ -59,3 +62,17 @@ Những mục sau cần được xác nhận trước khi bất cứ một công
 - Các trường nhập liệu đã validate ở backend
 - Messages đã hỗ trợ I18n
 - Đã merge vào nhánh dev
+
+Coding Convention
+---
+
+- Đặt tên file: CamelCase
+- Đặt tên class: CamelCase
+- Đặt tên hàm: camelCase
+- Đặt tên biến: camelCase
+- Lùi đầu dòng: sử dụng 2 SPACE cho mã HTML và 4 SPACE cho mã JavaScript, PHP...
+- Khoảng trắng: thay TAB bằng SPACE, phải có 1 SPACE sau `if`, `switch`, `for`, .... ; phải có 1 SPACE 
+trước `{`
+- Xuống dòng: cuối file phải có MỘT dòng trắng
+- Tên phải rõ ý: tên class biểu thị nó có chức gì; tên hàm biểu thị nó làm gì, trả về gì; tên param trong 
+hàm biểu thị nó đại diện cho cái gì; tên biến biểu thị nó lưu trữ dữ liệu gì.
