@@ -15,31 +15,31 @@
         <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
             {{csrf_field()}}
             <div class="form-group">
-                <label class="control-label col-sm-2"><span style="color:red;">*  </span> Name </label>
+                <label class="control-label col-sm-2"></span>Name<span style="color:red;"> *</label>
                 <div class="col-sm-10">
                     <input  type='text' class="form-control" name = 'name'>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2">Image </label>
+                <label class="control-label col-sm-2">Image<span style="color:white;"> *</span></label>
                 <div class=" col-sm-8">
                     <input type="file" name="image">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2"><span style="color:red;">*  </span> Audio </label>
+                <label class="control-label col-sm-2"> Audio<span style="color:red;"> *</span></label>
                 <div class=" col-sm-8">
                     <input type="file" name="audio">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" >lyric </label>
+                <label class="control-label col-sm-2" >Lyric <span style="color:white;"> *</span> </label>
                 <div class="col-sm-10">
                     <textarea class="form-control" rows="3" name="lyric"></textarea>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2">Description </label>
+                <label class="control-label col-sm-2">Description <span style="color:white;"> *</span></label>
                 <div class="col-sm-10">
                     <textarea class="form-control" rows="3" name="description"></textarea>
                 </div>
