@@ -15,7 +15,7 @@
         <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
             {{csrf_field()}}
             <div class="form-group">
-                <label class="control-label col-sm-2">Name </label>
+                <label class="control-label col-sm-2"><span style="color:red;">*  </span> Name </label>
                 <div class="col-sm-10">
                     <input  type='text' class="form-control" name = 'name'>
                 </div>
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2">Audio </label>
+                <label class="control-label col-sm-2"><span style="color:red;">*  </span> Audio </label>
                 <div class=" col-sm-8">
                     <input type="file" name="audio">
                 </div>
