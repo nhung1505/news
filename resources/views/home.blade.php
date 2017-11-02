@@ -6,11 +6,6 @@
 
 @section('content')
     <div class="container">
-        <a href="">
-            <button type="button" class="btn btn-success btn-sm">
-                <span class="glyphicon glyphicon-plus"></span>Upload
-            </button>
-        </a>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -211,7 +206,14 @@
                 </tr>
             </tbody>
 
-        </table>
+                <div class="panel-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
     </div>
-
 @endsection

@@ -44,6 +44,9 @@ class SongController extends Controller
 
 
         return redirect()->back();
+    }
+
+    public function index(){
 
 
     }
