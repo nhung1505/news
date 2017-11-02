@@ -16,31 +16,32 @@ class SongController extends Controller
 
     public function upload(Request $request){
         $this->validate($request,[
-            'name'=>'required|unique:songs,name|min:3|max:50',
-            'lyric'=>'required|unique:songs,lyric|min:3|max:200',
-            'description'=>'required|unique:songs,description|min:3|max:200',
-            'images' => 'required|mimes:jpeg',
-            'audio'=>'required|mimes:mp3',
+            'name' => 'required:songs,name|min:3|max:50',
+            'lyric' => 'required:songs,lyric|min:3|max:200',
+            'description' => 'required:songs,description|min:3|max:200',
+            'image' => 'required:songs,image',
+            'audio' => 'required|mimes:mp3',
         ]);
 
         $song = new Song();
-        $song->name=$request->input('name');
 
-        $song->lyric=$request->input('lyric');
+        $song->name = $request->input('name');
 
-        $song->description=$request->input('description');
+        $song->lyric = $request->input('lyric');
 
-        $name_image=$request->file('image')->getClientOriginalName();
-        $time_current_image=time();
-        $extension_image =$request->file('image')->getClientOriginalExtension();
+        $song->description = $request->input('description');
+
+        $name_image = $request->file('image')->getClientOriginalName();
+        $time_current_image = time();
+        $extension_image = $request->file('image')->getClientOriginalExtension();
         $file_name_image = $name_image.$time_current_image. '.' .$extension_image;
-        $song->image=$request->file('image')->storeAs('image_songs' . auth()->id(),$file_name_image,'public');
+        $song->image = $request->file('image')->storeAs('image_songs' . auth()->id(),$file_name_image,'public');
 
-        $name_audio=$request->file('audio')->getClientOriginalName();
-        $time_current_audio=time();
-        $extension_audio =$request->file('audio')->getClientOriginalExtension();
+        $name_audio = $request->file('audio')->getClientOriginalName();
+        $time_current_audio = time();
+        $extension_audio = $request->file('audio')->getClientOriginalExtension();
         $file_name_audio = $name_audio.$time_current_audio. '.' .$extension_audio;
-        $song->audio=$request->file('audio')->storeAs('audio_songs' . auth()->id(),$file_name_audio,'public');
+        $song->audio = $request->file('audio')->storeAs('audio_songs' . auth()->id(),$file_name_audio,'public');
 
         $song->user_id = Auth::id();
         $song->save();
