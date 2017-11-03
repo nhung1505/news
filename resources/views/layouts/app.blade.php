@@ -15,7 +15,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="app" >
         <nav class="navbar navbar-static-top bg-faded pb-0 mb-0">
             <div class="container">
                 <div class="collapse navbar-collapse pt-2 " id="app-navbar-collapse">
@@ -86,14 +86,16 @@
 
 
         @yield('content')
-        <nav class="navbar navbar-default navbar-bottom mb-0">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">WebSiteName</a>
-                </div>
+        <div class="footer">
+            <nav class="navbar navbar-default navbar-bottom mb-0">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">WebSiteName</a>
+                    </div>
 
-            </div>
-        </nav>
+                </div>
+            </nav>
+         </div>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
