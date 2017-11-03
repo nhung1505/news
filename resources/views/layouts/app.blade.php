@@ -86,7 +86,7 @@
 
 
         @yield('content')
-        <nav class="navbar navbar-default navbar-fixed-bottom">
+        <nav class="navbar navbar-default navbar-bottom mb-0">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">WebSiteName</a>
