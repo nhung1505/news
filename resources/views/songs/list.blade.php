@@ -15,7 +15,7 @@
             <tbody>
             <tr>
                 <td>{{++$key}}</td>
-                <td class="edit-width"><img class="img-rounded song-cover-img-large" src={{asset('storage/'.$song->image)}}/></td>
+                <td class="edit-width"><img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$song->image)}}"/></td>
                 <td>{{$song->name}}</td>
                 <td>
                     <a href="">

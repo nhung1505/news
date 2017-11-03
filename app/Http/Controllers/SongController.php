@@ -31,6 +31,7 @@ class SongController extends Controller
         $song->lyric = $request->input('lyric');
 
         $song->description = $request->input('description');
+
         if($request->hasFile('image')){
             $song->image = $request->file('image')->store('image_songs/' . auth()->id());
         }
