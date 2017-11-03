@@ -83,6 +83,7 @@
     </div>
 
         @yield('content')
+    <div class="footer">
         <nav class="navbar navbar-default navbar-bottom mb-0">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -90,6 +91,7 @@
                 </div>
             </div>
         </nav>
+    </div>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
