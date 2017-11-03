@@ -17,31 +17,31 @@
             <div class="form-group">
                 <label class="control-label col-sm-2"></span>Name<span style="color:red;"> *</label>
                 <div class="col-sm-10">
-                    <input  type='text' class="form-control" name = 'name'>
+                    <input  type='text' class="form-control" name = 'name' value="{{old('name')}}">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">Image<span style="color:white;"> *</span></label>
                 <div class=" col-sm-8">
-                    <input type="file" name="image">
+                    <input type="file" name="image" value="{{old('image')}}">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2"> Audio<span style="color:red;"> *</span></label>
                 <div class=" col-sm-8">
-                    <input type="file" name="audio">
+                    <input type="file" name="audio" value="{{old('audio')}}">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" >Lyric <span style="color:white;"> *</span> </label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" rows="3" name="lyric"></textarea>
+                    <textarea class="form-control" rows="3" name="lyric" >{{old('lyric')}}</textarea>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2">Description <span style="color:white;"> *</span></label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" rows="3" name="description"></textarea>
+                    <textarea class="form-control" rows="3" name="description">{{old('description')}}</textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -49,5 +49,7 @@
                     <button type="submit" class="btn btn-success">Upload</button>
                     <a class="btn btn-default" href="/home">Cancel</a>
                 </div>
+            </div>
         </form>
+    </div>
 @endsection

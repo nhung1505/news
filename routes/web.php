@@ -23,6 +23,9 @@ Route::middleware(["auth"])->group(function () {
 
     Route::get('/upload', 'SongController@create')->name('song.create');
     Route::post('/upload', 'SongController@upload')->name('song.upload');
+    Route::get('/list', 'SongController@index')->name('song.list');
+
+
 
 
 });
