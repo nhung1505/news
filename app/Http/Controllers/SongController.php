@@ -48,11 +48,15 @@ class SongController extends Controller
         return redirect()->back();
     }
 
-    public function index(){
+    public function index()
+    {
 
         $songs = Song::with('user')->get();
+        return view('songs.list', compact('songs'));
 
-        return view('songs.list',compact('songs'));
-
+    }
+    
+    public function detailSong($id){
+        return view('songs.details_song');
     }
 }

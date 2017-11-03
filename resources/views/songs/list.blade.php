@@ -16,7 +16,7 @@
             <tr>
                 <td>{{++$key}}</td>
                 <td class="edit-width"><img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$song->image)}}"/></td>
-                <td>{{$song->name}}</td>
+                <td><a href="{{route('song.details_song', $song->id)}}">{{$song->name}}</a></td>
                 <td>
                     <a href="">
                         <button type="button" class="btn  btn-primary btn-sm">
