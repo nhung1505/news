@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('header')
 
 @endsection
@@ -220,7 +221,10 @@
 
                     You are logged in!
                 </div>
-            </div>
+        </table>
         </div>
     </div>
 @endsection
+
+
+

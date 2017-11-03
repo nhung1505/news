@@ -19,12 +19,12 @@
         <nav class="navbar navbar-static-top bg-faded pb-0 mb-0">
             <div class="container">
                 <div class="collapse navbar-collapse pt-2 " id="app-navbar-collapse">
-                    <ul class="nav navbar-left col-md-3">
+                    <ul class="nav navbar-left col-md-2">
                         <h2 class="mt-4">Logo</h2>
                     </ul>
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav text-center col-md-8 pt-3">
-                        <form class="form-inline  text-center col-md-10">
+                        <form class="form-inline  text-center col-md-12 p-0">
                             <div class="form-group text-center col-md-10">
                                 <input type="password" class="form-control"  style="width: 100%" placeholder="Search">
                             </div>
@@ -33,15 +33,17 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right col-md-2 p-4">
 
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <ul>
+                                <li class="nav navbar-left "><a href="{{ route('login') }}">Login</a></li>
+                                <li class=" nav navbar-right"><a href="{{ route('register') }}">Register</a></li>
+                            </ul>
                         @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle btn btn-outline-success my-2 my-sm-0" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                <a href="#" class="dropdown-toggle btn btn-outline-success my-1 my-sm-0 p-1" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     {{ Auth::user()->name }}
                                 </a>
 
@@ -81,8 +83,7 @@
 
 
         @yield('content')
-    </div>
-    <!-- Scripts -->
+
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
