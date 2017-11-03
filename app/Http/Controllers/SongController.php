@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Song;
+use App\User;
 
 class SongController extends Controller
 {
@@ -29,22 +31,28 @@ class SongController extends Controller
         $song->lyric = $request->input('lyric');
 
         $song->description = $request->input('description');
+
         if($request->hasFile('image')){
             $song->image = $request->file('image')->store('image_songs/' . auth()->id(),'public');
         }
 
-        $name_audio = $request->file('audio')->getClientOriginalName();
-        $time_current_audio = time();
-        $extension_audio = $request->file('audio')->getClientOriginalExtension();
-        $file_name_audio = $name_audio.$time_current_audio. '.' .$extension_audio;
-        $song->audio = $request->file('audio')->storeAs('audio_songs/' . auth()->id(),$file_name_audio,'public');
+        if($request->hasFile('audio')) {
+            $song->audio = $request->file('audio')->store('audio_songs/' . auth()->id(),'public');
+        }
 
         $song->user_id = Auth::id();
+
         $song->save();
 
 
         return redirect()->back();
+    }
 
+    public function index(){
+
+        $songs = Song::with('user')->get();
+
+        return view('songs.list',compact('songs'));
 
     }
 }
