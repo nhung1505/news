@@ -19,12 +19,12 @@
         <nav class="navbar navbar-static-top bg-faded pb-0 mb-0">
             <div class="container">
                 <div class="collapse navbar-collapse pt-2 " id="app-navbar-collapse">
-                    <ul class="nav navbar-left col-md-3">
+                    <ul class="nav navbar-left col-md-2">
                         <h2 class="mt-4">Logo</h2>
                     </ul>
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav text-center col-md-8 pt-3">
-                        <form class="form-inline  text-center col-md-10">
+                        <form class="form-inline  text-center col-md-12 p-0">
                             <div class="form-group text-center col-md-10">
                                 <input type="password" class="form-control"  style="width: 100%" placeholder="Search">
                             </div>
@@ -33,15 +33,17 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right col-md-2 p-4">
 
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <ul>
+                                <li class="nav navbar-left "><a href="{{ route('login') }}">Login</a></li>
+                                <li class=" nav navbar-right"><a href="{{ route('register') }}">Register</a></li>
+                            </ul>
                         @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle btn btn-outline-success my-2 my-sm-0" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                <a href="#" class="dropdown-toggle btn btn-outline-success my-1 my-sm-0 p-1" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     {{ Auth::user()->name }}
                                 </a>
 
@@ -70,27 +72,24 @@
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Song</a>
+                    <a class="navbar-brand" href="/list">Song</a>
                     <a class="navbar-brand" href="#">Album</a>
                     <a class="navbar-brand" href="#">Singer</a>
                     <a class="navbar-brand" href="#">Hit</a>
-
                 </div>
-                <form class="form-inline my-2 my-lg-0">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">UpLoad</button>
-                </form>
+                    <a href="/upload" class="btn btn-success" role="button">Upload</a>
             </div>
         </nav>
-
+    </div>
 
         @yield('content')
-    </div>
-    {{--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>--}}
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>--}}
-    {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>--}}
-
-
-    <!-- Scripts -->
+        <nav class="navbar navbar-default navbar-bottom mb-0">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">WebSiteName</a>
+                </div>
+            </div>
+        </nav>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
