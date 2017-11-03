@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Song;
+use App\User;
 
 class SongController extends Controller
 {
@@ -47,7 +49,10 @@ class SongController extends Controller
     }
 
     public function index(){
-
+        $url = Storage::url('2ZZPaXBsICKPoe57c17dt5ELTiBpqdlEOA76db3m.pdf');
+//        dd($url);
+        $songs = Song::with('user')->get();
+        return view('songs.list',compact('songs','url'));
 
     }
 }
