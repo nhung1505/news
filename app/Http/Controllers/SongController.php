@@ -16,7 +16,7 @@ class SongController extends Controller
 
     public function upload(Request $request){
         $this->validate($request,[
-            'name' => 'required|unique:songs,name|min:3|max:50',
+            'name' => 'required|min:3|max:50',
             'audio' => 'required|mimes:mp3,mpga',
             'image' => 'mimes:jpeg,jpg,png,svg'
 
