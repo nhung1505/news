@@ -32,16 +32,15 @@ class SongController extends Controller
 
         $song->description = $request->input('description');
         if($request->hasFile('image')){
-            $song->image = $request->file('image')->store('image_songs/' . auth()->id(),'public');
+            $song->image = $request->file('image')->store('image_songs/' . auth()->id());
         }
 
-        $name_audio = $request->file('audio')->getClientOriginalName();
-        $time_current_audio = time();
-        $extension_audio = $request->file('audio')->getClientOriginalExtension();
-        $file_name_audio = $name_audio.$time_current_audio. '.' .$extension_audio;
-        $song->audio = $request->file('audio')->storeAs('audio_songs/' . auth()->id(),$file_name_audio,'public');
+        if($request->hasFile('audio')) {
+            $song->audio = $request->file('audio')->store('audio_songs/' . auth()->id());
+        }
 
         $song->user_id = Auth::id();
+
         $song->save();
 
 
@@ -49,9 +48,9 @@ class SongController extends Controller
     }
 
     public function index(){
-        $url = Storage::url('2ZZPaXBsICKPoe57c17dt5ELTiBpqdlEOA76db3m.pdf');
-//        dd($url);
+
         $songs = Song::with('user')->get();
+
         return view('songs.list',compact('songs','url'));
 
     }
