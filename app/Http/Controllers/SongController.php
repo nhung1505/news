@@ -50,6 +50,8 @@ class SongController extends Controller
 
     public function index(){
 
+        $song = Song::paginate(10);
+
         $songs = Song::with('user')->get();
 
         return view('songs.list',compact('songs'));
