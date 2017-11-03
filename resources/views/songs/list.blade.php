@@ -25,7 +25,7 @@
                     </a>
                 </td>
                 <td>
-                    <a href="">
+                    <a href="{{url("/delete/{$song->id}")}}" onclick="return confirm('Are you sure delete'); ">
                         <button type="button" class="btn btn-danger btn-sm" onclick="return myFunction()">
                             <span class="glyphicon glyphicon-remove" ></span> Remove
                         </button>
@@ -37,8 +37,7 @@
                 @endforeach
         </table>
         <div class="location-next-previous-list-song">
-            <a href="#" class="previous round">&#8249;</a>
-            <a href="#" class="next round">&#8250;</a>
+            {!! $songs->render() !!}
         </div>
     </div>
     @endsection
