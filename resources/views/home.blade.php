@@ -6,6 +6,11 @@
 
 @section('content')
     <div class="container">
+        <a href="">
+            <button type="button" class="btn btn-success btn-sm">
+                <span class="glyphicon glyphicon-plus"></span>Upload
+            </button>
+        </a>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -212,6 +217,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
+                    You are logged in!
                 </div>
             </div>
         </div>
