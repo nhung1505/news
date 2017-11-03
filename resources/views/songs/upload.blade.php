@@ -49,5 +49,7 @@
                     <button type="submit" class="btn btn-success">Upload</button>
                     <a class="btn btn-default" href="/home">Cancel</a>
                 </div>
+            </div>
         </form>
+    </div>
 @endsection

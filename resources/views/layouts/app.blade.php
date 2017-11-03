@@ -72,18 +72,15 @@
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Song</a>
+                    <a class="navbar-brand" href="/list">Song</a>
                     <a class="navbar-brand" href="#">Album</a>
                     <a class="navbar-brand" href="#">Singer</a>
                     <a class="navbar-brand" href="#">Hit</a>
-
                 </div>
-                <form class="form-inline my-2 my-lg-0">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">UpLoad</button>
-                </form>
+                    <a href="/upload" class="btn btn-success" role="button">Upload</a>
             </div>
         </nav>
-
+    </div>
 
         @yield('content')
         <nav class="navbar navbar-default navbar-bottom mb-0">
@@ -91,10 +88,8 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">WebSiteName</a>
                 </div>
-
             </div>
         </nav>
-    </div>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
