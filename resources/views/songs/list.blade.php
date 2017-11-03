@@ -37,8 +37,7 @@
                 @endforeach
         </table>
         <div class="location-next-previous-list-song">
-            <a href="#" class="previous round">&#8249;</a>
-            <a href="#" class="next round">&#8250;</a>
+            {!! $songs->render() !!}
         </div>
     </div>
     @endsection
