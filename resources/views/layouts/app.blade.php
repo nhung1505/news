@@ -37,7 +37,7 @@
 
                         <!-- Authentication Links -->
                         @guest
-                            <ul>
+                            <ul class="pl-0">
                                 <li class="nav navbar-left "><a href="{{ route('login') }}">Login</a></li>
                                 <li class=" nav navbar-right"><a href="{{ route('register') }}">Register</a></li>
                             </ul>
