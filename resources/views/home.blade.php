@@ -108,7 +108,7 @@
                         </a>
                     </td>
                     <td>
-                        <a href="">
+                        <a href=" ">
                             <button type="button" class="btn btn-danger btn-sm" onclick="return myFunction()">
                                 <span class="glyphicon glyphicon-remove" ></span> Remove
                             </button>
@@ -224,6 +224,8 @@
         </table>
         </div>
     </div>
+</div>
+
 @endsection
 
 

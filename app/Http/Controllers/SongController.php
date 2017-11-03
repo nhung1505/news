@@ -55,4 +55,9 @@ class SongController extends Controller
         return view('songs.list',compact('songs'));
 
     }
+    public function delete($id){
+        Song::where('id', $id)
+            ->delete();
+        return redirect('/list');
+    }
 }

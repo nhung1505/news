@@ -25,7 +25,7 @@
                     </a>
                 </td>
                 <td>
-                    <a href="">
+                    <a href="{{url("/delete/{$song->id}")}}" onclick="return confirm('Are you sure delete'); ">
                         <button type="button" class="btn btn-danger btn-sm" onclick="return myFunction()">
                             <span class="glyphicon glyphicon-remove" ></span> Remove
                         </button>
