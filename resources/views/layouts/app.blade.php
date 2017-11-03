@@ -80,10 +80,16 @@
                     <a href="/upload" class="btn btn-success" role="button">Upload</a>
             </div>
         </nav>
-
+    </div>
 
         @yield('content')
-
+        <nav class="navbar navbar-default navbar-bottom mb-0">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">WebSiteName</a>
+                </div>
+            </div>
+        </nav>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
