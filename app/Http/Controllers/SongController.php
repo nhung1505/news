@@ -48,13 +48,19 @@ class SongController extends Controller
         return redirect()->back();
     }
 
-    public function index(){
-
+    public function index()
+    {
 
         $songs = Song::paginate(10);
+        
+        return view('songs.list', compact('songs'));
 
-        return view('songs.list',compact('songs'));
 
+
+    }
+    
+    public function detailSong($id){
+        return view('songs.details_song');
     }
     public function delete($id){
         Song::where('id', $id)
