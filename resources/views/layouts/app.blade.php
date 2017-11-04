@@ -72,12 +72,12 @@
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="/list">Song</a>
+                    <a class="navbar-brand" href="{{route('song.list')}}">Song</a>
                     <a class="navbar-brand" href="#">Album</a>
                     <a class="navbar-brand" href="#">Singer</a>
                     <a class="navbar-brand" href="#">Hit</a>
                 </div>
-                    <a href="/upload" class="btn btn-success" role="button">Upload</a>
+                    <a href="{{ route('song.create') }}" class="btn btn-success" role="button">Upload</a>
             </div>
         </nav>
     </div>
