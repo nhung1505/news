@@ -32,11 +32,11 @@ class SongController extends Controller
 
         $song->description = $request->input('description');
 
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')){
             $song->image = $request->file('image')->store('image_songs/' . auth()->id(),'public');
         }
 
-        if($request->hasFile('audio')) {
+        if ($request->hasFile('audio')) {
             $song->audio = $request->file('audio')->store('audio_songs/' . auth()->id(),'public');
         }
 
@@ -55,12 +55,25 @@ class SongController extends Controller
         
         return view('songs.list', compact('songs'));
 
-
-
     }
     
     public function detailSong($id){
-        return view('songs.details_song');
+
+        $detail_song = Song::with('user')->find($id);
+
+        if ($detail_song){
+
+           $size = Storage::size('public/'.$detail_song->audio);
+
+           $size_mb = round(($size/1024)/1024, 2);
+
+        }else {
+
+           abort('404');
+
+        }
+
+        return view('songs.details_song', compact('detail_song','size_mb'));
     }
     public function delete($id){
         $song = Song::find($id);
