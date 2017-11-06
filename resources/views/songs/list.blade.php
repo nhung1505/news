@@ -42,15 +42,14 @@
                                 <div class="modal-dialog modal-sm">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Modal Header</h4>
+                                            <h4 class="modal-title text-danger text-center">Confim Delete</h4>
                                         </div>
-                                        <div class="modal-body">
-                                            <p>Are you sure delete.</p>
+                                        <div class="modal-body text-danger text-center">
+                                            <p>Are you sure ?</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-default" >Yes</button>
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                                            <button type="submit" class="btn btn-danger col-md-6" >Yes</button>
+                                            <button type="button" class="btn btn-default col-md-6" data-dismiss="modal">No</button>
                                         </div>
                                     </div>
                                 </div>

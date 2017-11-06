@@ -44,7 +44,6 @@ class SongController extends Controller
 
         $song->save();
 
-
         return redirect()->back();
     }
 
