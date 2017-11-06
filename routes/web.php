@@ -30,6 +30,7 @@ Route::middleware(["auth"])->group(function () {
         Route::get('/{id}/details_song' , 'SongController@detailSong')->name('song.details_song');
         Route::get('/{id}/edit_song' , 'SongController@edit')->name('song.showEdit_song');
         Route::post('/{id}/edit_song' , 'SongController@update')->name('song.edit_song');
+        Route::get('/search' , 'SongController@search')->name('song.search');
 
     });
 
