@@ -21,11 +21,21 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(["auth"])->group(function () {
 
-    Route::get('/upload', 'SongController@create')->name('song.create');
-    Route::post('/upload', 'SongController@upload')->name('song.upload');
-    Route::get('/list', 'SongController@index')->name('song.list');
-    Route::get('/edit-{id}', 'SongController@showEditForm')->name('song.edit');
-    Route::post('/edit-{id}', 'SongController@edit');
+    Route::prefix('songs')->group(function () {
+
+        Route::get('/upload', 'SongController@create')->name('song.create');
+        Route::post('/upload', 'SongController@upload')->name('song.upload');
+        Route::get('/', 'SongController@index')->name('song.list');
+
+        Route::post('/{id}/delete', 'SongController@delete')->name('song.delete');
+
+        Route::get('/{id}/details_song' , 'SongController@detailSong')->name('song.details_song');
+
+    });
+
+
+
+
 
 
 

@@ -56,6 +56,23 @@ class SongController extends Controller
 
         return view('songs.list',compact('songs'));
 
+
+
+    }
+
+    public function detailSong($id){
+        return view('songs.details_song');
+    }
+    public function delete($id){
+        $song = Song::find($id);
+        if($song){
+            Storage::delete('public/'.$song->image);
+            Storage::delete('public/'.$song->audio);
+            $song->delete();
+            return redirect()->route('song.list');
+        }else{
+            abort('404');
+        }
     }
 
     public function showEditForm($id) {
