@@ -21,11 +21,12 @@ Route::middleware(["auth"])->group(function () {
 
         Route::get('/upload', 'SongController@create')->name('song.create');
         Route::post('/upload', 'SongController@upload')->name('song.upload');
-        Route::get('/songs', 'SongController@index')->name('song.list');
+        Route::get('/', 'SongController@index')->name('song.list');
         Route::post('/{id}/delete', 'SongController@delete')->name('song.delete');
-        Route::get('/{id}/details_song' , 'SongController@detailSong')->name('song.details_song');
-        Route::get('/{id}/edit_song' , 'SongController@edit')->name('song.showEdit_song');
-        Route::post('/{id}/edit_song' , 'SongController@update')->name('song.edit_song');
+        Route::get('/{id}/details' , 'SongController@detailSong')->name('song.details_song');
+        Route::get('/{id}/edit' , 'SongController@edit')->name('song.showEdit_song');
+        Route::post('/{id}/edit' , 'SongController@update')->name('song.edit_song');
+        Route::get('/search' , 'SongController@search')->name('song.search');
 
     });
 
