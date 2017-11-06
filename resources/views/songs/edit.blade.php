@@ -46,7 +46,7 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-success">Edit</button>
+                    <button type="submit" class="btn btn-success">Save</button>
                     <a class="btn btn-default" href="{{redirect()->getUrlGenerator()->previous()}}">Cancel</a>
                 </div>
             </div>
