@@ -1,7 +1,19 @@
 @extends('layouts.app')
 
+@section('title')
+    List Song Upload
+@endsection
+
 @section('content')
     <div class="container">
+
+        @if(session('announcement'))
+            <div class="alert alert-success alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>{{session('announcement')}}!</strong>
+            </div>
+        @endif
+
         <table class="table table-striped">
             <thead>
             <tr>
