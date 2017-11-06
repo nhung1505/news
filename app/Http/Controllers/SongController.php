@@ -73,9 +73,13 @@ class SongController extends Controller
     public function detailSong($id){
 
         $detail_song = Song::with('user')->find($id);
+
         if ($detail_song){
+
             return view('songs.details_song', compact('detail_song','size_mb'));
+
         }else{
+            
             abort('404');
         }
 
