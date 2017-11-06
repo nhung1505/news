@@ -26,10 +26,10 @@ Route::middleware(["auth"])->group(function () {
         Route::get('/upload', 'SongController@create')->name('song.create');
         Route::post('/upload', 'SongController@upload')->name('song.upload');
         Route::get('/', 'SongController@index')->name('song.list');
-
         Route::post('/{id}/delete', 'SongController@delete')->name('song.delete');
-
         Route::get('/{id}/details_song' , 'SongController@detailSong')->name('song.details_song');
+        Route::get('/{id}/edit_song' , 'SongController@edit')->name('song.showEdit_song');
+        Route::post('/{id}/edit_song' , 'SongController@update')->name('song.edit_song');
 
     });
 
