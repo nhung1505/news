@@ -57,4 +57,24 @@ class SongController extends Controller
         return view('songs.list',compact('songs'));
 
     }
+
+    public function showEditForm($id) {
+        $song = Song::find($id);
+        return view('songs.edit', compact('song'));
+    }
+
+    public function edit(Request $request, $id) {
+        $song = Song::find($id);
+        $this->validate($request,[
+            'name' => 'required|min:3|max:50',
+            'image' => 'mimes:jpeg,jpg,png,svg'
+        ]);
+
+        if ($request->hasFile('image')) {
+            Storage::disk('public')->delete(''.$song->image);
+            $song->image = $request->file('image')->store('image_songs/' . auth()->id(),'public');
+        }
+        $song->save();
+        return view('songs.list');
+    }
 }

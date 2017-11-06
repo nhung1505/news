@@ -81,17 +81,20 @@
             </div>
         </nav>
     </div>
-
+    <div>
         @yield('content')
-    <div class="footer">
-        <nav class="navbar navbar-default navbar-bottom mb-0">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">WebSiteName</a>
-                </div>
-            </div>
-        </nav>
     </div>
+    <footer class="footer">
+        <div>
+            <nav class="navbar navbar-default navbar-bottom mb-0">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">WebSiteName</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </footer>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

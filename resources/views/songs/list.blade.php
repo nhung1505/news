@@ -18,8 +18,8 @@
                 <td class="edit-width"><img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$song->image)}}"/></td>
                 <td>{{$song->name}}</td>
                 <td>
-                    <a href="">
-                        <button type="button" class="btn  btn-primary btn-sm">
+                    <a href="{{route('song.edit', ['id' => $song->id])}}">
+                        <button class="btn  btn-primary btn-sm">
                             <span class="glyphicon glyphicon-edit"></span> Edit
                         </button>
                     </a>
