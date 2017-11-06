@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    <h1 class="container">
+    <h1>
         developing
     </h1>
 @endsection
