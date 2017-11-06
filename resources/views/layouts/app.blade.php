@@ -64,7 +64,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        @endguest
+                                    @endguest
                                 </ul>
                             </div>
                         </div>
@@ -84,7 +84,6 @@
                         </div>
                     </nav>
                 </div>
-
                 @yield('content')
                 <div class="footer mt-5">
                     <nav class="navbar navbar-default navbar-bottom  mb-0">
@@ -98,9 +97,6 @@
             </div>
         </div>
     </div>
-
-
-
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
