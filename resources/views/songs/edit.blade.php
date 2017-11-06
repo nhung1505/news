@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Edit Song
+@endsection
+
 @section('content')
     <div class="container">
         <h2>Edit Song</h2>

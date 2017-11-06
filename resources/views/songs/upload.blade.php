@@ -1,7 +1,19 @@
 @extends('layouts.app')
 
+@section('title')
+    Upload Song
+@endsection
+
 @section('content')
     <div class="container">
+
+        @if(session('announcement'))
+            <div class="alert alert-success alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>{{session('announcement')}}!</strong>
+            </div>
+        @endif
+
         <h2>Upload Song</h2>
         @if ($errors->any())
             <div class="alert alert-danger">
