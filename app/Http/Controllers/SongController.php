@@ -114,6 +114,7 @@ class SongController extends Controller
             Storage::disk('public')->delete(''.$song->image);
             $song->image = $request->file('image')->store('image_songs/' . auth()->id(),'public');
         }
+        $song->name = $request->input('name');
         $song->lyric = $request->input('lyric');
         $song->description = $request->input('description');
         $song->save();

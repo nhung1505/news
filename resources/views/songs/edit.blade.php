@@ -28,6 +28,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2">Image<span style="color:white;"> *</span></label>
                 <div class=" col-sm-8">
+                    <div class="edit-width pb-3"><img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$song->image)}}"/></div>
                     <input type="file" name="image" value="{{old('image')}}">
                 </div>
             </div>
