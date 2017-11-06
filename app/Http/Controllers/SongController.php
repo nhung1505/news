@@ -111,15 +111,10 @@ class SongController extends Controller
             $song->image = $request->file('image')->store('image_songs/' . auth()->id(),'public');
         }
         $song->name = $request->input('name');
-
         $song->lyric = $request->input('lyric');
-
         $song->description = $request->input('description');
-
         $song->save();
-
         Session::flash('announcement','Edit Success!');
-        
         return redirect()->route('song.details_song', ['id' => $id]);
     }
 
