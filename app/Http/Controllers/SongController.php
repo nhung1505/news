@@ -111,6 +111,6 @@ class SongController extends Controller
             $song->image = $request->file('image')->store('image_songs/' . auth()->id(),'public');
         }
         $song->save();
-        return redirect()->route('song.details_song', ['id'=>$id]);
+        return redirect()->route('song.details_song', ['id' => $id])->with('announcement','Edit Success');
     }
 }

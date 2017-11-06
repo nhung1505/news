@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
+        @if(session('announcement'))
+            <div class="alert alert-success alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>{{session('announcement')}}!</strong>
+            </div>
+        @endif
         <div class="row">
             <div class="col-md-6">
                <img  class="col-md-12 " src="{{asset('storage/'.$detail_song->image)}}">
