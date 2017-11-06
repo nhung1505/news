@@ -49,15 +49,8 @@ class SongController extends Controller
     }
 
     public function index(){
-
-        $song = Song::paginate(10);
-
-        $songs = Song::with('user')->get();
-
+        $songs = Song::paginate(10);
         return view('songs.list',compact('songs'));
-
-
-
     }
 
     public function detailSong($id){
@@ -75,12 +68,12 @@ class SongController extends Controller
         }
     }
 
-    public function showEditForm($id) {
+    public function edit($id) {
         $song = Song::find($id);
         return view('songs.edit', compact('song'));
     }
 
-    public function edit(Request $request, $id) {
+    public function update(Request $request, $id) {
         $song = Song::find($id);
         $this->validate($request,[
             'name' => 'required|min:3|max:50',
@@ -92,6 +85,6 @@ class SongController extends Controller
             $song->image = $request->file('image')->store('image_songs/' . auth()->id(),'public');
         }
         $song->save();
-        return view('songs.list');
+        return redirect()->route('song.details_song', ['id'=>$id]);
     }
 }
