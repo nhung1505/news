@@ -17,6 +17,10 @@ class SongController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function upload(Request $request){
         $this->validate($request,[
             'name' => 'required|min:3|max:50',
