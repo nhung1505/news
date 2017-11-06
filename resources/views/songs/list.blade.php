@@ -20,21 +20,21 @@
             @else
             @foreach($songs as $key=>$song)
 
-                <form action="{{route('song.delete',$song->id)}}" method="post">
-                    {{ csrf_field() }}
             <tr>
-                <td>{{++$key}}</td>
-                <td class="edit-width"><img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$song->image)}}"/></td>
-                <td><a href="{{route('song.details_song', $song->id)}}">{{$song->name}}</a></td>
-                <td>
-                    <a href="">
-                        <button type="button" class="btn  btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-edit"></span> Edit
-                        </button>
-                    </a>
-                </td>
-                <td>
-                        <button data-toggle="modal" data-target="#myModal-{{$song->id}}" type="button" class="btn btn-danger btn-sm" >
+                    <td>{{++$key}}</td>
+                    <td class="edit-width"><img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$song->image)}}"/></td>
+                    <td><a href="{{route('song.details_song', $song->id)}}">{{$song->name}}</a></td>
+                    <td>
+                            <a href="{{route('song.showEdit_song', ['id' => $song->id])}}">
+                                    <button class="btn  btn-primary btn-sm">
+                                            <span class="glyphicon glyphicon-edit"></span> Edit
+                                    </button>
+                            </a>
+                    </td>
+                    <td>
+                        <form action="{{route('song.delete',$song->id)}}" method="post">
+                            {{ csrf_field() }}
+                            <button data-toggle="modal" data-target="#myModal-{{$song->id}}" type="button" class="btn btn-danger btn-sm" >
                             <span class="glyphicon glyphicon-remove" ></span> Remove
                         </button>
 
