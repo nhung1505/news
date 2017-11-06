@@ -45,14 +45,18 @@ class SongController extends Controller
 
         $song->save();
 
-        Session::flash('announcement','Add Success');
-
-        return redirect()->back();
+        if ($request->input('check') != 1) {
+            Session::flash('announcement','Add Success');
+            return redirect()->route('song.list');
+        } else {
+            Session::flash('announcement','Add Success');
+            return redirect()->back();
+        }
     }
 
     public function index(){
 
-        $songs = Song::paginate(10);
+        $songs = Song::orderBy('id', 'desc')->paginate(10);
 
         if ($songs){
 
