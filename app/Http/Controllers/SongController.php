@@ -52,8 +52,17 @@ class SongController extends Controller
     {
 
         $songs = Song::paginate(10);
+
+        if ($songs){
+
+            return view('songs.list', compact('songs'));
+
+        }else {
+
+            abort('404');
+
+        }
         
-        return view('songs.list', compact('songs'));
 
     }
     
@@ -69,7 +78,7 @@ class SongController extends Controller
 
         }else {
 
-           abort('404');
+            abort('404');
 
         }
 
