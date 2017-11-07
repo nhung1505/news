@@ -80,7 +80,7 @@ class SongController extends Controller
 
         if ($detail_song){
 
-            return view('songs.details_song', compact('detail_song','size_mb'));
+            return view('songs.details_song', compact('detail_song'));
 
         }else{
             

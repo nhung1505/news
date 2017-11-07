@@ -34,7 +34,7 @@
         </div>
         @endforeach
         @endif
-        <div class="location-next-previous-list-song">
+        <div class="location-next-previous">
             {!! $albums->render() !!}
         </div>
     </div>

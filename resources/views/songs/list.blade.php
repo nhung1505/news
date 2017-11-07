@@ -60,7 +60,7 @@
             @endif
             </tbody>
         </table>
-        <div class="location-next-previous-list-song">
+        <div class="location-next-previous">
             {!! $songs->render() !!}
         </div>
     </div>
