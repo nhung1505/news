@@ -70,7 +70,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        @endguest
+                                @endguest
                             </ul>
                         </div>
                     </div>
@@ -88,11 +88,10 @@
                             <a class="navbar-brand" href="#">Singer</a>
                             <a class="navbar-brand" href="#">Hit</a>
                         </div>
-                        <a href="{{ route('song.create') }}" class="btn btn-success" role="button">Upload</a>
+                            <a href="{{ route('song.create') }}" class="btn btn-success" role="button">Upload</a>
                     </div>
                 </nav>
             </div>
-
             @yield('content')
             <div class="footer mt-5">
                 <nav class="navbar navbar-default navbar-bottom  mb-0">

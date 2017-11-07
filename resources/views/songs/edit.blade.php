@@ -28,6 +28,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2">Image<span style="color:white;"> *</span></label>
                 <div class=" col-sm-8">
+                    <div class="edit-width pb-3"><img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$song->image)}}"/></div>
                     <input type="file" name="image" value="{{old('image')}}">
                 </div>
             </div>
@@ -45,7 +46,7 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-success">Edit</button>
+                    <button type="submit" class="btn btn-success">Save</button>
                     <a class="btn btn-default" href="{{redirect()->getUrlGenerator()->previous()}}">Cancel</a>
                 </div>
             </div>

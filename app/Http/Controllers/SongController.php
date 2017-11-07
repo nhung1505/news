@@ -17,6 +17,10 @@ class SongController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function upload(Request $request){
         $this->validate($request,[
             'name' => 'required|min:3|max:50',
@@ -45,14 +49,18 @@ class SongController extends Controller
 
         $song->save();
 
-        Session::flash('announcement','Add Success');
-
-        return redirect()->back();
+        if ($request->input('check') != 1) {
+            Session::flash('announcement','Add Success');
+            return redirect()->route('song.list');
+        } else {
+            Session::flash('announcement','Add Success');
+            return redirect()->back();
+        }
     }
 
     public function index(){
 
-        $songs = Song::paginate(10);
+        $songs = Song::orderBy('id', 'desc')->paginate(10);
 
         if ($songs){
 
@@ -67,11 +75,15 @@ class SongController extends Controller
     }
 
     public function detailSong($id){
-
+ 
         $detail_song = Song::with('user')->find($id);
+
         if ($detail_song){
+
             return view('songs.details_song', compact('detail_song','size_mb'));
+
         }else{
+            
             abort('404');
         }
 
@@ -112,6 +124,7 @@ class SongController extends Controller
             Storage::disk('public')->delete(''.$song->image);
             $song->image = $request->file('image')->store('image_songs/' . auth()->id(),'public');
         }
+        $song->name = $request->input('name');
         $song->lyric = $request->input('lyric');
         $song->description = $request->input('description');
         $song->save();
