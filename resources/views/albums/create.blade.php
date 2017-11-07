@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title')
+    Create Album
     @endsection
 @section('content')
     <div class="container">

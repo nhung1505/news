@@ -43,4 +43,5 @@ class AlbumController extends Controller
         return redirect()->route('home');
 
     }
+    
 }
