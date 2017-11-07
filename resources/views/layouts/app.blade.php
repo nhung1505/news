@@ -23,8 +23,8 @@
                 <nav class="navbar navbar-static-top bg-faded pb-0 mb-0">
                     <div class="container">
                         <div class="collapse navbar-collapse pt-2 " id="app-navbar-collapse">
-                            <ul class="nav navbar-left col-md-2">
-                                <h2 class="mt-4">Logo</h2>
+                            <ul class="nav navbar-left col-md-2 ">
+                                <a href="{{route('song.list')}}"><img class="logo" src="{{asset('storage/amusic.png')}}"/></a>
                             </ul>
                             <!-- Left Side Of Navbar -->
                             <ul class="nav navbar-nav text-center col-md-8 pt-3">
@@ -108,6 +108,11 @@
 
 
 <script src="{{ asset('js/app.js') }}"></script>
+<script>
+    function myFunction() {
+        return confirm("Are you want delete ?");
+    }
+</script>
 @yield('footer')
 </body>
 </html>
