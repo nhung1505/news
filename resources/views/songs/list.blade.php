@@ -6,7 +6,6 @@
 
 @section('content')
     <div class="container">
-
         @if(session('announcement'))
             <div class="alert alert-success alert-dismissable">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -15,15 +14,6 @@
         @endif
 
         <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-
             <tbody>
             @if(count($songs) == 0)
                 <tr>

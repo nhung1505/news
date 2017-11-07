@@ -16,9 +16,9 @@
                 </a>
             </div>
         </div>
-        @if(empty($album))
+        @if(count($albums)==0)
             <p>No Album. Would you like to create a <a href="{{route('album.create')}}"> new album </a>?</p>
-            @endif
+        @else
         @foreach($albums as $album)
         <div class="row">
             <div class="col-md-3">
@@ -32,6 +32,7 @@
                 </p>
             </div>
         </div>
-            @endforeach
+        @endforeach
+        @endif
     </div>
 @endsection
