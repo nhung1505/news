@@ -70,5 +70,6 @@
                 </div>
             </div>
         </form>
+        <h5 class="text-danger">Note: * not be empty </h5>
     </div>
 @endsection

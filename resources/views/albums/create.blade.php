@@ -9,7 +9,7 @@
             <div class="form-group {{ ($errors->has('name')) ? 'has-error' : '' }}">
                 <label class="control-label col-sm-2 text-left">Name<span style="color:red;"> *</span></label>
                 <div class="col-sm-10">
-                    <input  type='text' class="form-control" name = 'name' value="{{old('name')}}">
+                    <input  type='text' class="form-control" name = 'name'>
                     @if($errors->has('name'))
                         <div class="has-feedback text-danger">
                             {{$errors->first('name')}}
@@ -20,13 +20,13 @@
             <div class="form-group">
                 <label class="control-label col-sm-2 text-left">Image<span style="color:white;"> *</span></label>
                 <div class=" col-sm-8">
-                    <input type="file" name="image" value="{{old('image')}}">
+                    <input type="file" name="image">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2 text-left">Description</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" rows="3" name="description">{{old('description')}}</textarea>
+                    <textarea class="form-control" rows="3" name="description"></textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -36,5 +36,6 @@
                 </div>
             </div>
         </form>
+        <h5 class="text-danger">Note: * not be empty </h5>
     </div>
 @endsection

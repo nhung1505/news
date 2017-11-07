@@ -75,7 +75,7 @@ class SongController extends Controller
     }
 
     public function detailSong($id){
-
+ 
         $detail_song = Song::with('user')->find($id);
 
         if ($detail_song){

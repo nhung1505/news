@@ -33,7 +33,7 @@ Route::middleware(["auth"])->group(function () {
     Route::prefix('albums')->group(function () {
 
         Route::get('/create', 'AlbumController@create')->name('album.create');
-        Route::get('/create', 'AlbumController@store')->name('album.store');
+        Route::post('/create', 'AlbumController@store')->name('album.store');
 
 
 
