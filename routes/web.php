@@ -27,11 +27,17 @@ Route::middleware(["auth"])->group(function () {
         Route::get('/{id}/edit' , 'SongController@edit')->name('song.showEdit_song');
         Route::post('/{id}/edit' , 'SongController@update')->name('song.edit_song');
         Route::get('/search' , 'SongController@search')->name('song.search');
-
+        Route::get('/search' , 'SongController@search')->name('song.search');
     });
 
+    Route::prefix('albums')->group(function () {
+
+        Route::get('/create', 'AlbumController@create')->name('album.create');
+        Route::get('/create', 'AlbumController@store')->name('album.store');
 
 
+
+    });
 
 
 
