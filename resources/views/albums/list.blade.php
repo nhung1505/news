@@ -17,7 +17,7 @@
             </div>
         </div>
         @if(count($albums)==0)
-            <p>No Album. Would you like to create a <a href="{{route('album.create')}}"> new album </a>?</p>
+            <p>No Album. Would you like to create a <a href="{{route('album.create')}}"> new album</a> ?</p>
         @else
         @foreach($albums as $album)
         <div class="row">

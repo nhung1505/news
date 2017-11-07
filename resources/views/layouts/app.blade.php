@@ -93,15 +93,15 @@
                 </nav>
             </div>
             @yield('content')
-            <div class="footer mt-5">
-                <nav class="navbar navbar-default navbar-bottom  mb-0">
-                    <div class="container-fluid ">
-                        <div class="navbar-header ">
-                            <a class="navbar-brand" href="#">WebSiteName</a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
+            {{--<div class="footer mt-5">--}}
+                {{--<nav class="navbar navbar-default navbar-bottom  mb-0">--}}
+                    {{--<div class="container-fluid ">--}}
+                        {{--<div class="navbar-header ">--}}
+                            {{--<a class="navbar-brand" href="#">WebSiteName</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</nav>--}}
+            {{--</div>--}}
         </div>
     </div>
 </div>
