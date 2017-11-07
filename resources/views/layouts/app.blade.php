@@ -84,12 +84,11 @@
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <a class="navbar-brand" href="{{route('song.list')}}">Song</a>
-                            <a class="navbar-brand" href="#">Album</a>
+                            <a class="navbar-brand" href="{{route('album.list')}}">Album</a>
                             <a class="navbar-brand" href="#">Singer</a>
                             <a class="navbar-brand" href="#">Hit</a>
-                            <a class="navbar-brand" href="{{route('album.create')}}">create album</a>
                         </div>
-                            <a href="{{ route('song.create') }}" class="btn btn-success" role="button">Upload</a>
+                            <a href="{{ route('song.create') }}" class="btn btn-success" role="button">Upload Song</a>
                     </div>
                 </nav>
             </div>

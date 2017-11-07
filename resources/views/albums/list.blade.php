@@ -8,107 +8,30 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-7">
-                <h2>List Album </h2>
+                <h2>Album</h2>
             </div>
-            <div class="col-xs-5">
-                <a href="#">
-                    <span class="text-right"><h2 class="btn btn-success text-right">Create</h2></span>
+            <div class="col-xs-5 text-right ">
+                <a href="{{route('album.create')}}" class="btn btn-default btn-lg">
+                    <span class="glyphicon glyphicon-plus"></span> Create
                 </a>
             </div>
         </div>
+        @if(empty($album))
+            <p>No Album. Would you like to create a <a href="{{route('album.create')}}"> new album </a>?</p>
+            @endif
+        @foreach($albums as $album)
         <div class="row">
-            <div class="col-md-3 text-center">
+            <div class="col-md-3">
                 <a>
                     <div class="song-cover-img-large">
-                        <img src="https://4.bp.blogspot.com/-HV5ApB5gtpY/WOehpkmZnII/AAAAAAAAmKk/HvpSXxZTvO49J5fMT108cD7HfSq4DrpswCLcB/s640/10518967_230893784052255_6364055155881827342_n.jpg"
-                             class="">
+                        <img src="{{asset('storage/'.$album->image)}}">
                     </div>
                 </a>
                 <p>
-                    <a href="#">Tên Album</a>
-                </p>
-            </div>
-
-            <div class="col-md-3 text-center">
-                <a>
-                    <div class="song-cover-img-large">
-                        <img src="https://4.bp.blogspot.com/-HV5ApB5gtpY/WOehpkmZnII/AAAAAAAAmKk/HvpSXxZTvO49J5fMT108cD7HfSq4DrpswCLcB/s640/10518967_230893784052255_6364055155881827342_n.jpg"
-                             class="">
-                    </div>
-                </a>
-                <p>
-                    <a href="#">Tên Album</a>
-                </p>
-            </div>
-            <div class="col-md-3 text-center">
-                <a>
-                    <div class="song-cover-img-large">
-                        <img src="https://4.bp.blogspot.com/-HV5ApB5gtpY/WOehpkmZnII/AAAAAAAAmKk/HvpSXxZTvO49J5fMT108cD7HfSq4DrpswCLcB/s640/10518967_230893784052255_6364055155881827342_n.jpg"
-                             class="">
-                    </div>
-                </a>
-                <p>
-                    <a href="#">Tên Album</a>
-                </p>
-            </div>
-            <div class="col-md-3 text-center">
-                <a>
-                    <div class="song-cover-img-large">
-                        <img src="https://4.bp.blogspot.com/-HV5ApB5gtpY/WOehpkmZnII/AAAAAAAAmKk/HvpSXxZTvO49J5fMT108cD7HfSq4DrpswCLcB/s640/10518967_230893784052255_6364055155881827342_n.jpg"
-                             class="">
-                    </div>
-                </a>
-                <p>
-                    <a href="#">Tên Album</a>
+                    <a href="#">{{$album->name}}</a>
                 </p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3 text-center">
-                <a>
-                    <div class="song-cover-img-large">
-                        <img src="https://4.bp.blogspot.com/-HV5ApB5gtpY/WOehpkmZnII/AAAAAAAAmKk/HvpSXxZTvO49J5fMT108cD7HfSq4DrpswCLcB/s640/10518967_230893784052255_6364055155881827342_n.jpg"
-                             class="">
-                    </div>
-                </a>
-                <p>
-                    <a href="#">Tên Album</a>
-                </p>
-            </div>
-
-            <div class="col-md-3 text-center">
-                <a>
-                    <div class="song-cover-img-large">
-                        <img src="https://4.bp.blogspot.com/-HV5ApB5gtpY/WOehpkmZnII/AAAAAAAAmKk/HvpSXxZTvO49J5fMT108cD7HfSq4DrpswCLcB/s640/10518967_230893784052255_6364055155881827342_n.jpg"
-                             class="">
-                    </div>
-                </a>
-                <p>
-                    <a href="#">Tên Album</a>
-                </p>
-            </div>
-            <div class="col-md-3 text-center">
-                <a>
-                    <div class="song-cover-img-large">
-                        <img src="https://4.bp.blogspot.com/-HV5ApB5gtpY/WOehpkmZnII/AAAAAAAAmKk/HvpSXxZTvO49J5fMT108cD7HfSq4DrpswCLcB/s640/10518967_230893784052255_6364055155881827342_n.jpg"
-                             class="">
-                    </div>
-                </a>
-                <p>
-                    <a href="#">Tên Album</a>
-                </p>
-            </div>
-            <div class="col-md-3 text-center">
-                <a>
-                    <div class="song-cover-img-large">
-                        <img src="https://4.bp.blogspot.com/-HV5ApB5gtpY/WOehpkmZnII/AAAAAAAAmKk/HvpSXxZTvO49J5fMT108cD7HfSq4DrpswCLcB/s640/10518967_230893784052255_6364055155881827342_n.jpg"
-                             class="">
-                    </div>
-                </a>
-                <p>
-                    <a href="#">Tên Album</a>
-                </p>
-            </div>
-        </div>
+            @endforeach
     </div>
 @endsection

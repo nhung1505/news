@@ -30,21 +30,21 @@ class AlbumController extends Controller
 
         $album->name = $request->input('name');
 
-        $album->description = $request->input('description');
-
         if($request->hasFile('image')){
             $album->image = $request->file('image')->store('image_albums/' . auth()->id(),'public');
 
         }
 
+        $album->description = $request->input('description');
+
         $album->user_id = Auth::id();
 
         $album->save();
 
-        return redirect()->route('home');
+        return redirect()->route('album.list');
 
     }
-    
+
 
     public function index() {
         $albums = Album::paginate(8);

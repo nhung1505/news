@@ -27,11 +27,10 @@
             <tbody>
             @if(count($songs) == 0)
                 <tr>
-                    <td colspan="4" class="text-center">{{'No data'}}</td>
+                    <td <p class="text-center">No song. Would you like to create a <a href="{{route('song.upload')}}"> new song </a>?</p></td>
                 </tr>
             @else
             @foreach($songs as $key=>$song)
-
                 <tr>
                     <td>{{++$key}}</td>
                     <td class="edit-width"><a href="{{route('song.details_song', $song->id)}}"><img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$song->image)}}"/></a></td>
