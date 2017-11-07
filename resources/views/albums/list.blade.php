@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-7">
-                <h2>Album</h2>
+                <h2>Albums</h2>
             </div>
             <div class="col-xs-5 text-right ">
                 <a href="{{route('album.create')}}" class="btn btn-default btn-lg">
@@ -20,7 +20,7 @@
             <p>No Album. Would you like to create a <a href="{{route('album.create')}}"> new album</a> ?</p>
         @else
         @foreach($albums as $album)
-        <div class="row">
+        <div class="col-md 12">
             <div class="col-md-3">
                 <a>
                     <div class="song-cover-img-large">
@@ -34,5 +34,8 @@
         </div>
         @endforeach
         @endif
+        <div class="location-next-previous-list-song">
+            {!! $albums->render() !!}
+        </div>
     </div>
 @endsection

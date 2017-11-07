@@ -12,7 +12,7 @@
                 <strong>{{session('announcement')}}!</strong>
             </div>
         @endif
-
+        <h2>Songs</h2>
         <table class="table table-striped">
             <tbody>
             @if(count($songs) == 0)
@@ -22,7 +22,7 @@
             @else
             @foreach($songs as $key=>$song)
                 <tr>
-                    <td class="edit-width"><a href="{{route('song.details_song', $song->id)}}"><img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$song->image)}}"/></a></td>
+                    <td><a href="{{route('song.details_song', $song->id)}}"><img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$song->image)}}"/></a></td>
                     <td><a href="{{route('song.details_song', $song->id)}}">{{$song->name}}</a></td>
                     <td>
                         <a href="{{route('song.showEdit_song', ['id' => $song->id])}}">
