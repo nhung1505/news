@@ -12,6 +12,7 @@ use App\User;
 
 class AlbumController extends Controller
 {
+
     function create(){
 
         return view('albums.create');
@@ -44,4 +45,9 @@ class AlbumController extends Controller
 
     }
     
+
+    public function index() {
+        $albums = Album::paginate(8);
+        return view('albums.list', compact('albums'));
+    }
 }
