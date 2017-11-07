@@ -34,8 +34,14 @@
 
                 <tr>
                     <td>{{++$key}}</td>
-                    <td class="edit-width"><img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$song->image)}}"/></td>
-                    <td><a href="{{route('song.details_song', $song->id)}}">{{$song->name}}</a></td>
+                    <td class="edit-width">
+                        <a href="{{route('song.details_song', $song->id)}}">
+                            <img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$song->image)}}"/>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{route('song.details_song', $song->id)}}">{{$song->name}}</a>
+                    </td>
                     <td>
                         <a href="{{route('song.showEdit_song', ['id' => $song->id])}}">
                             <button class="btn  btn-primary btn-sm">
@@ -46,11 +52,10 @@
                     <td>
                         <form action="{{route('song.delete',$song->id)}}" method="post">
                             {{ csrf_field() }}
-                            <button data-toggle="modal" data-target="#myModal-{{$song->id}}" type="button" class="btn btn-danger btn-sm" >
+                            <button data-toggle="modal" data-target="#confirmDelete-{{$song->id}}" type="button" class="btn btn-danger btn-sm" >
                                 <span class="glyphicon glyphicon-remove" ></span> Remove
                             </button>
-
-                            <div class="modal fade" id="myModal-{{$song->id}}" role="dialog">
+                            <div class="modal fade" id="confirmDelete-{{$song->id}}" role="dialog">
                                 <div class="modal-dialog modal-sm">
                                     <div class="modal-content">
                                         <div class="modal-header">

@@ -20,7 +20,7 @@ class SongController extends Controller
     public function upload(Request $request){
         $this->validate($request,[
             'name' => 'required|min:3|max:50',
-            'audio' => 'required|mimes:mp3,mpga',
+            'audio' => 'required|mimes:mpga',
             'image' => 'mimes:jpeg,jpg,png,svg'
 
         ]);
@@ -80,7 +80,9 @@ class SongController extends Controller
     public function delete($id){
         $song = Song::find($id);
         if ($song){
-            Storage::delete('public/'.$song->image);
+            if(isset($song->image)){
+                Storage::delete('public/'.$song->image);
+            }
             Storage::delete('public/'.$song->audio);
             $song->delete();
             Session::flash('announcement','Delete Success');
