@@ -34,6 +34,7 @@ Route::middleware(["auth"])->group(function () {
 
         Route::get('/create', 'AlbumController@create')->name('album.create');
         Route::get('/create', 'AlbumController@store')->name('album.store');
+        Route::get('/', 'AlbumController@index')->name('album.list');
 
 
 
