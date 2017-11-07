@@ -11,10 +11,14 @@
 .song-cover-img-large{
     width: 220px;
     height: 220px;
+    overflow: hidden;
 }
-.edit-width{
-    width: 280px;
+
+.image-inside {
+    max-height: 100%;
+    max-width: 100%;
 }
+
 a {
     text-decoration: none;
     display: inline-block;
