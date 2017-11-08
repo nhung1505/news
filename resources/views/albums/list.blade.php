@@ -20,11 +20,11 @@
             <p>No Album. Would you like to create a <a href="{{route('album.create')}}"> new album</a> ?</p>
         @else
         @foreach($albums as $album)
-        <div class="col-md 12">
+        <div class="col-md 12 text-center">
             <div class="col-md-3">
                 <a>
-                    <div>
-                        <img  class="img-rounded song-cover-img-large" src="{{asset('storage/'.$album->image)}}">
+                    <div class="song-cover-img-large">
+                        <img  class="img-rounded" src="{{asset('storage/'.$album->image)}}">
                     </div>
                 </a>
                 <p>
