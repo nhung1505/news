@@ -28,7 +28,7 @@
                     </div>
                 </a>
                 <p>
-                    <a href="#">{{$album->name}}</a>
+                    <a href="{{route('album.detail_album', $album->id)}}">{{$album->name}}</a>
                 </p>
             </div>
         </div>

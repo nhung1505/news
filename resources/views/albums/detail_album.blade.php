@@ -18,21 +18,22 @@
             <div class="row">
                 <div class="col-md-4">
                     <img src="{{asset('storage/'.$detail_album->image)}}">
-
                 </div>
                 <div class="col-md-6">
-                    <h3>Name : {{$detail_album->name}}</h3>
+                    <h3>Album : {{$detail_album->name}}</h3>
                     <h3>Description</h3>
-                    <pre class="col-md-12">{{$detail_album->descrition}}</pre>
+                    @if($detail_album->description !=null)
+                        <pre class="col-md-12">{{$detail_album->description}}</pre>
+                    @else
+                        <pre class="col-md-12">The Description does not exist. You want to <a href="{{route('album.edit',$detail_album->id)}}">new description</a> ?</pre>
+                    @endif
                 </div>
                 <div class="col-md-2">
-
                     <div class="form-group col-md-12">
                         <a href="{{route('album.showEdit', ['id' => $detail_album->id])}}" class=" col-md-12 btn btn-danger" role="button">Remove</a>
-
                     </div>
                     <div class="form-group col-md-12">
-                        <a href="#" class=" col-md-12 btn btn-primary" role="button">Edit</a>
+                        <a href="{{route('album.edit',$detail_album->id)}}" class=" col-md-12 btn btn-primary" role="button">Edit</a>
                     </div>
                 </div>
             </div>
