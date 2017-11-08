@@ -28,7 +28,7 @@
                     </div>
                 </a>
                 <p>
-                    <a href="#">{{$album->name}}</a>
+                    <a href=" ">{{$album->name}}</a>
                 </p>
             </div>
         </div>
