@@ -55,4 +55,9 @@ class AlbumController extends Controller
 
         return view('albums.edit');
     }
+
+    public function detailAlbum($id){
+        $album = Album::with('user')->find($id);
+        return view('albums.detail_album',compact('album'));
+    }
 }

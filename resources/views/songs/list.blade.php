@@ -17,12 +17,12 @@
             <tbody>
             @if(count($songs) == 0)
                 <tr>
-                    <td <p class="text-center">No song. Would you like to create a <a href="{{route('song.upload')}}"> new song </a>?</p></td>
+                    <td><p class="text-center">No song. Would you like to create a <a href="{{route('song.upload')}}"> new song </a>?</p></td>
                 </tr>
             @else
-            @foreach($songs as $key=>$song)
+            @foreach($songs as $song)
                 <tr>
-                    <td><a href="{{route('song.details_song', $song->id)}}"><img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$song->image)}}"/></a></td>
+                    <td class="edit-width"><a href="{{route('song.details_song', $song->id)}}"><img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$song->image)}}"/></a></td>
                     <td><a href="{{route('song.details_song', $song->id)}}">{{$song->name}}</a></td>
                     <td>
                         <a href="{{route('song.showEdit_song', ['id' => $song->id])}}">
