@@ -59,7 +59,6 @@
                 <form>
                     <div class="form-group">
                         <h2>Lyrics</h2>
-
                         <h5>Upload by: <span style="color:Tomato;">{{$detail_song->user->name}}</span></h5>
                         <div class="row">
                             @if(!isset($detail_song->lyric))
