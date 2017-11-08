@@ -58,7 +58,6 @@
             <div class="col-md-12">
                 <form>
                     <div class="form-group">
-
                         <h2>Lyrics</h2>
 
                         <h5>Upload by: <span style="color:Tomato;">{{$detail_song->user->name}}</span></h5>
@@ -68,7 +67,6 @@
                             @else
                                 <pre class="col-md-6">{{$detail_song->lyric}}</pre>
                             @endif
-
                         </div>
                         <h2>Description</h2>
                         <div class="row">
