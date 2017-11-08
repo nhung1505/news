@@ -23,8 +23,8 @@
         <div class="col-md 12">
             <div class="col-md-3">
                 <a>
-                    <div class="song-cover-img-large">
-                        <img src="{{asset('storage/'.$album->image)}}">
+                    <div>
+                        <img  class="img-rounded song-cover-img-large" src="{{asset('storage/'.$album->image)}}">
                     </div>
                 </a>
                 <p>
@@ -34,7 +34,7 @@
         </div>
         @endforeach
         @endif
-        <div class="location-next-previous">
+        <div class="col-md-2 text-center">
             {!! $albums->render() !!}
         </div>
     </div>

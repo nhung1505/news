@@ -60,7 +60,7 @@
             @endif
             </tbody>
         </table>
-        <div class="location-next-previous">
+        <div class="col-md-2 text-center">
             {!! $songs->render() !!}
         </div>
     </div>

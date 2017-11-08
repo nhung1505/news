@@ -17,10 +17,6 @@ class SongController extends Controller
 
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function upload(Request $request){
         $this->validate($request,[
             'name' => 'required|min:3|max:50',
@@ -135,6 +131,6 @@ class SongController extends Controller
     public function search(Request $request) {
         $key = $request->input('key');
         $songs = Song::where('name', 'like', '%'.$key.'%')->paginate(10);
-        return view('songs.search', compact('key','songs'));
+        return view('songs.search', compact('key','songs','albums'));
     }
 }
