@@ -27,10 +27,15 @@
                     @endif
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group {{ ($errors->has('image')) ? 'has-error' : '' }}">
                 <label class="control-label col-sm-2 text-left">Image<span style="color:white;"> *</span></label>
                 <div class=" col-sm-8">
                     <input type="file" name="image" value="{{old('image')}}">
+                    @if($errors->has('image'))
+                        <div class="has-feedback text-danger">
+                            {{$errors->first('image')}}
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="form-group {{ ($errors->has('audio')) ? 'has-error' : '' }}">
