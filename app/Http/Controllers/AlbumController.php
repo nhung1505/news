@@ -60,4 +60,10 @@ class AlbumController extends Controller
         $album = Album::with('user')->find($id);
         return view('albums.detail_album',compact('album'));
     }
+
+    public function addOneSong(Request $request , $id){
+        $album = Album::find($id);
+
+        return view();
+    }
 }
