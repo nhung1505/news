@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Album List
+    Albums
 @endsection
 
 @section('content')
