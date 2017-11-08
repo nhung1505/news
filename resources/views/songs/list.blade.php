@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    List Song Upload
+    Songs
 @endsection
 
 @section('content')
