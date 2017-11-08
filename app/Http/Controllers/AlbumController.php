@@ -51,14 +51,48 @@ class AlbumController extends Controller
         return view('albums.list', compact('albums'));
     }
 
-    public function edit($id){
 
-        return view('albums.edit');
-    }
 
     public function detailAlbum($id){
-        $album = Album::with('user')->find($id);
-        return view('albums.detail_album',compact('album'));
+
+        $detail_album = Album::with('user')->find($id);
+
+        if ($detail_album){
+
+            return view('albums.detail_album', compact('detail_album'));
+
+        }else{
+
+            abort('404');
+        }
+
+
+    }
+    public function edit($id) {
+        $album = Album::find($id);
+        if ($album){
+            return view('albums.edit', compact('album'));;
+        }else{
+            abort('404');
+        }
+    }
+
+    public function update(Request $request, $id) {
+        $album = Album::find($id);
+        $this->validate($request,[
+            'name' => 'required|min:3|max:50',
+            'image' => 'mimes:jpeg,jpg,png,svg'
+        ]);
+
+        if ($request->hasFile('image')) {
+            Storage::disk('public')->delete(''.$album->image);
+            $album->image = $request->file('image')->store('image_songs/' . auth()->id(),'public');
+        }
+        $album->name = $request->input('name');
+        $album->description = $request->input('description');
+        $album->save();
+        Session::flash('announcement','Edit Success!');
+        return redirect()->route('album.detail_album', ['id' => $id]);
     }
 
     public function addOneSong(Request $request , $id){
