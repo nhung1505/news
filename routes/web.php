@@ -38,7 +38,7 @@ Route::middleware(["auth"])->group(function () {
         Route::post('/update', 'AlbumController@update')->name('album.update');
         Route::get('/', 'AlbumController@index')->name('album.list');
         Route::get('/{id}/detail','AlbumController@detailAlbum')->name('album.detail_album');
-
+        Route::get('/add_one_song','AlbumController@addOneSong')->name('album.add_one_song');
 
 
     });

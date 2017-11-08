@@ -59,4 +59,10 @@ class AlbumController extends Controller
     public function detailAlbum($id){
         return view('albums.detail_album');
     }
+
+    public function addOneSong(Request $request , $id){
+        $album = Album::find($id);
+
+        return view();
+    }
 }
