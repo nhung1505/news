@@ -33,7 +33,9 @@ Route::middleware(["auth"])->group(function () {
     Route::prefix('albums')->group(function () {
 
         Route::get('/create', 'AlbumController@create')->name('album.create');
-        Route::get('/create', 'AlbumController@store')->name('album.store');
+        Route::post('/create', 'AlbumController@store')->name('album.store');
+        Route::post('/{id}/edit', 'AlbumController@edit')->name('album.edit');
+        Route::post('/update', 'AlbumController@update')->name('album.update');
         Route::get('/', 'AlbumController@index')->name('album.list');
 
 

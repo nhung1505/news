@@ -6,40 +6,23 @@
 
 @section('content')
     <div class="container">
-
         @if(session('announcement'))
             <div class="alert alert-success alert-dismissable">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>{{session('announcement')}}!</strong>
             </div>
         @endif
-
+        <h2>Songs</h2>
         <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-
             <tbody>
             @if(count($songs) == 0)
                 <tr>
-                    <td colspan="4" class="text-center">{{'No data'}}</td>
+                    <td <p class="text-center">No song. Would you like to create a <a href="{{route('song.upload')}}"> new song </a>?</p></td>
                 </tr>
             @else
             @foreach($songs as $key=>$song)
-
                 <tr>
-                    <td>{{++$key}}</td>
-                    <td class="edit-width">
-                        <a href="{{route('song.details_song', $song->id)}}">
-                            <img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$song->image)}}"/>
-                        </a>
-                    </td>
-                    <td class="edit-width"><a href="{{route('song.details_song', $song->id)}}"><img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$song->image)}}"/></a></td>
+                    <td><a href="{{route('song.details_song', $song->id)}}"><img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$song->image)}}"/></a></td>
                     <td><a href="{{route('song.details_song', $song->id)}}">{{$song->name}}</a></td>
                     <td>
                         <a href="{{route('song.showEdit_song', ['id' => $song->id])}}">
@@ -77,7 +60,7 @@
             @endif
             </tbody>
         </table>
-        <div class="location-next-previous-list-song">
+        <div class="col-md-2 text-center">
             {!! $songs->render() !!}
         </div>
     </div>

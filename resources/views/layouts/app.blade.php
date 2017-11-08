@@ -84,24 +84,24 @@
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <a class="navbar-brand" href="{{route('song.list')}}">Song</a>
-                            <a class="navbar-brand" href="#">Album</a>
+                            <a class="navbar-brand" href="{{route('album.list')}}">Album</a>
                             <a class="navbar-brand" href="#">Singer</a>
                             <a class="navbar-brand" href="#">Hit</a>
                         </div>
-                            <a href="{{ route('song.create') }}" class="btn btn-success" role="button">Upload</a>
+                            <a href="{{ route('song.create') }}" class="btn btn-success" role="button">Upload Song</a>
                     </div>
                 </nav>
             </div>
             @yield('content')
-            <div class="footer mt-5">
-                <nav class="navbar navbar-default navbar-bottom  mb-0">
-                    <div class="container-fluid ">
-                        <div class="navbar-header ">
-                            <a class="navbar-brand" href="#">WebSiteName</a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
+            {{--<div class="footer mt-5">--}}
+                {{--<nav class="navbar navbar-default navbar-bottom  mb-0">--}}
+                    {{--<div class="container-fluid ">--}}
+                        {{--<div class="navbar-header ">--}}
+                            {{--<a class="navbar-brand" href="#">WebSiteName</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</nav>--}}
+            {{--</div>--}}
         </div>
     </div>
 </div>
