@@ -55,4 +55,8 @@ class AlbumController extends Controller
 
         return view('albums.edit');
     }
+
+    public function detailAlbum($id){
+        return view('albums.detail_album');
+    }
 }

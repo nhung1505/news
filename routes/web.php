@@ -37,6 +37,7 @@ Route::middleware(["auth"])->group(function () {
         Route::post('/{id}/edit', 'AlbumController@edit')->name('album.edit');
         Route::post('/update', 'AlbumController@update')->name('album.update');
         Route::get('/', 'AlbumController@index')->name('album.list');
+        Route::get('/{id}/detail','AlbumController@detailAlbum')->name('album.detail_album');
 
 
 
