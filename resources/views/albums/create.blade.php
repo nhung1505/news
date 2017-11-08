@@ -10,7 +10,7 @@
             <div class="form-group {{ ($errors->has('name')) ? 'has-error' : '' }}">
                 <label class="control-label col-sm-2 text-left">Name<span style="color:red;"> *</span></label>
                 <div class="col-sm-10">
-                    <input  type='text' class="form-control" name = 'name'>
+                    <input  type='text' class="form-control" name = 'name'value="{{old('name')}}">
                     @if($errors->has('name'))
                         <div class="has-feedback text-danger">
                             {{$errors->first('name')}}
