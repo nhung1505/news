@@ -100,4 +100,33 @@ class AlbumController extends Controller
 
         return view();
     }
+    public function delete($id){
+        $album = Album::find($id);
+        $id = $song->id;
+        if ($album){
+            if(isset($album->image)){
+                Storage::delete('public/'.$album->image);
+            }
+            $album->delete();
+            Session::flash('announcement','Delete Success');
+            return redirect()->route('album.list', compact($song));
+        } else {
+            abort('404');
+        }
+    }
+
+    public function deleteo($id){
+        $song = Song::find($id);
+        if ($song){
+            if(isset($song->image)){
+                Storage::delete('public/'.$song->image);
+            }
+            Storage::delete('public/'.$song->audio);
+            $song->delete();
+            Session::flash('announcement','Delete Success');
+            return redirect()->route('song.list');
+        } else {
+            abort('404');
+        }
+    }
 }
