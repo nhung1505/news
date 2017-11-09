@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-group col-md-12">
-<<<<<<< HEAD
+
                         <a class=" col-md-12 btn btn-success text-white" role="button" data-toggle="modal" data-target="#confirmDelete-{{$detail_album->id}}">
                             Remote
                         </a>
@@ -53,9 +53,7 @@
                                 </div>
                             </div>
                         </form>
-=======
-                        <a href="" class=" col-md-12 btn btn-danger" role="button">Remove</a>
->>>>>>> 00c274dd3f8686057779f2bc65882437d50ca3e1
+
                     </div>
                     <div class="form-group col-md-12">
                         <a href="{{route('album.showEdit', ['id' => $detail_album->id])}}" class=" col-md-12 btn btn-danger" role="button">Edit</a>
