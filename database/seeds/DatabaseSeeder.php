@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use \App\User;
 use \App\Song;
+use \App\Album;
 
 class DatabaseSeeder extends Seeder
 {

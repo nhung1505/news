@@ -15,6 +15,7 @@ class AlbumController extends Controller
 
     function create(){
 
+
         return view('albums.create');
 
     }
@@ -100,7 +101,6 @@ class AlbumController extends Controller
     }
 
     public function upload_song_album(Request $request, $id){
-
 
     }
 }

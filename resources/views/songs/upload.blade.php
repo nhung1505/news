@@ -12,10 +12,12 @@
                 <strong>{{session('announcement')}}!</strong>
             </div>
         @endif
-
         <h2>Upload Song</h2>
         <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
             {{csrf_field()}}
+            @if(isset($album))
+                <input type="hidden" name="album_id" value="{{$album->id}}">
+            @endif
             <div class="form-group {{ ($errors->has('name')) ? 'has-error' : '' }}">
                 <label class="control-label col-sm-2 text-left">Name<span style="color:red;"> *</span></label>
                 <div class="col-sm-10">
