@@ -104,7 +104,6 @@ class AlbumController extends Controller
     public function addOneSong(Request $request, $id)
     {
         $album = Album::find($id);
-
         return view();
     }
 

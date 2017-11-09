@@ -15,7 +15,7 @@
                     @if($detail_album->description !=null)
                         <pre class="col-md-12"><h4>{{$detail_album->description}}</h4></pre>
                     @else
-                        <pre class="col-md-12">The Description does not exist. You want to <a href="{{route('album.edit',$detail_album->id)}}">new description</a> ?</pre>
+                        <pre class="col-md-12">The Description does not exist. Do you want to <a href="{{route('album.edit',$detail_album->id)}}">new description</a> ?</pre>
                     @endif
                 </div>
                 <div class="col-md-2">
@@ -107,11 +107,7 @@
                 </div>
                 <div class="row">
                     <h2 class="col-md-12">Lyric</h2>
-                    @if($detail_album->lyric==null)
                     <pre class="col-md-12"><h4>The lyric does not exist. You want to <a href="{{route('album.edit',$detail_album->id)}}">new lyric</a> ?</h4></pre>
-                    @else
-                    <pre class="col-md-12"><h4>{{$detail_album->lyric}}</h4></pre>
-                    @endif
                 </div>
             </div>
         </div>
