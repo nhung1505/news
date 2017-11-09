@@ -7,7 +7,7 @@
 @section('content')
     <div class="container">
 
-        <h4>Tìm thấy {{count($songs)}} cuốn sách theo từ khóa: {{$key}}</h4>
+        <h4>Tìm thấy {{count($songs)}}  theo từ khóa: {{$key}}</h4>
 
         <table class="table table-striped">
             <thead>

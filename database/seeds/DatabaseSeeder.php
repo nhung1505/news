@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use \App\User;
 use \App\Song;
+use \App\Album;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,5 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
          $this->call(UsersTableSeeder::class);
+        $this->call(SongsTableSeeder::class);
+        $this->call(AlbumsTableSeeder::class);
     }
 }

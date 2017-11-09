@@ -23,8 +23,8 @@
                 <nav class="navbar navbar-static-top bg-faded pb-0 mb-0">
                     <div class="container">
                         <div class="collapse navbar-collapse pt-2 " id="app-navbar-collapse">
-                            <ul class="nav navbar-left col-md-2">
-                                <h2 class="mt-4">Logo</h2>
+                            <ul class="nav navbar-left col-md-2 ">
+                                <a href="{{route('song.list')}}"><img class="logo" src="{{asset('storage/amusic.png')}}"/></a>
                             </ul>
                             <!-- Left Side Of Navbar -->
                             <ul class="nav navbar-nav text-center col-md-8 pt-3">
@@ -84,30 +84,35 @@
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <a class="navbar-brand" href="{{route('song.list')}}">Song</a>
-                            <a class="navbar-brand" href="#">Album</a>
+                            <a class="navbar-brand" href="{{route('album.list')}}">Album</a>
                             <a class="navbar-brand" href="#">Singer</a>
                             <a class="navbar-brand" href="#">Hit</a>
                         </div>
-                            <a href="{{ route('song.create') }}" class="btn btn-success" role="button">Upload</a>
+                            <a href="{{ route('song.create') }}" class="btn btn-success" role="button">Upload Song</a>
                     </div>
                 </nav>
             </div>
             @yield('content')
-            <div class="footer mt-5">
-                <nav class="navbar navbar-default navbar-bottom  mb-0">
-                    <div class="container-fluid ">
-                        <div class="navbar-header ">
-                            <a class="navbar-brand" href="#">WebSiteName</a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
+            {{--<div class="footer mt-5">--}}
+                {{--<nav class="navbar navbar-default navbar-bottom  mb-0">--}}
+                    {{--<div class="container-fluid ">--}}
+                        {{--<div class="navbar-header ">--}}
+                            {{--<a class="navbar-brand" href="#">WebSiteName</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</nav>--}}
+            {{--</div>--}}
         </div>
     </div>
 </div>
 
 
 <script src="{{ asset('js/app.js') }}"></script>
+<script>
+    function myFunction() {
+        return confirm("Are you want delete ?");
+    }
+</script>
 @yield('footer')
 </body>
 </html>
