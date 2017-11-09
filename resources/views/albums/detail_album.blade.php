@@ -30,10 +30,33 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-group col-md-12">
-                        <a href="" class=" col-md-12 btn btn-danger" role="button">Remove</a>
+
+                        <a class=" col-md-12 btn btn-success text-white" role="button" data-toggle="modal" data-target="#confirmDelete-{{$detail_album->id}}">
+                            Remote
+                        </a>
+                        <form action="{{route('album.delete',$detail_album->id)}}" method="post">
+                            {{ csrf_field() }}
+                            <div class="modal fade" id="confirmDelete-{{$detail_album->id}}" role="dialog">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title text-danger text-center">Confim Delete</h4>
+                                        </div>
+                                        <div class="modal-body text-danger text-center">
+                                            <p>Are you sure ?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-danger col-md-6" >Yes</button>
+                                            <button type="button" class="btn btn-default col-md-6" data-dismiss="modal">No</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
                     </div>
                     <div class="form-group col-md-12">
-                        <a href="{{route('album.edit',$detail_album->id)}}" class=" col-md-12 btn btn-primary" role="button">Edit</a>
+                        <a href="{{route('album.showEdit', ['id' => $detail_album->id])}}" class=" col-md-12 btn btn-danger" role="button">Edit</a>
                     </div>
                 </div>
             </div>
