@@ -100,7 +100,4 @@ class AlbumController extends Controller
         return view();
     }
 
-    public function upload_song_album(Request $request, $id){
-
-    }
 }

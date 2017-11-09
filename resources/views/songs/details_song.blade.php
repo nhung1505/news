@@ -58,6 +58,7 @@
             <div class="col-md-12">
                 <form>
                     <div class="form-group">
+                        <a class="btn btn-default" role="button" href="">App to Album</a>
                         <h2>Lyrics</h2>
                         <h5>Upload by: <span style="color:Tomato;">{{$detail_song->user->name}}</span></h5>
                         <div class="row">

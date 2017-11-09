@@ -95,6 +95,7 @@ class SongController extends Controller
                 Storage::delete('public/'.$song->image);
             }
             Storage::delete('public/'.$song->audio);
+            $song->albums()->detach();
             $song->delete();
             Session::flash('announcement','Delete Success');
             return redirect()->route('song.list');
