@@ -43,6 +43,7 @@ class SongController extends Controller
         if ($request->album_id){
             $album = Album::find($request->input('album_id'));
             $album->songs()->attach($song->id);
+            Session::flash('announcement','Upload Success!');
             return redirect()->route('album.detail_album',['id'=>$album->id]);
         }
 

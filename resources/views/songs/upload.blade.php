@@ -63,12 +63,15 @@
                     <textarea class="form-control" rows="3" name="description">{{old('description')}}</textarea>
                 </div>
             </div>
+            @if(!isset($album))
             <div class="form-group">
                 <label class="sr-only">Check Upload</label>
                 <div class="col-sm-offset-2 col-sm-10">
                     <input type="checkbox" value="1" name="check" > Do you want to upload more song?
                 </div>
             </div>
+            @else
+            @endif
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-success">Upload</button>
