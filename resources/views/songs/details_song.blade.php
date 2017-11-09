@@ -58,11 +58,14 @@
             <div class="col-md-12">
                 <form>
                     <div class="form-group">
+                        <a href=""  class="btn btn-default">
+                            <span class="glyphicon glyphicon-plus"></span> Add
+                        </a>
                         <h2>Lyrics</h2>
                         <h5>Upload by: <span style="color:Tomato;">{{$detail_song->user->name}}</span></h5>
                         <div class="row">
                             @if(!isset($detail_song->lyric))
-                                <pre class="col-md-6">Lyrics are updating</pre>
+                                <pre class="col-md-6"><h4>No Lyrics are available.Do you want to <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> new lyric </a>?</h4></pre>
                             @else
                                 <pre class="col-md-6">{{$detail_song->lyric}}</pre>
                             @endif
@@ -70,7 +73,7 @@
                         <h2>Description</h2>
                         <div class="row">
                             @if(!isset($detail_song->description))
-                                <pre class="col-md-6">No description available</pre>
+                                <pre class="col-md-6"><h4>No description available. Do you want to <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> new description </a>?</h4></pre>
                             @else
                                 <pre class="col-md-6">{{$detail_song->description}}</pre>
                             @endif
