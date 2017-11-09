@@ -39,26 +39,19 @@ class AlbumController extends Controller
         }
 
         $album->description = $request->input('description');
-
         $album->user_id = Auth::id();
-
         $album->save();
-
         return redirect()->route('album.list');
-
     }
 
-
-    public function index()
+     public function index()
     {
         $albums = Album::paginate(8);
         return view('albums.list', compact('albums'));
     }
 
-
     public function detailAlbum($id)
     {
-
         $detail_album = Album::with('user', 'songs')->find($id);
         if ($detail_album) {
 
@@ -88,7 +81,6 @@ class AlbumController extends Controller
             'name' => 'required|min:3|max:50',
             'image' => 'mimes:jpeg,jpg,png,svg'
         ]);
-
         if ($request->hasFile('image')) {
             Storage::disk('public')->delete('' . $album->image);
             $album->image = $request->file('image')->store('image_songs/' . auth()->id(), 'public');
@@ -121,4 +113,5 @@ class AlbumController extends Controller
             abort('404');
         }
     }
+
 }

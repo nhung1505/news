@@ -28,6 +28,8 @@ Route::middleware(["auth"])->group(function () {
         Route::post('/{id}/edit' , 'SongController@update')->name('song.edit_song');
         Route::get('/search' , 'SongController@search')->name('song.search');
         Route::get('/search' , 'SongController@search')->name('song.search');
+        Route::post('/{id}/remove' , 'SongController@remove')->name('song.remove');
+
     });
 
     Route::prefix('albums')->group(function () {
@@ -42,8 +44,6 @@ Route::middleware(["auth"])->group(function () {
         Route::get('/{id}/edit' , 'AlbumController@edit')->name('album.showEdit');
         Route::post('/{id}/edit' , 'AlbumController@update')->name('album.edit');
         Route::post('/{id}/delete', 'AlbumController@delete')->name('album.delete');
-
-
         Route::post('/{id}/upload/song' , 'AlbumController@ upload_song_album')->name('album_song.upload');
 
 
