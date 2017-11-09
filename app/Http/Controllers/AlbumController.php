@@ -56,7 +56,6 @@ class AlbumController extends Controller
 
     public function detailAlbum($id)
     {
-
         $detail_album = Album::with('user', 'songs')->find($id);
         if ($detail_album) {
 
@@ -86,7 +85,6 @@ class AlbumController extends Controller
             'name' => 'required|min:3|max:50',
             'image' => 'mimes:jpeg,jpg,png,svg'
         ]);
-
         if ($request->hasFile('image')) {
             Storage::disk('public')->delete('' . $album->image);
             $album->image = $request->file('image')->store('image_songs/' . auth()->id(), 'public');
