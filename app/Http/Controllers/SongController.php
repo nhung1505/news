@@ -136,4 +136,15 @@ class SongController extends Controller
         $songs = Song::where('name', 'like', '%'.$key.'%')->paginate(10);
         return view('songs.search', compact('key','songs','albums'));
     }
+    public function remove($id){
+        $song = Song::find($id);
+        if ($song){
+        $song->albums()->detach();
+            Session::flash('announcement','Delete Success');
+            return redirect()->back();
+        } else {
+            abort('404');
+        }
+    }
+
 }

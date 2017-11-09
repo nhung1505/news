@@ -121,4 +121,5 @@ class AlbumController extends Controller
             abort('404');
         }
     }
+
 }

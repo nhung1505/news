@@ -31,7 +31,7 @@
                 <div class="col-md-2">
                     <div class="form-group col-md-12">
 
-                        <a class=" col-md-12 btn btn-success text-white" role="button" data-toggle="modal" data-target="#confirmDelete-{{$detail_album->id}}">
+                        <a class=" col-md-12 btn btn-danger text-white" role="button" data-toggle="modal" data-target="#confirmDelete-{{$detail_album->id}}">
                             Remote
                         </a>
                         <form action="{{route('album.delete',$detail_album->id)}}" method="post">
@@ -56,7 +56,7 @@
 
                     </div>
                     <div class="form-group col-md-12">
-                        <a href="{{route('album.showEdit', ['id' => $detail_album->id])}}" class=" col-md-12 btn btn-danger" role="button">Edit</a>
+                        <a href="{{route('album.showEdit', ['id' => $detail_album->id])}}" class=" col-md-12 btn btn-default" role="button">Edit</a>
                     </div>
                 </div>
             </div>
@@ -81,12 +81,13 @@
                             <td>{{$song->name}}</td>
                             <td>
                                 <sub>
-                                    <a data-toggle="modal" data-target="#confirmDelete-">
+                                    <a data-toggle="modal" data-target="#confirmDelete-{{$song->id}}">
                                         <span class="glyphicon glyphicon-remove" ></span>
                                     </a>
-                                    <form action="" method="post">
+
+                                    <form action="{{route('song.remove',$song->id)}}" method="post">
                                         {{ csrf_field() }}
-                                        <div class="modal fade" id="confirmDelete-" role="dialog">
+                                        <div class="modal fade" id="confirmDelete-{{$song->id}}" role="dialog">
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
