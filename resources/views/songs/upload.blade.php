@@ -70,7 +70,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-success">Upload</button>
-                    <a class="btn btn-default" href="/home">Cancel</a>
+                    <a class="btn btn-default" href="{{route('song.list')}}">Cancel</a>
                 </div>
             </div>
         </form>
