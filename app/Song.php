@@ -11,6 +11,6 @@ class Song extends Model
     }
 
     public function albums(){
-        return $this->belongsToMany('App\Album');
+        return $this->belongsToMany('App\Album','album_song');
     }
 }

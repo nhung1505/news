@@ -15,6 +15,7 @@ class AlbumController extends Controller
 
     function create(){
 
+
         return view('albums.create');
 
     }
@@ -55,8 +56,7 @@ class AlbumController extends Controller
 
     public function detailAlbum($id){
 
-        $detail_album = Album::with('user')->find($id);
-
+        $detail_album = Album::with('user','songs')->find($id);
         if ($detail_album){
 
             return view('albums.detail_album', compact('detail_album'));
@@ -65,7 +65,6 @@ class AlbumController extends Controller
 
             abort('404');
         }
-
 
     }
     public function edit($id) {
@@ -99,5 +98,9 @@ class AlbumController extends Controller
         $album = Album::find($id);
 
         return view();
+    }
+
+    public function upload_song_album(Request $request, $id){
+
     }
 }
