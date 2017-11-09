@@ -8,13 +8,15 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Song;
 use App\User;
+use App\Album;
 
 class SongController extends Controller
 {
-    public function create(){
-
-        return view('songs.upload');
-
+    public function create(Request $request){
+        if(isset($request->id)){
+            $album=Album::find($request->id);
+        }
+        return view('songs.upload',compact('album'));
     }
 
     public function upload(Request $request){
@@ -37,6 +39,14 @@ class SongController extends Controller
         }
         $song->user_id = Auth::id();
         $song->save();
+
+        if ($request->album_id){
+            $album = Album::find($request->input('album_id'));
+            $album->songs()->attach($song->id);
+            Session::flash('announcement','Upload Success!');
+            return redirect()->route('album.detail_album',['id'=>$album->id]);
+        }
+
 
         if ($request->input('check') != 1) {
             Session::flash('announcement','Add Success');

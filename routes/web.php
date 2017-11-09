@@ -41,7 +41,8 @@ Route::middleware(["auth"])->group(function () {
         Route::get('/add_one_song','AlbumController@addOneSong')->name('album.add_one_song');
         Route::get('/{id}/edit' , 'AlbumController@edit')->name('album.showEdit');
         Route::post('/{id}/edit' , 'AlbumController@update')->name('album.edit');
-        Route::post('/{id}/delete', 'AlbumController@delete')->name('album.delete');
+
+        Route::post('/{id}/upload/song' , 'AlbumController@ upload_song_album')->name('album_song.upload');
 
 
 
