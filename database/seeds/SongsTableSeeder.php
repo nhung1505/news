@@ -18,26 +18,26 @@ class SongsTableSeeder extends Seeder
         $song->audio = 'audio_songs/1/cxUJHcWca7GMi3aHZd5ErTS2AlRWILbLUizxTmgK.mpga';
         $song->lyric = '
         Đã không còn người yêu hỡi ngày xưa ấy đôi ta bên nhau không rời
-Ngồi trên cát nhìn biển đêm hát vu vơ mấy câu tình ca
-Trái tim buồn vì thương nhớ vì đau xót sao đôi ta mau chia lìa
-Đời giông bão nhiều đắng cay cuốn trôi mau biết đâu tình nồng
-
-Thì thôi em đừng mong nhớ đừng thương tiếc chi thêm đau lòng
-Tình chúng ta đã phôi pha em và anh mỗi người 1 nơi
-Ngồi nơi đây mình đơn côi vầng trăng khóc sao rơi sông dài
-Tiếc cho tôi, tiếc cho người và cho bao yêu thương đã trao
-Gió đông buồn
-
-Khóc chi người vì anh biết nào ai muốn mai sau chia ly đôi đường
-Tình yêu đến chợt bỏ đi mấy ai vui với nhau muôn đời
-Chắc khi nào tìm duyên mới thì anh sẽ mau quên đi bao ân tình
-Và em chúc người mới quen sẽ bên anh yêu anh thật lòng
-
-Thì thôi em đừng mong nhớ đừng thương tiếc chi thêm đau lòng
-Tình chúng ta đã phôi pha em và anh mỗi người một nơi
-Ngày mai sau dù gặp nhau thì xin hãy cho nhau một lời
-Để không quên những êm đềm mà tình yêu khi xưa đã trao
-Giấc mơ đầu        
+        Ngồi trên cát nhìn biển đêm hát vu vơ mấy câu tình ca
+        Trái tim buồn vì thương nhớ vì đau xót sao đôi ta mau chia lìa
+        Đời giông bão nhiều đắng cay cuốn trôi mau biết đâu tình nồng
+        
+        Thì thôi em đừng mong nhớ đừng thương tiếc chi thêm đau lòng
+        Tình chúng ta đã phôi pha em và anh mỗi người 1 nơi
+        Ngồi nơi đây mình đơn côi vầng trăng khóc sao rơi sông dài
+        Tiếc cho tôi, tiếc cho người và cho bao yêu thương đã trao
+        Gió đông buồn
+        
+        Khóc chi người vì anh biết nào ai muốn mai sau chia ly đôi đường
+        Tình yêu đến chợt bỏ đi mấy ai vui với nhau muôn đời
+        Chắc khi nào tìm duyên mới thì anh sẽ mau quên đi bao ân tình
+        Và em chúc người mới quen sẽ bên anh yêu anh thật lòng
+        
+        Thì thôi em đừng mong nhớ đừng thương tiếc chi thêm đau lòng
+        Tình chúng ta đã phôi pha em và anh mỗi người một nơi
+        Ngày mai sau dù gặp nhau thì xin hãy cho nhau một lời
+        Để không quên những êm đềm mà tình yêu khi xưa đã trao
+        Giấc mơ đầu        
         ';
         $song->description = 'Được sáng tác vào năm 2002 bởi nhạc sĩ Nguyễn Văn Chung';
         $song->user_id = 1;

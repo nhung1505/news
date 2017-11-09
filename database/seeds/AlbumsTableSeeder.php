@@ -18,6 +18,7 @@ class AlbumsTableSeeder extends Seeder
         $album->description = 'Các bản nhạc của những người trẻ tuổi';
         $album->user_id = 1;
         $album->save();
+        $album->songs()->attach([1,2,3,4,5,6]);
 
         $album = new Album();
         $album->name = 'Nhạc trữ tình';
@@ -25,6 +26,7 @@ class AlbumsTableSeeder extends Seeder
         $album->description = 'Các bản nhạc tình cảm lãng mạn';
         $album->user_id = 1;
         $album->save();
+        $album->songs()->attach(2);
 
         $album = new Album();
         $album->name = 'Nhạc thư giãn';
@@ -32,6 +34,7 @@ class AlbumsTableSeeder extends Seeder
         $album->description = 'Các bản nhạc giúp bạn thoải mái tinh thần, tập trung làm việc.';
         $album->user_id = 1;
         $album->save();
+        $album->songs()->attach(3);
 
         $album = new Album();
         $album->name = 'Nhạc tiệc tùng';
@@ -39,6 +42,7 @@ class AlbumsTableSeeder extends Seeder
         $album->description = 'Bài hát cho những bữa tiệc sôi động';
         $album->user_id = 1;
         $album->save();
+        $album->songs()->attach(4);
 
         $album = new Album();
         $album->name = 'Nhạc EDM';
@@ -46,6 +50,7 @@ class AlbumsTableSeeder extends Seeder
         $album->description = 'Các bài nhạc điện tử được các bạn trẻ yêu thích hiện nay.';
         $album->user_id = 1;
         $album->save();
+        $album->songs()->attach(5);
 
         $album = new Album();
         $album->name = 'Nhạc giao hưởng';
@@ -53,6 +58,7 @@ class AlbumsTableSeeder extends Seeder
         $album->description = 'Các bản nhạc giao hưởng không lời hay.';
         $album->user_id = 1;
         $album->save();
+        $album->songs()->attach(7);
 
         $album = new Album();
         $album->name = 'Nhạc phim';
@@ -60,6 +66,7 @@ class AlbumsTableSeeder extends Seeder
         $album->description = 'Các bản nhạc phim tuyển chọn hay nhất';
         $album->user_id = 1;
         $album->save();
+        $album->songs()->attach(8);
 
         $album = new Album();
         $album->name = 'Nhạc thiếu nhi';
@@ -67,6 +74,7 @@ class AlbumsTableSeeder extends Seeder
         $album->description = 'Các bản nhạc thiếu nhi hay nhất.';
         $album->user_id = 1;
         $album->save();
+        $album->songs()->attach(9);
 
         $album = new Album();
         $album->name = 'Nhạc Motivation';
@@ -74,6 +82,7 @@ class AlbumsTableSeeder extends Seeder
         $album->description = 'Các bản nhạc tiếp thêm động lực cho bạn trong khoảng thời gian khó khăn trong ngày.';
         $album->user_id = 1;
         $album->save();
+        $album->songs()->attach(10);
 
     }
 }
