@@ -48,13 +48,11 @@ class AlbumController extends Controller
 
     }
 
-
-    public function index()
+     public function index()
     {
         $albums = Album::paginate(8);
         return view('albums.list', compact('albums'));
     }
-
 
     public function detailAlbum($id)
     {
