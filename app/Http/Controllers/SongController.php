@@ -24,9 +24,7 @@ class SongController extends Controller
             'name' => 'required|min:3|max:50',
             'audio' => 'required|mimes:mpga',
             'image' => 'mimes:jpeg,jpg,png,svg'
-
         ]);
-
         $song = new Song();
         $song->name = $request->input('name');
         $song->lyric = $request->input('lyric');
@@ -46,8 +44,6 @@ class SongController extends Controller
             Session::flash('announcement','Upload Success!');
             return redirect()->route('album.detail_album',['id'=>$album->id]);
         }
-
-
         if ($request->input('check') != 1) {
             Session::flash('announcement','Add Success');
             return redirect()->route('song.list');
@@ -58,36 +54,27 @@ class SongController extends Controller
     }
 
     public function index(){
-
         $songs = Song::orderBy('id', 'desc')->paginate(10);
-
         if ($songs){
-
             return view('songs.list', compact('songs'));
-
-        }else {
-
+        } else {
             abort('404');
-
         }
         
     }
 
     public function detailSong($id){
- 
         $detail_song = Song::with('user')->find($id);
-
         if ($detail_song){
 
             return view('songs.details_song', compact('detail_song'));
 
-        }else{
+        } else {
             
             abort('404');
         }
-
-
     }
+
     public function delete($id){
         $song = Song::find($id);
         if ($song){
@@ -137,6 +124,7 @@ class SongController extends Controller
         $songs = Song::where('name', 'like', '%'.$key.'%')->paginate(10);
         return view('songs.search', compact('key','songs','albums'));
     }
+
     public function remove($id){
         $song = Song::find($id);
         if ($song){

@@ -21,7 +21,7 @@
                 <div class="col-md-2">
                     <div class="form-group col-md-12">
                         <a class=" col-md-12 btn btn-danger text-white" role="button" data-toggle="modal" data-target="#confirmDelete-{{$detail_album->id}}">
-                            Remote
+                            Remove
                         </a>
                         <form action="{{route('album.delete',$detail_album->id)}}" method="post">
                             {{ csrf_field() }}
@@ -69,7 +69,7 @@
                             <td>
                                 <sub>
                                     <a data-toggle="modal" data-target="#confirmDelete-{{$song->id}}">
-                                        <span class="glyphicon glyphicon-remove" ></span>
+                                        <span class="glyphicon glyphicon-remove text-danger" ></span>
                                     </a>
                                     <form action="{{route('song.remove',$song->id)}}" method="post">
                                         {{ csrf_field() }}
@@ -102,12 +102,14 @@
                         <button class="btn btn-success">Add Song</button>
                     </div>
                     <div class="col-md-2">
-                        <a href="{{route('song.upload',['id'=>$detail_album->id])}}" class="btn btn-default" role="button">Upload Song</a>
+                        <a href="{{route('song.upload',['id'=>$detail_album->id])}}"  class="btn btn-default">
+                            <span class="glyphicon glyphicon-plus"></span> Create Song
+                        </a>
                     </div>
                 </div>
                 <div class="row">
                     <h2 class="col-md-12">Lyric</h2>
-                    <pre class="col-md-12"><h4>The lyric does not exist. You want to <a href="{{route('album.edit',$detail_album->id)}}">new lyric</a> ?</h4></pre>
+                    <pre class="col-md-12"><h4>The lyric does not exist. Do you want to <a href="{{route('album.edit',$detail_album->id)}}">new lyric</a> ?</h4></pre>
                 </div>
             </div>
         </div>
