@@ -39,13 +39,9 @@ class AlbumController extends Controller
         }
 
         $album->description = $request->input('description');
-
         $album->user_id = Auth::id();
-
         $album->save();
-
         return redirect()->route('album.list');
-
     }
 
      public function index()
