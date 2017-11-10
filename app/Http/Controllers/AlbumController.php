@@ -116,14 +116,15 @@ class AlbumController extends Controller
         }
     }
 
-    public function remove($id)
+    public function remove($albumId,$songId = null)
     {
-        $song = Song::find($id);
-        $detail_album = Album::find($id);
+        $songId = $_GET['song'];
+        $song = Song::find($songId);
+        $detail_album = Album::find($albumId);
         if ($song) {
-            $detail_album->songs()->detach();
+            $detail_album->songs()->detach($songId);
             Session::flash('announcement', 'Delete Success');
-            return redirect()->route('album.detail_album', ['id' => $id]);
+            return redirect()->route('album.detail_album', ['id' => $albumId]);
 
         } else {
             abort('404');

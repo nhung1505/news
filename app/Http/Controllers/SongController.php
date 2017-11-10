@@ -130,10 +130,9 @@ class SongController extends Controller
 
     public function addSong(Request $request, $id){
         $album = Album::find($request->input('album_id'));
-        dd($album);
         $song = Song::find($id);
         if (isset($song)){
-            $album->songs()->attach($request->input('song_id'));
+            $album->songs()->attach($id);
             return redirect()->route('song.details_song',['id'=>$song->id]);
         } else {
             abort('404');
