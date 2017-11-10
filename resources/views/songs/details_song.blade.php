@@ -83,15 +83,15 @@
                         <h5>Upload by: <span style="color:Tomato;">{{$detail_song->user->name}}</span></h5>
                         <div class="row p-3" >
                             @if(!isset($detail_song->lyric))
-                                <pre class="col-md-6"><h4>No Lyrics are available.Do you want to <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> new lyric </a>?</h4></pre>
+                                <pre class="col-md-6"><h4>No Lyrics are available.Do you want to create <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> new lyric </a>?</h4></pre>
                             @else
                                 <pre class="col-md-6">{{$detail_song->lyric}}</pre>
                             @endif
                         </div>
                         <h2>Description</h2>
-                        <div class="row">
+                        <div class="row p-3">
                             @if(!isset($detail_song->description))
-                                <pre class="col-md-6"><h4>No description available. Do you want to <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> new description </a>?</h4></pre>
+                                <pre class="col-md-6"><h4>No description available. Do you want to create <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> new description </a>?</h4></pre>
                             @else
                                 <pre class="col-md-6">{{$detail_song->description}}</pre>
                             @endif

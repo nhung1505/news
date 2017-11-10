@@ -75,7 +75,11 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-success">Upload</button>
+                    @if(isset($album))
+                        <a class="btn btn-default" href="{{route('album.detail_album',['id'=>$album->id])}}">Cancel</a>
+                    @else
                     <a class="btn btn-default" href="{{route('song.list')}}">Cancel</a>
+                    @endif
                 </div>
             </div>
         </form>

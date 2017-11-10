@@ -15,7 +15,7 @@
                     @if($detail_album->description !=null)
                         <pre class="col-md-12"><h4>{{$detail_album->description}}</h4></pre>
                     @else
-                        <pre class="col-md-12">The Description does not exist. Do you want to <a href="{{route('album.edit',$detail_album->id)}}">new description</a> ?</pre>
+                        <pre class="col-md-12">The Description does not exist. Do you want to create <a href="{{route('album.edit',$detail_album->id)}}">new description</a> ?</pre>
                     @endif
                 </div>
                 <div class="col-md-2">
@@ -55,26 +55,26 @@
         <div class="container alert">
             <div class="row">
                 <div style="overflow: hidden ; height: 300px" class="col-md-12">
-                    <img width="100%"  src="http://thewallpaper.co/wp-content/uploads/2016/02/seen-on-badchi-minions-the-competition-widescreen-movie-for-kids-hd-1920x1080.jpg">
+                    <img width="100%"  src="{{asset('storage/'.$detail_album->image)}}">
                 </div>
             </div>
             <div class="container">
                 <div>
                     <table class="table">
                         <tbody>
+                        {{--@if(!isset($song))--}}
+                            {{--<h4>No song. Please, add the song to the album !</h4>--}}
+                        {{--@elseif(isset($song))--}}
                         @foreach($detail_album->songs as $key=>$song)
                         <tr>
                             <td>{{++$key}}</td>
                             <td>{{$song->name}}</td>
                             <td>
                                 <sub>
-
                                     <a data-toggle="modal" data-target="#confirmDelete-{{$song->id, $detail_album->id}}">
-                                        <span class="glyphicon glyphicon-remove text-danger" ></span>
+                                        <span class="glyphicon glyphicon-remove text-danger btn pull-right" ></span>
                                     </a>
-
                                     <form action="{{route('album.remove',[$detail_album->id,'song'=>$song->id])}}" method="post">
-
                                         {{ csrf_field() }}
                                         <div class="modal fade" id="confirmDelete-{{$song->id, $detail_album->id}}" role="dialog">
                                             <div class="modal-dialog modal-sm">
@@ -97,6 +97,7 @@
                             </td>
                         </tr>
                         @endforeach
+                            {{--@endif--}}
                         </tbody>
                     </table>
                 </div>
@@ -110,9 +111,9 @@
                         </a>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row p-3">
                     <h2 class="col-md-12">Lyric</h2>
-                    <pre class="col-md-12"><h4>The lyric does not exist. Do you want to <a href="{{route('album.edit',$detail_album->id)}}">new lyric</a> ?</h4></pre>
+                    <pre class="col-md-12"><h4>The lyric does not exist. Do you want to create <a href="{{route('album.edit',$detail_album->id)}}">new lyric</a> ?</h4></pre>
                 </div>
             </div>
         </div>

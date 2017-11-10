@@ -92,7 +92,7 @@ class SongController extends Controller
         }
     }
 
-    public function edit($id) {
+    public function edit(Request $request,$id) {
         $song = Song::find($id);
         if ($song){
             return view('songs.edit', compact('song'));;
@@ -107,7 +107,6 @@ class SongController extends Controller
             'name' => 'required|min:3|max:50',
             'image' => 'mimes:jpeg,jpg,png,svg'
         ]);
-
         if ($request->hasFile('image')) {
             Storage::disk('public')->delete(''.$song->image);
             $song->image = $request->file('image')->store('image_songs/' . auth()->id(),'public');
