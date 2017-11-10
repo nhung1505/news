@@ -38,7 +38,11 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-success">Create</button>
+                    @if(isset($song))
+                        <a class="btn btn-default" href="{{route('song.details_song',['id'=>$song->id])}}">Cancel</a>
+                    @else
                     <a class="btn btn-default" href="{{route('album.list')}}">Cancel</a>
+                    @endif
                 </div>
             </div>
         </form>

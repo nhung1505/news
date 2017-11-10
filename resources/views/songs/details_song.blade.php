@@ -72,9 +72,7 @@
                                         </form>
                                     </div>
                                     @endforeach
-                                @else
-                                <div>No Album.Do you want to create a<a href="album.create"> new album</a>?</div>
-                            @endif
+                                @endif
                             <div>
                                 <span>Do you want to create a <a href="{{route('album.create',['id'=>$detail_song->id])}}"> new album</a> ?</span>
                             </div>
