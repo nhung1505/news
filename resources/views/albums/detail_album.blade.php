@@ -68,12 +68,15 @@
                             <td>{{$song->name}}</td>
                             <td>
                                 <sub>
-                                    <a data-toggle="modal" data-target="#confirmDelete-{{$song->id}}">
-                                        <span class="glyphicon glyphicon-remove text-danger" ></span>
+
+                                    <a data-toggle="modal" data-target="#confirmDelete-{{$song->id, $detail_album->id}}">
+                                        <span class="glyphicon glyphicon-remove" ></span>
                                     </a>
-                                    <form action="{{route('song.remove',$song->id)}}" method="post">
+
+                                    <form action="{{route('album.remove',$detail_album->id)}}" method="post">
+
                                         {{ csrf_field() }}
-                                        <div class="modal fade" id="confirmDelete-{{$song->id}}" role="dialog">
+                                        <div class="modal fade" id="confirmDelete-{{$song->id, $detail_album->id}}" role="dialog">
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
