@@ -24,8 +24,8 @@
             <div class="col-md-3">
                 {{--<div class="thumbnail">--}}
                 <a>
-                    <div>
-                        <a href="{{route('album.detail_album', $album->id)}}"><img  class="img-rounded" alt="Cinque Terre" width="304" height="236" src="{{asset('storage/'.$album->image)}}"></a>
+                    <div class="img-rounded song-cover-img-large">
+                        <a href="{{route('album.detail_album', $album->id)}}"><img   alt="Cinque Terre" width="304" height="236" src="{{asset('storage/'.$album->image)}}"></a>
                     </div>
                 </a>
                 <p>
