@@ -70,7 +70,7 @@
                                 <sub>
 
                                     <a data-toggle="modal" data-target="#confirmDelete-{{$song->id, $detail_album->id}}">
-                                        <span class="glyphicon glyphicon-remove" ></span>
+                                        <span class="glyphicon glyphicon-remove text-danger" ></span>
                                     </a>
 
                                     <form action="{{route('album.remove',[$detail_album->id,'song'=>$song->id])}}" method="post">

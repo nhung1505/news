@@ -73,10 +73,10 @@
                                     </div>
                                     @endforeach
                                 @else
-                                <div>No Album.Do you want to <a href="album.create"> new album</a>?</div>
+                                <div>No Album.Do you want to create a<a href="album.create"> new album</a>?</div>
                             @endif
                             <div>
-                                <span>Do you want <a href="{{route('album.create',['id'=>$detail_song->id])}}"> new album</a> ?</span>
+                                <span>Do you want to create a <a href="{{route('album.create',['id'=>$detail_song->id])}}"> new album</a> ?</span>
                             </div>
                         </div>
                         <h2>Lyrics</h2>

@@ -3,7 +3,7 @@
  */
 function openAlbum() {
     document.getElementById("myAlbum").style.display = "block";
-    document.getElementById("myAlbum").style.width = "200px";
+    document.getElementById("myAlbum").style.width = "300px";
 
 
 }
