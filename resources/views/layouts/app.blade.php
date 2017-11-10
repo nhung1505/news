@@ -9,11 +9,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
+    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
 </head>
 <body>
 <div class="container-fluid">
@@ -106,8 +109,10 @@
     </div>
 </div>
 
-
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/autocomplete.js') }}"></script>
+<script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('js/myJs.js') }}"></script>
 <script>
     function myFunction() {
         return confirm("Are you want delete ?");

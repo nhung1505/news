@@ -22,10 +22,10 @@
             @else
             @foreach($songs as $song)
                 <tr>
-                    <td >
+                    <td class="edit-width">
                         <div class="img-rounded song-cover-img-large" >
                             <a href="{{route('song.details_song', $song->id)}}">
-                                <img  src="{{asset('storage/'.$song->image)}}"/>
+                                <img src="{{asset('storage/'.$song->image)}}"/>
                             </a>
                         </div>
                     </td>

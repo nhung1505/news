@@ -68,12 +68,15 @@
                             <td>{{$song->name}}</td>
                             <td>
                                 <sub>
-                                    <a data-toggle="modal" data-target="#confirmDelete-{{$song->id}}">
-                                        <span class="glyphicon glyphicon-remove text-danger" ></span>
+
+                                    <a data-toggle="modal" data-target="#confirmDelete-{{$song->id, $detail_album->id}}">
+                                        <span class="glyphicon glyphicon-remove" ></span>
                                     </a>
-                                    <form action="{{route('song.remove',$song->id)}}" method="post">
+
+                                    <form action="{{route('album.remove',[$detail_album->id,'song'=>$song->id])}}" method="post">
+
                                         {{ csrf_field() }}
-                                        <div class="modal fade" id="confirmDelete-{{$song->id}}" role="dialog">
+                                        <div class="modal fade" id="confirmDelete-{{$song->id, $detail_album->id}}" role="dialog">
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -99,7 +102,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-2">
-                        <button class="btn btn-success">Add Song</button>
+                        <a href="{{route('list_song', $detail_album->id)}}" class=" btn btn-success" role="button">Add Song</a>
                     </div>
                     <div class="col-md-2">
                         <a href="{{route('song.upload',['id'=>$detail_album->id])}}"  class="btn btn-default">

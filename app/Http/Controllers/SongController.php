@@ -65,9 +65,10 @@ class SongController extends Controller
 
     public function detailSong($id){
         $detail_song = Song::with('user')->find($id);
+        $albums = Album::with('user')->get();
         if ($detail_song){
 
-            return view('songs.details_song', compact('detail_song'));
+            return view('songs.details_song', compact('detail_song','albums'));
 
         } else {
             
@@ -119,18 +120,20 @@ class SongController extends Controller
         return redirect()->route('song.details_song', ['id' => $id]);
     }
 
-    public function search(Request $request) {
+    public function search(Request $request)
+    {
         $key = $request->input('key');
-        $songs = Song::where('name', 'like', '%'.$key.'%')->paginate(10);
-        return view('songs.search', compact('key','songs','albums'));
+
+        $songs = Song::where('name', 'like', '%' . $key . '%')->paginate(10);
+        return view('songs.search', compact('key', 'songs', 'albums'));
     }
 
-    public function remove($id){
+    public function addSong(Request $request, $id){
+        $album = Album::find($request->input('album_id'));
         $song = Song::find($id);
-        if ($song){
-        $song->albums()->detach();
-            Session::flash('announcement','Delete Success');
-            return redirect()->back();
+        if (isset($song)){
+            $album->songs()->attach($id);
+            return redirect()->route('song.details_song',['id'=>$song->id]);
         } else {
             abort('404');
         }
