@@ -73,7 +73,7 @@
                                         <span class="glyphicon glyphicon-remove" ></span>
                                     </a>
 
-                                    <form action="{{route('album.remove',$detail_album->id)}}" method="post">
+                                    <form action="{{route('album.remove',[$detail_album->id,'song'=>$song->id])}}" method="post">
 
                                         {{ csrf_field() }}
                                         <div class="modal fade" id="confirmDelete-{{$song->id, $detail_album->id}}" role="dialog">
