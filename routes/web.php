@@ -29,6 +29,7 @@ Route::middleware(["auth"])->group(function () {
         Route::get('/search' , 'SongController@search')->name('song.search');
         Route::get('/search' , 'SongController@search')->name('song.search');
         Route::post('/{id}/remove' , 'SongController@remove')->name('song.remove');
+        Route::post('/{song_id}/album/{album_id}' , 'SongController@addSong')->name('album_song.add');
 
     });
 
