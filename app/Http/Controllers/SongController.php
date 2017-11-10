@@ -120,26 +120,18 @@ class SongController extends Controller
         return redirect()->route('song.details_song', ['id' => $id]);
     }
 
-    public function search(Request $request) {
+    public function search(Request $request)
+    {
         $key = $request->input('key');
-        $songs = Song::where('name', 'like', '%'.$key.'%')->paginate(10);
-        return view('songs.search', compact('key','songs','albums'));
-    }
 
-    public function remove($id){
-        $song = Song::find($id);
-        if ($song){
-        $song->albums()->detach();
-            Session::flash('announcement','Delete Success');
-            return redirect()->back();
-        } else {
-            abort('404');
-        }
+        $songs = Song::where('name', 'like', '%' . $key . '%')->paginate(10);
+        return view('songs.search', compact('key', 'songs', 'albums'));
     }
 
     public function addSong(Request $request, $id){
         $album = Album::find($request->input('album_id'));
-        $song = Song::find($request->input('song_id'));
+        dd($album);
+        $song = Song::find($id);
         if (isset($song)){
             $album->songs()->attach($request->input('song_id'));
             return redirect()->route('song.details_song',['id'=>$song->id]);

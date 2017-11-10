@@ -63,9 +63,9 @@
                             <div class="btn text-danger text-left col-md-12" onclick="closeAlbum()">&times; close</div>
                                 @if(isset($albums))
                                     @foreach($albums as $album)
-                                        <form method="post" action="{{route('album_song.add',['album_id'=>$album->id,'song_id'=>$detail_song->id])}}">
+                                        <form method="post" action="{{route('album_song.add',['album_id'=>$album->id,'id'=>$detail_song->id])}}">
                                             {{csrf_field()}}
-                                            <input type="hidden" name="song_id" value="{{$detail_song->id}}"></input>
+                                            <input type="hidden" name="id" value="{{$detail_song->id}}"></input>
                                             <button name="album_id" type="submit" class="btn btn-default" value="{{$album->id}}">{{$album->name}}</button>
                                         </form>
                                     @endforeach
@@ -73,7 +73,7 @@
                                 <div>No Album.Do you want to <a href="album.create"> new album</a>?</div>
                             @endif
                         </div>
-                        <span class="glyphicon glyphicon-plus btn btn-default"  onclick="openAlbum()"> Add</span>
+                        <span class="glyphicon glyphicon-plus btn btn-default" onclick="openAlbum()"> Add</span>
 
                         <h2>Lyrics</h2>
                         <h5>Upload by: <span style="color:Tomato;">{{$detail_song->user->name}}</span></h5>

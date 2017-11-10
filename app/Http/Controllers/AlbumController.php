@@ -44,7 +44,7 @@ class AlbumController extends Controller
         return redirect()->route('album.list');
     }
 
-     public function index()
+    public function index()
     {
         $albums = Album::paginate(8);
         return view('albums.list', compact('albums'));
@@ -53,7 +53,7 @@ class AlbumController extends Controller
     public function detailAlbum($id)
     {
         $detail_album = Album::with('user', 'songs')->find($id);
-    
+
         if ($detail_album) {
 
             return view('albums.detail_album', compact('detail_album'));
@@ -100,19 +100,35 @@ class AlbumController extends Controller
         return view();
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $album = Album::find($id);
         $album->songs()->detach();
-        if ($album){
-            if(isset($album->image)){
-                Storage::delete('public/'.$album->image);
+        if ($album) {
+            if (isset($album->image)) {
+                Storage::delete('public/' . $album->image);
             }
             $album->delete();
-            Session::flash('announcement','Delete Success');
+            Session::flash('announcement', 'Delete Success');
             return redirect()->route('album.list');
         } else {
             abort('404');
         }
     }
+
+    public function remove($id)
+    {
+        $song = Song::find($id);
+        $detail_album = Album::find($id);
+        if ($song) {
+            $detail_album->songs()->detach();
+            Session::flash('announcement', 'Delete Success');
+            return redirect()->route('album.detail_album', ['id' => $id]);
+
+        } else {
+            abort('404');
+        }
+    }
+
 
 }

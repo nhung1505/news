@@ -29,7 +29,7 @@ Route::middleware(["auth"])->group(function () {
         Route::get('/search' , 'SongController@search')->name('song.search');
         Route::get('/search' , 'SongController@search')->name('song.search');
         Route::post('/{id}/remove' , 'SongController@remove')->name('song.remove');
-        Route::post('/{song_id}/album/{album_id}' , 'SongController@addSong')->name('album_song.add');
+        Route::post('/{id}/album/{album_id}' , 'SongController@addSong')->name('album_song.add');
 
     });
 
@@ -46,6 +46,7 @@ Route::middleware(["auth"])->group(function () {
         Route::post('/{id}/edit' , 'AlbumController@update')->name('album.edit');
         Route::post('/{id}/delete', 'AlbumController@delete')->name('album.delete');
         Route::post('/{id}/upload/song' , 'AlbumController@ upload_song_album')->name('album_song.upload');
+        Route::post('/{id}/remove' , 'AlbumController@remove')->name('album.remove');
 
 
 
