@@ -105,6 +105,40 @@ class AlbumController extends Controller
         $album = Album::find($id);
         return view();
     }
+    
+    public function showSong($id ){
+        $album = Album::find($id);
+        $songs = Song::all();
+        return view('albums.list_song',compact('album','songs'));
+    }
+
+    public function addSong(Request $request , $id ){
+        $album = Album::find($id);
+        $album->songs()->attach($request->input('song_id'));
+        return redirect(route('list_song',['id'=>$id]));
+
+    }
+
+    public function removeSong(Request $request,$id){
+        $album = Album::find($id);
+        $album->songs()->detach($request->input('song_id'));
+        return redirect()->back();
+    }
+
+    public function searchSong(Request $request , $id){
+        $songs = Song::take(5)
+                ->where('name' , 'LIKE' , '%'.$request->term.'%')
+                ->whereDoesntHave('albums' , function ($q) use($id){
+                    $q->where('albums.id','<>', $id);
+        })
+        ->get();
+        $result = array();
+        foreach ($songs as $song){
+            $result[] = ['id' =>$song->id , 'value' =>$song->name];
+        }
+        return response()->json($result);
+    }
+
 
     public function delete($id)
     {
@@ -121,6 +155,7 @@ class AlbumController extends Controller
             abort('404');
         }
     }
+
 
     public function remove($albumId,$songId = null)
     {
@@ -139,3 +174,4 @@ class AlbumController extends Controller
 
 
 }
+

@@ -22,14 +22,16 @@
         @foreach($albums as $album)
         <div class="col-md 12 text-center">
             <div class="col-md-3">
+                {{--<div class="thumbnail">--}}
                 <a>
                     <div>
-                        <a href="{{route('album.detail_album', $album->id)}}"><img class="img-rounded song-cover-img-large" src="{{asset('storage/'.$album->image)}}"></a>
+                        <a href="{{route('album.detail_album', $album->id)}}"><img  class="img-rounded" alt="Cinque Terre" width="304" height="236" src="{{asset('storage/'.$album->image)}}"></a>
                     </div>
                 </a>
                 <p>
                     <a href="{{route('album.detail_album', $album->id)}}">{{$album->name}}</a>
                 </p>
+                {{--</div>--}}
             </div>
         </div>
         @endforeach

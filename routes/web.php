@@ -45,6 +45,10 @@ Route::middleware(["auth"])->group(function () {
         Route::get('/{id}/edit' , 'AlbumController@edit')->name('album.showEdit');
         Route::post('/{id}/edit' , 'AlbumController@update')->name('album.edit');
         Route::post('/{id}/delete', 'AlbumController@delete')->name('album.delete');
+        Route::get('/album/{id}/list', 'AlbumController@showSong')->name('list_song');
+        Route::post('/album/{id}/removeSong', 'AlbumController@removeSong')->name('album.removeSong');
+        Route::get('/search/album_list_song/{id?}','AlbumController@searchSong')->name('album.searchSong');
+        Route::post('/album/{id}/album_list_song', 'AlbumController@addSong')->name('album.addSong');
         Route::post('/{id}/upload/song' , 'AlbumController@ upload_song_album')->name('album_song.upload');
         Route::post('/{id}/remove' , 'AlbumController@remove')->name('album.remove');
 
