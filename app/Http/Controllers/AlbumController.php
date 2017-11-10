@@ -113,5 +113,18 @@ class AlbumController extends Controller
             abort('404');
         }
     }
+    public function remove($id){
+        $song = Song::find($id);
+        $detail_album = Album::find($id);
+        if ($song){
+        $detail_album->songs()->detach();
+            Session::flash('announcement','Delete Success');
+            return redirect()->route('album.detail_album', ['id' => $id]);
 
-}
+        } else {
+            abort('404');
+        }
+    }
+
+
+    }
