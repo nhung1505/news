@@ -13,11 +13,13 @@ use App\User;
 class AlbumController extends Controller
 {
 
-    function create()
+    function create(Request $request)
     {
+        if (isset($request->id)){
+           $song = Song::find($request->id);
+        }
 
-
-        return view('albums.create');
+        return view('albums.create',compact('song'));
 
     }
 
@@ -41,6 +43,10 @@ class AlbumController extends Controller
         $album->description = $request->input('description');
         $album->user_id = Auth::id();
         $album->save();
+        if (isset($request->id)){
+            $song = Song::find($request->id);
+            return redirect()->route('song.details_song',['id'=>$song->id]);
+        }
         return redirect()->route('album.list');
     }
 

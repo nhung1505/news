@@ -14,6 +14,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
 </head>
 <body>
 <div class="container-fluid">
@@ -108,6 +111,7 @@
 
 
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/myJs.js') }}"></script>
 <script>
     function myFunction() {
         return confirm("Are you want delete ?");
