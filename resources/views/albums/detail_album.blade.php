@@ -7,7 +7,7 @@
         <div class="container alert">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="{{asset('storage/'.$detail_album->image)}}">
+                    <img src="{{asset('storage/'.$detail_album->image)}}" width="100%">
                 </div>
                 <div class="col-md-6">
                     <h3>Album : {{$detail_album->name}}</h3>
