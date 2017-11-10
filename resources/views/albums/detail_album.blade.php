@@ -3,18 +3,8 @@
     Detail Album
 @endsection
 @section('content')
-    {{--@component('/conponent/view_info_song')--}}
-    {{--@slot('info_song')--}}
-    {{--@endslot--}}
-    {{--@endcomponent--}}
-
-    {{--@component('/conponent/view_list_song')--}}
-    {{--@slot('list_song')--}}
-    {{--@endslot--}}
-    {{--@endcomponent--}}
     <div>
         <div class="container alert">
-            {{--<div>{{$info_song}}</div>--}}
             <div class="row">
                 <div class="col-md-4">
                     <img src="{{asset('storage/'.$detail_album->image)}}">
@@ -23,16 +13,15 @@
                     <h3>Album : {{$detail_album->name}}</h3>
                     <h3>Description</h3>
                     @if($detail_album->description !=null)
-                        <pre class="col-md-12">{{$detail_album->description}}</pre>
+                        <pre class="col-md-12"><h4>{{$detail_album->description}}</h4></pre>
                     @else
-                        <pre class="col-md-12">The Description does not exist. You want to <a href="{{route('album.edit',$detail_album->id)}}">new description</a> ?</pre>
+                        <pre class="col-md-12">The Description does not exist. Do you want to <a href="{{route('album.edit',$detail_album->id)}}">new description</a> ?</pre>
                     @endif
                 </div>
                 <div class="col-md-2">
                     <div class="form-group col-md-12">
-
                         <a class=" col-md-12 btn btn-danger text-white" role="button" data-toggle="modal" data-target="#confirmDelete-{{$detail_album->id}}">
-                            Remote
+                            Remove
                         </a>
                         <form action="{{route('album.delete',$detail_album->id)}}" method="post">
                             {{ csrf_field() }}
@@ -60,12 +49,10 @@
                     </div>
                 </div>
             </div>
-            {{--{{$slot}}--}}
         </div>
     </div>
     <div>
         <div class="container alert">
-            {{--<div>{{$list_song}}</div>--}}
             <div class="row">
                 <div style="overflow: hidden ; height: 300px" class="col-md-12">
                     <img width="100%"  src="http://thewallpaper.co/wp-content/uploads/2016/02/seen-on-badchi-minions-the-competition-widescreen-movie-for-kids-hd-1920x1080.jpg">
@@ -81,17 +68,19 @@
                             <td>{{$song->name}}</td>
                             <td>
                                 <sub>
+
                                     <a data-toggle="modal" data-target="#confirmDelete-{{$song->id, $detail_album->id}}">
                                         <span class="glyphicon glyphicon-remove" ></span>
                                     </a>
 
                                     <form action="{{route('album.remove',$detail_album->id)}}" method="post">
+
                                         {{ csrf_field() }}
                                         <div class="modal fade" id="confirmDelete-{{$song->id, $detail_album->id}}" role="dialog">
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title text-danger text-center">Confim Delete</h4>
+                                                        <h4 class="modal-title text-danger text-center">Confim Remove</h4>
                                                     </div>
                                                     <div class="modal-body text-danger text-center">
                                                         <p>Are you sure ?</p>
@@ -107,7 +96,7 @@
                                 </sub>
                             </td>
                         </tr>
-                            @endforeach
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -116,12 +105,14 @@
                         <button class="btn btn-success">Add Song</button>
                     </div>
                     <div class="col-md-2">
-                        <a href="{{route('song.upload',['id'=>$detail_album->id])}}" class="btn btn-default" role="button">Upload Song</a>
+                        <a href="{{route('song.upload',['id'=>$detail_album->id])}}"  class="btn btn-default">
+                            <span class="glyphicon glyphicon-plus"></span> Create Song
+                        </a>
                     </div>
                 </div>
                 <div class="row">
                     <h2 class="col-md-12">Lyric</h2>
-                    <pre class="col-md-12">Anh yêu Em</pre>
+                    <pre class="col-md-12"><h4>The lyric does not exist. Do you want to <a href="{{route('album.edit',$detail_album->id)}}">new lyric</a> ?</h4></pre>
                 </div>
             </div>
         </div>
