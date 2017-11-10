@@ -23,8 +23,8 @@
         <div class="col-md 12 text-center">
             <div class="col-md-3">
                 <a>
-                    <div>
-                        <a href="{{route('album.detail_album', $album->id)}}"><img class="img-rounded song-cover-img-large" src="{{asset('storage/'.$album->image)}}"></a>
+                    <div class="img-rounded song-cover-img-large">
+                        <a href="{{route('album.detail_album', $album->id)}}"><img  src="{{asset('storage/'.$album->image)}}"></a>
                     </div>
                 </a>
                 <p>

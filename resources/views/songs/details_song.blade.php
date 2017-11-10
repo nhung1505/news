@@ -14,8 +14,8 @@
         @endif
         <div class="row">
             <div class="col-md-6">
-                <img class="col-md-12 " src="{{asset('storage/'.$detail_song->image)}}">
-                <audio class="col-md-12" controls>
+                <img class="col-md-12 p-0" src="{{asset('storage/'.$detail_song->image)}}">
+                <audio class="col-md-12 p-0" controls>
                     <source src="{{asset('storage/'.$detail_song->audio)}}" type="audio/ogg">
                     <source src="{{asset('storage/'.$detail_song->audio)}}" type="audio/mpeg">
                 </audio>
@@ -55,7 +55,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 p-3">
                 <form>
                     <div class="form-group">
                         <a href=""  class="btn btn-default">
@@ -63,7 +63,7 @@
                         </a>
                         <h2>Lyrics</h2>
                         <h5>Upload by: <span style="color:Tomato;">{{$detail_song->user->name}}</span></h5>
-                        <div class="row">
+                        <div class="row p-3" >
                             @if(!isset($detail_song->lyric))
                                 <pre class="col-md-6"><h4>No Lyrics are available.Do you want to <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> new lyric </a>?</h4></pre>
                             @else
