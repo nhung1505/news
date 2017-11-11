@@ -55,7 +55,7 @@
         <div class="container alert">
             <div class="row">
                 <div style="overflow: hidden ; height: 300px" class="col-md-12">
-                    <img width="100%"  src="{{asset('storage/'.$detail_album->image)}}">
+                    <img width="100%"  src="https://kenh14cdn.com/thumb_w/600/dpA6uSv3GtBzvbRT7Y4EBtfN37yCA/Image/2014/10/mt3-08c79.jpg">
                 </div>
             </div>
             <div class="container">
