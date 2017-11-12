@@ -59,6 +59,7 @@
             <div class="col-md-12 p-3">
                 <form>
                     <div class="form-group">
+                        <h6>Upload by: <span class="text-danger">{{$detail_song->user->name}}</span></h6>
                         <span class="glyphicon glyphicon-plus btn btn-default" onclick="openAlbum()"> Add</span>
                         <div style="display:none;" id="myAlbum">
                             <div class="btn text-danger text-left col-md-12" onclick="closeAlbum()">&times; close</div>
@@ -68,7 +69,7 @@
                                         <form method="post" action="{{route('album_song.add',['album_id'=>$album->id,'id'=>$detail_song->id])}}">
                                             {{csrf_field()}}
                                             <input type="hidden" name="id" value="{{$detail_song->id}}"></input>
-                                            <button name="album_id" type="submit" class="btn btn-default" value="{{$album->id}}">{{$album->name}}</button>
+                                            <button name="album_id" type="submit" class="btn btn-default col-md-12" value="{{$album->id}}">{{$album->name}}</button>
                                         </form>
                                     </div>
                                     @endforeach
@@ -78,7 +79,6 @@
                             </div>
                         </div>
                         <h2>Lyrics</h2>
-                        <h5>Upload by: <span style="color:Tomato;">{{$detail_song->user->name}}</span></h5>
                         <div class="row p-3" >
                             @if(!isset($detail_song->lyric))
                                 <pre class="col-md-6"><h4>No Lyrics are available.Do you want to create <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> new lyric </a>?</h4></pre>
