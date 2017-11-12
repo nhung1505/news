@@ -62,9 +62,11 @@
                 <div>
                     <table class="table">
                         <tbody>
-                        {{--@if(!isset($song))--}}
-                            {{--<h4>No song. Please, add the song to the album !</h4>--}}
-                        {{--@elseif(isset($song))--}}
+                        @if($detail_album->songs->all()==[])
+                            <tr>
+                                <td class="text-center text-danger">There are no songs in the album. Please, add song or create song!</td>
+                            </tr>
+                        @else
                         @foreach($detail_album->songs as $key=>$song)
                         <tr>
                             <td>{{++$key}}</td>
@@ -97,7 +99,7 @@
                             </td>
                         </tr>
                         @endforeach
-                            {{--@endif--}}
+                        @endif
                         </tbody>
                     </table>
                 </div>
