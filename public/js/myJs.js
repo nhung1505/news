@@ -7,6 +7,7 @@ function openAlbum() {
 
 
 }
+
 function closeAlbum() {
     document.getElementById("myAlbum").style.display = "none";
 }
