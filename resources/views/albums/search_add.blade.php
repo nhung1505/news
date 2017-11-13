@@ -23,7 +23,6 @@
                 <td class=" text-center">You have not added any songs yet</td>
             @else
             @foreach($album->songs as $key=>$song)
-
                 <tr>
                     <td>{{++$key}}</td>
                     <td>{{$song->name}}</td>
