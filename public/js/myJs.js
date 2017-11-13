@@ -11,3 +11,8 @@ function openAlbum() {
 function closeAlbum() {
     document.getElementById("myAlbum").style.display = "none";
 }
+
+
+function myFunction() {
+    return confirm("Are you sure ?");
+}
