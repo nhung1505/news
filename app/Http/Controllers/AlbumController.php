@@ -114,7 +114,7 @@ class AlbumController extends Controller
     public function addSong(Request $request , $id ){
         $album = Album::find($id);
         $album->songs()->attach($request->input('song_id'));
-        return redirect(route('list_song',['id'=>$id]));
+        return redirect(route('album.search_add',['id'=>$id]));
 
     }
 

@@ -19,7 +19,11 @@
         <table class="table table-striped">
             <h5>The songs you have added</h5>
             <tbody>
+            @if($album->songs->all()==[])
+                <td class=" text-center">You have not added any songs yet</td>
+            @else
             @foreach($album->songs as $key=>$song)
+
                 <tr>
                     <td>{{++$key}}</td>
                     <td>{{$song->name}}</td>
@@ -34,6 +38,7 @@
                     </td>
                 </tr>
             @endforeach
+            @endif
             </tbody>
         </table>
         <a href="{{route('album.detail_album',['id'=>$album->id])}}" class="btn btn-default" role="button">Go to Album</a>
