@@ -98,32 +98,36 @@ class AlbumController extends Controller
         return redirect()->route('album.detail_album', ['id' => $id]);
     }
 
-    public function searchAddSong($id ){
+    public function searchAddSong(Request $request,$id ){
         $album = Album::find($id);
+        if (isset($request->song_add)){
+            $songAdd = Song::find($request->song_add);
+        }
         $songs = Song::all();
-        return view('albums.search_add',compact('album','songs'));
+        return view('albums.search_add',compact('album','songs','songAdd'));
     }
 
     public function addSong(Request $request , $id ){
         $album = Album::find($id);
+        $song_add = Song::find($request->input('song_id'));
         $album->songs()->attach($request->input('song_id'));
-        return redirect(route('album.search_add',['id'=>$album->id]));
+        return redirect(route('album.search_add',['id'=>$album->id,'song_add'=>$song_add]));
 
     }
 
     public function removeSong(Request $request,$id){
         $album = Album::find($id);
         $album->songs()->detach($request->input('song_id'));
-        return redirect()->back();
+        $album->songs()->detach($request->input('songAdd_id'));
+        return redirect()->route('album.search_add',['id'=>$album->id]);
     }
 
     public function searchSong(Request $request , $id){
-        $songs = Song::take(5)
-                ->where('name' , 'LIKE' , '%'.$request->term.'%')
+        $songs = Song::
+                where('name' , 'LIKE' , '%'.$request->term.'%')
                 ->whereDoesntHave('albums' , function ($q) use($id){
                     $q->where('albums.id','<>', $id);
-        })
-        ->get();
+        })->get();
         $result = array();
         foreach ($songs as $song){
             $result[] = ['id' =>$song->id , 'value' =>$song->name];
