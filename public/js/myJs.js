@@ -16,3 +16,7 @@ function closeAlbum() {
 function myFunction() {
     return confirm("Are you sure ?");
 }
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
