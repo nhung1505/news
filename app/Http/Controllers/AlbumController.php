@@ -98,13 +98,6 @@ class AlbumController extends Controller
         return redirect()->route('album.detail_album', ['id' => $id]);
     }
 
-
-    public function addOneSong(Request $request, $id)
-    {
-        $album = Album::find($id);
-        return view();
-    }
-    
     public function searchAddSong($id ){
         $album = Album::find($id);
         $songs = Song::all();
