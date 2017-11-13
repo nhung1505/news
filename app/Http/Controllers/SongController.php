@@ -64,7 +64,7 @@ class SongController extends Controller
     }
 
     public function detailSong($id){
-        $detail_song = Song::with('user')->find($id);
+        $detail_song = Song::with('user')->where('user_id',Auth::id())->find($id);
         $albums = Album::with('user')->get();
         if ($detail_song){
 

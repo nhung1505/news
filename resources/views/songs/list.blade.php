@@ -66,7 +66,7 @@
             @endif
             </tbody>
         </table>
-        <div class="col-md-2 text-center">
+        <div class="col-md-12 text-center">
             {!! $songs->render() !!}
         </div>
     </div>
