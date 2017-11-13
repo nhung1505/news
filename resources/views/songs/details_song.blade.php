@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-md-6">
                 <img class="col-md-12 p-0" src="{{asset('storage/'.$detail_song->image)}}">
-                <audio id="myAudio" class="col-md-12 p-0" controls="controls">
+                <audio id="myAudio" class="col-md-12 p-0" controls="controls" loop="loop" preload="auto">
                     <source src="{{asset('storage/'.$detail_song->audio)}}" type="audio/ogg">
                     <source src="{{asset('storage/'.$detail_song->audio)}}" type="audio/mpeg">
                 </audio>

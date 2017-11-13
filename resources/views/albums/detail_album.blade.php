@@ -105,7 +105,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-2">
-                        <a href="{{route('list_song', $detail_album->id)}}" class=" btn btn-success" role="button">Add Song</a>
+                        <a href="{{route('album.search_add', $detail_album->id)}}" class=" btn btn-success" role="button">Add Song</a>
                     </div>
                     <div class="col-md-2">
                         <a href="{{route('song.upload',['id'=>$detail_album->id])}}"  class="btn btn-default">

@@ -106,10 +106,10 @@ class AlbumController extends Controller
         return view();
     }
     
-    public function showSong($id ){
+    public function searchAddSong($id ){
         $album = Album::find($id);
         $songs = Song::all();
-        return view('albums.list_song',compact('album','songs'));
+        return view('albums.search_add',compact('album','songs'));
     }
 
     public function addSong(Request $request , $id ){
