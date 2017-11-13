@@ -13,7 +13,7 @@
                 <strong>{{session('announcement')}}!</strong>
             </div>
         @endif
-        <div class="row">
+        <div class="row well">
             <div class="col-md-6">
                 <img class="col-md-12 p-0" src="{{asset('storage/'.$detail_song->image)}}">
                 <audio id="myAudio" class="col-md-12 p-0" controls="controls" loop="loop" preload="auto">
@@ -54,48 +54,41 @@
                     </small>
                 </h2>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 p-3">
-                <form>
-                    <div class="form-group">
-                        <h6>Upload by: <span class="text-danger">{{$detail_song->user->name}}</span></h6>
-                        <span class="glyphicon glyphicon-plus btn btn-default" onclick="openAlbum()"> Add</span>
-                        <div style="display:none;" id="myAlbum">
-                            <div class="btn text-danger text-left col-md-12" onclick="closeAlbum()">&times; close</div>
-                                @if(isset($albums))
-                                    @foreach($albums as $album)
-                                    <div>
-                                        <form method="post" action="{{route('album_song.add',['album_id'=>$album->id,'id'=>$detail_song->id])}}">
-                                            {{csrf_field()}}
-                                            <input type="hidden" name="id" value="{{$detail_song->id}}"></input>
-                                            <button name="album_id" type="submit" class="btn btn-default col-md-12" value="{{$album->id}}">{{$album->name}}</button>
-                                        </form>
-                                    </div>
-                                    @endforeach
-                                @endif
-                            <div>
-                                <span>Do you want to create a <a href="{{route('album.create',['id'=>$detail_song->id])}}"> new album</a> ?</span>
-                            </div>
-                        </div>
-                        <h2>Lyrics</h2>
-                        <div class="row p-3" >
-                            @if(!isset($detail_song->lyric))
-                                <pre class="col-md-6"><h4>No Lyrics are available.Do you want to create <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> new lyric </a>?</h4></pre>
-                            @else
-                                <pre class="col-md-6">{{$detail_song->lyric}}</pre>
-                            @endif
-                        </div>
-                        <h2>Description</h2>
-                        <div class="row p-3">
-                            @if(!isset($detail_song->description))
-                                <pre class="col-md-6"><h4>No description available. Do you want to create <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> new description </a>?</h4></pre>
-                            @else
-                                <pre class="col-md-6">{{$detail_song->description}}</pre>
-                            @endif
-                        </div>
+            <h6 class="col-md-6">Upload by: <span class="text-danger">{{$detail_song->user->name}}</span></h6>
+            <form class="col-md-12">
+                <span class="glyphicon glyphicon-plus btn btn-default" onclick="openAlbum()"> Add</span>
+                <div style="display:none;" id="myAlbum">
+                    <div class="btn text-danger text-left col-md-12" onclick="closeAlbum()">&times; close</div>
+                    @if(isset($albums))
+                        @foreach($albums as $album)
+                            <form method="post" action="{{route('album_song.add',['album_id'=>$album->id,'id'=>$detail_song->id])}}">
+                                {{csrf_field()}}
+                                <input type="hidden" name="id" value="{{$detail_song->id}}"></input>
+                                <button name="album_id" type="submit" class="btn btn-default col-md-12" value="{{$album->id}}">{{$album->name}}</button>
+                            </form>
+                        @endforeach
+                    @endif
+                    <div>
+                        <span>Do you want to create a <a href="{{route('album.create',['id'=>$detail_song->id])}}"> new album</a> ?</span>
                     </div>
-                </form>
+                </div>
+            </form>
+        </div>
+        <h2>Lyrics</h2>
+        <div class="row well">
+            @if(!isset($detail_song->lyric))
+                <h5 class="text-center">No Lyrics are available.Do you want to create <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> new lyric </a>?</h5>
+            @else
+                <h5 class="col-md-6">{{$detail_song->lyric}}</h5>
+            @endif
+        </div>
+        <h2>Description</h2>
+        <div class="row well">
+            @if(!isset($detail_song->description))
+                <h5>No description available. Do you want to create <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> new description </a>?</h5>
+            @else
+                <h5>{{$detail_song->description}}</h5>
+            @endif
             </div>
         </div>
     </div>
