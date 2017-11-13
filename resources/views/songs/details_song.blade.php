@@ -74,20 +74,21 @@
                 </div>
             </form>
         </div>
-        <h2>Lyrics</h2>
         <div class="row well">
+            <h3 class="col-md-2 well text-center">Lyrics</h3>
             @if(!isset($detail_song->lyric))
-                <h5 class="text-center">No Lyrics are available.Do you want to create <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> new lyric </a>?</h5>
+                <h5 class="col-md-8 text-center">No Lyrics are available.Do you want to create <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> new lyric </a>?</h5>
             @else
-                <h5 class="col-md-6">{{$detail_song->lyric}}</h5>
+                <h5 class="col-md-8 tex-center">{{$detail_song->lyric}}</h5>
             @endif
         </div>
-        <h2>Description</h2>
+
         <div class="row well">
+            <h3 class="col-md-2 text-center well">Description</h3>
             @if(!isset($detail_song->description))
-                <h5>No description available. Do you want to create <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> new description </a>?</h5>
+                <h5 class="col-md-8 text-center">No description available. Do you want to create <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> new description </a>?</h5>
             @else
-                <h5>{{$detail_song->description}}</h5>
+                <h5 class="col-md-8 tex-center">{{$detail_song->description}}</h5>
             @endif
             </div>
         </div>
