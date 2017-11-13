@@ -114,9 +114,9 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <h2>Lyric</h2>
-            <div class=" well text-center">The lyric does not exist. Do you want to create <a href="{{route('album.edit',$detail_album->id)}}">new lyric</a> ?</div>
+        <div class="container well">
+            <h3 class="well col-md-2 text-center">Lyric</h3>
+            <div class=" col-md-8 text-center">The lyric does not exist. Do you want to create <a href="{{route('album.edit',$detail_album->id)}}">new lyric</a> ?</div>
         </div>
     </div>
 @endsection

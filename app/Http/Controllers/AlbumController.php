@@ -100,10 +100,11 @@ class AlbumController extends Controller
 
     public function searchAddSong(Request $request,$id ){
         $album = Album::find($id);
+        $user = User::find(Auth::id());
         if (isset($request->song_add)){
             $songAdd = Song::find($request->song_add);
         }
-        return view('albums.search_add',compact('album','songAdd'));
+        return view('albums.search_add',compact('album','songAdd','user'));
     }
 
     public function addSong(Request $request , $id ){
