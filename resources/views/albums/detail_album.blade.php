@@ -5,18 +5,19 @@
 @section('content')
     <div>
         <div class="container alert">
-            <div class="row">
+            <div class="row well">
                 <div class="col-md-4">
                     <img src="{{asset('storage/'.$detail_album->image)}}" width="100%">
                 </div>
                 <div class="col-md-6">
                     <h3>Album : {{$detail_album->name}}</h3>
-                    <h3>Description</h3>
-                    @if($detail_album->description !=null)
-                        <pre class="col-md-12"><h4>{{$detail_album->description}}</h4></pre>
-                    @else
-                        <pre class="col-md-12 text-center">The Description does not exist. Do you want to create <a href="{{route('album.edit',$detail_album->id)}}">new description</a> ?</pre>
-                    @endif
+                    <div class="well text-center">
+                        @if($detail_album->description !=null)
+                            {{$detail_album->description}}
+                        @else
+                            The Description does not exist. Do you want to create <a href="{{route('album.edit',$detail_album->id)}}">new description</a> ?
+                        @endif
+                    </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group col-md-12">
@@ -52,7 +53,7 @@
         </div>
     </div>
     <div>
-        <div class="container alert">
+        <div class="container well">
             <div class="row">
                 <div style="overflow: hidden ; height: 300px" class="col-md-12">
                     <img width="100%"  src="https://kenh14cdn.com/thumb_w/600/dpA6uSv3GtBzvbRT7Y4EBtfN37yCA/Image/2014/10/mt3-08c79.jpg">
@@ -107,15 +108,15 @@
                     </div>
                     <div class="col-md-2">
                         <a href="{{route('song.upload',['id'=>$detail_album->id])}}"  class="btn btn-default">
-                            <span class="glyphicon glyphicon-plus"></span> Create Song
+                            <span class="glyphicon glyphicon-plus"></span> Upload Song
                         </a>
                     </div>
                 </div>
-                <div class="row p-3">
-                    <h2 class="col-md-12">Lyric</h2>
-                    <pre class="col-md-12"><h4 class="text-center">The lyric does not exist. Do you want to create <a href="{{route('album.edit',$detail_album->id)}}">new lyric</a> ?</h4></pre>
-                </div>
             </div>
+        </div>
+        <div class="container">
+            <h2>Lyric</h2>
+            <div class=" well text-center">The lyric does not exist. Do you want to create <a href="{{route('album.edit',$detail_album->id)}}">new lyric</a> ?</div>
         </div>
     </div>
 @endsection
