@@ -113,11 +113,6 @@
 <script src="{{ asset('js/autocomplete.js') }}"></script>
 <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('js/myJs.js') }}"></script>
-<script>
-    function myFunction() {
-        return confirm("Are you want delete ?");
-    }
-</script>
 @yield('footer')
 </body>
 </html>
