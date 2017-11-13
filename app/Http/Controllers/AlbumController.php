@@ -103,8 +103,7 @@ class AlbumController extends Controller
         if (isset($request->song_add)){
             $songAdd = Song::find($request->song_add);
         }
-        $songs = Song::all();
-        return view('albums.search_add',compact('album','songs','songAdd'));
+        return view('albums.search_add',compact('album','songAdd'));
     }
 
     public function addSong(Request $request , $id ){
@@ -115,9 +114,8 @@ class AlbumController extends Controller
 
     }
 
-    public function removeSong(Request $request,$id){
+    public function removeSongSearchAdd(Request $request,$id){
         $album = Album::find($id);
-        $album->songs()->detach($request->input('song_id'));
         $album->songs()->detach($request->input('songAdd_id'));
         return redirect()->route('album.search_add',['id'=>$album->id]);
     }

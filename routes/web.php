@@ -46,7 +46,7 @@ Route::middleware(["auth"])->group(function () {
         Route::post('/{id}/edit' , 'AlbumController@update')->name('album.edit');
         Route::post('/{id}/delete', 'AlbumController@delete')->name('album.delete');
         Route::get('/{id}/search', 'AlbumController@searchAddSong')->name('album.search_add');
-        Route::post('/{id}/removeSong', 'AlbumController@removeSong')->name('album.removeSong');
+        Route::post('/{id}/removeSong', 'AlbumController@removeSongSearchAdd')->name('album.removeSong');
         Route::get('/search/album_list_song/{id?}','AlbumController@searchSong')->name('album.searchSong');
         Route::post('/{id}/album_list_song', 'AlbumController@addSong')->name('album.addSong');
         Route::post('/{id}/upload/song' , 'AlbumController@ upload_song_album')->name('album_song.upload');
