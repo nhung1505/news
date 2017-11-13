@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container well">
         <h2>Edit Song</h2>
         @if ($errors->any())
             <div class="alert alert-danger">

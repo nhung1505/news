@@ -3,7 +3,7 @@
     Create Album
     @endsection
 @section('content')
-    <div class="container">
+    <div class="container well">
         <h2>Create Album</h2>
         <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
             {{csrf_field()}}
