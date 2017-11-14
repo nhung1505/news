@@ -23,14 +23,14 @@
             </div>
             <h2 class="text-info col-md-4">{{$detail_song->name}}</h2>
             <div class="col-md-2">
-                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"></button>
+                <button class="btn btn-default dropdown-toggle glyphicon glyphicon-cog" type="button" data-toggle="dropdown"></button>
                 <ul class="dropdown-menu dropdown-action-detail-song">
-                    <li>
+                    <li class="col-md-6">
                         <a class="text-success" href="{{route('song.showEdit_song', ['id' => $detail_song->id])}}">
                             <span class="glyphicon glyphicon-edit"></span>
                         </a>
                     </li>
-                    <li>
+                    <li  class="col-md-6">
                         <a data-toggle="modal" data-target="#confirmDelete-{{$detail_song->id}}">
                             <span class="glyphicon glyphicon-remove text-danger" ></span>
                         </a>
@@ -58,7 +58,7 @@
             </form>
             <h6 class="col-md-6">{{__('label.Upload by')}}: <span class="text-danger">{{$detail_song->user->name}}</span></h6>
             <form class="col-md-12">
-                <span class="glyphicon glyphicon-plus btn btn-default" onclick="openAlbum()"> {{__('label.Add')}}</span>
+                <span class="glyphicon glyphicon-pushpin btn btn-default" onclick="openAlbum()"> {{__('label.Add')}}</span>
                 <div style="display:none;" id="myAlbum">
                     <div class="btn text-danger text-left col-md-12" onclick="closeAlbum()">&times; {{__('label.close')}}</div>
                     @if(isset($albums))

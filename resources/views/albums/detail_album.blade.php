@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="col-md-2 dropdown text-center">
-                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"></button>
+                    <button class="btn btn-default dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown"></button>
                     <ul class="dropdown-menu dropdown-action-detail-album text-center">
                         <li>
                             <a href="{{route('album.showEdit', ['id' => $detail_album->id])}}" >

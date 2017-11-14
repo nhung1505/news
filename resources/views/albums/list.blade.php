@@ -21,11 +21,9 @@
         @foreach($albums as $album)
         <div class="col-md 12 text-center">
             <div class="col-md-3 well">
-                <a>
-                    <div class="img-rounded song-cover-img-large">
-                        <a href="{{route('album.detail_album', $album->id)}}"><img   alt="Cinque Terre" width="304" height="236" src="{{asset('storage/'.$album->image)}}"></a>
-                    </div>
-                </a>
+                <div class="img-rounded song-cover-img-large">
+                    <a class="pl-3" href="{{route('album.detail_album', $album->id)}}"><img   alt="Cinque Terre" width="304" height="236" src="{{asset('storage/'.$album->image)}}"></a>
+                </div>
                 <p>
                     <a href="{{route('album.detail_album', $album->id)}}">{{$album->name}}</a>
                 </p>
