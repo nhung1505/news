@@ -15,7 +15,10 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::middleware(["auth"])->group(function () {
+
+
+Route::middleware(["auth","localization"])->group(function () {
+    Route::post('/language', 'LangController@postLang')->name('postLang');
 
     Route::prefix('songs')->group(function () {
 

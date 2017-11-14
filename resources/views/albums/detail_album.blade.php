@@ -19,38 +19,42 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <div class="form-group col-md-12">
-                        <a class=" col-md-12 btn btn-danger text-white" role="button" data-toggle="modal" data-target="#confirmDelete-{{$detail_album->id}}">
-                            Remove
-                        </a>
-                        <form action="{{route('album.delete',$detail_album->id)}}" method="post">
-                            {{ csrf_field() }}
-                            <div class="modal fade" id="confirmDelete-{{$detail_album->id}}" role="dialog">
-                                <div class="modal-dialog modal-sm">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title text-danger text-center">Confim Delete</h4>
-                                        </div>
-                                        <div class="modal-body text-danger text-center">
-                                            <p>Are you sure ?</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-danger col-md-6" >Yes</button>
-                                            <button type="button" class="btn btn-default col-md-6" data-dismiss="modal">No</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-
-                    </div>
-                    <div class="form-group col-md-12">
-                        <a href="{{route('album.showEdit', ['id' => $detail_album->id])}}" class=" col-md-12 btn btn-default" role="button">Edit</a>
-                    </div>
+                <div class="col-md-2 dropdown text-center">
+                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"></button>
+                    <ul class="dropdown-menu dropdown-action-detail-album text-center">
+                        <li>
+                            <a href="{{route('album.showEdit', ['id' => $detail_album->id])}}" >
+                                <span class="glyphicon glyphicon-edit text-info"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="modal" data-target="#confirmDelete-{{$detail_album->id}}">
+                                <span class="glyphicon glyphicon-remove text-danger"></span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
+        <form action="{{route('album.delete',$detail_album->id)}}" method="post">
+            {{ csrf_field() }}
+            <div class="modal fade" id="confirmDelete-{{$detail_album->id}}" role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title text-danger text-center">Confim Delete</h4>
+                        </div>
+                        <div class="modal-body text-danger text-center">
+                            <p>Are you sure ?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger col-md-6" >Yes</button>
+                            <button type="button" class="btn btn-default col-md-6" data-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
     <div>
         <div class="container well">
@@ -115,7 +119,7 @@
             </div>
         </div>
         <div class="container well">
-            <h3 class="well col-md-2 text-center">Lyric</h3>
+            <h3 class="col-md-2 text-center">Lyric</h3>
             <div class=" col-md-8 text-center">The lyric does not exist. Do you want to create <a href="{{route('album.edit',$detail_album->id)}}">new lyric</a> ?</div>
         </div>
     </div>
