@@ -53,10 +53,11 @@ class SongController extends Controller
         }
     }
 
-    public function index(){
+    public function index(Request $request){
         $songs = Song::orderBy('id', 'desc')->paginate(10);
+        $testsession=$request->session()->get('lacale');
         if ($songs){
-            return view('songs.list', compact('songs'));
+            return view('songs.list', compact('songs','testsession'));
         } else {
             abort('404');
         }

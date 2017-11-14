@@ -5,10 +5,9 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container well">
         <div class="row">
             <div class="col-xs-7">
-                <h2>Albums</h2>
             </div>
             <div class="col-xs-5 text-right ">
                 <a href="{{route('album.create')}}" class="btn btn-default btn-lg">
@@ -21,7 +20,7 @@
         @else
         @foreach($albums as $album)
         <div class="col-md 12 text-center">
-            <div class="col-md-3">
+            <div class="col-md-3 well">
                 <a>
                     <div class="img-rounded song-cover-img-large">
                         <a href="{{route('album.detail_album', $album->id)}}"><img   alt="Cinque Terre" width="304" height="236" src="{{asset('storage/'.$album->image)}}"></a>
