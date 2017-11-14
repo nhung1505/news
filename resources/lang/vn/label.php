@@ -34,6 +34,24 @@ return [
     'new lyric'=>'loi bai hat moi',
     'No description available. Do you want to create'=>'Chua co mo ta. Ban co muon them',
     'new description'=>'mo ta moi',
+    'Name'=>'Ten',
+    'Image'=>'Anh',
+    'Lyric'=>'Loi bai hat',
+    'Description'=>'Mo ta',
+    'Save'=>'Luu',
+    'Cancel'=>'Thoat',
+    'Search results for'=>'Ket qua tim kiem cua',
+    'Found'=>'Tim thay',
+    'keyword results'=>'ket qua theo tu khoa',
+    'No Data'=>'Khong co du lieu',
+    'Audio'=>'Am thanh',
+    'Do you want to upload more song'=>'Ban co muon tai len nhieu bai hat',
+    'Upload'=>'Tai len',
+    'Note'=>'Chu thich',
+    'not be empty'=>'khong duoc trong',
+
+
+
 
 
 ];

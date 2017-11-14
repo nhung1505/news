@@ -25,13 +25,13 @@
                 <nav class="navbar navbar-static-top bg-faded pb-0 mb-0">
                     <div class="container">
                         <div class="collapse navbar-collapse pt-2 " id="app-navbar-collapse">
-                            <ul class="nav navbar-left col-md-2 ">
+                            <ul class="nav navbar-left col-md-2 pt-3 mr-5">
                                 <a href="{{route('song.list')}}"><img class="logo" src="{{asset('storage/amusic.png')}}"/></a>
                             </ul>
                             <!-- Left Side Of Navbar -->
-                            <ul class="nav navbar-nav text-center col-md-8 pt-3">
-                                <form class="form-inline  text-center col-md-10 p-0" action="{{route('song.search')}}">
-                                    <div class="form-group text-center col-md-10">
+                            <ul class="nav navbar-nav col-md-8 pt-3">
+                                <form class="form-inline text-right col-md-10 p-0" action="{{route('song.search')}}">
+                                    <div class="form-group col-md-10">
                                         <input type="text" class="form-control" style="width: 100%"
                                                placeholder="{{__('label.Search')}}" name="key">
                                     </div>
@@ -40,7 +40,7 @@
                             </ul>
 
                             <!-- Right Side Of Navbar -->
-                            <ul class="nav navbar-nav navbar-right p-4">
+                            <ul class="nav navbar-nav navbar-right">
 
                                 <!-- Authentication Links -->
                                 @guest
