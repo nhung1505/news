@@ -63,8 +63,7 @@
                     <img width="100%"  src="https://kenh14cdn.com/thumb_w/600/dpA6uSv3GtBzvbRT7Y4EBtfN37yCA/Image/2014/10/mt3-08c79.jpg">
                 </div>
             </div>
-            <div class="container">
-                <div>
+                <div class="well">
                     <table class="table">
                         <tbody>
                         @if($detail_album->songs->all()==[])
