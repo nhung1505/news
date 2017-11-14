@@ -70,7 +70,7 @@
                             </form>
                         @endforeach
                     @endif
-                    <div>
+                    <div class="text-center">
                         <span>{{__('label.Do you want to create a')}} <a href="{{route('album.create',['id'=>$detail_song->id])}}"> {{__('label.new album')}}</a> ?</span>
                     </div>
                 </div>

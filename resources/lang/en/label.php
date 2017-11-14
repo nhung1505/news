@@ -33,6 +33,24 @@ return [
     'new lyric'=>'new lyric',
     'No description available. Do you want to create'=>     'No description available. Do you want to create',
     'new description'=>                                     'new description',
+    'Name'=>            'Name',
+    'Image'=>           'Image',
+    'Lyric'=>           'Lyric',
+    'Description'=>     'Description',
+    'Save'=>            'Save',
+    'Cancel'=>          'Cancel',
+    'Search results for'=>'Search results for',
+    'Found'=>'Found',
+    'keyword results'=>'keyword results',
+    'No Data'=>'No Data',
+    'Audio'=>'Audio',
+    'Do you want to upload more song'=>'Do you want to upload more song',
+    'Upload'=>'Upload',
+    'Note'=>'Note',
+    'not be empty'=>'not be empty',
+
+
+
 
 
 
