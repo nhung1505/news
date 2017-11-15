@@ -48,6 +48,26 @@ return [
     'Upload'=>                          'Tải lên',
     'Note'=>                            'Chú thích',
     'not be empty'=>                    'Không được trống',
+    'Create Album'=>                    'Tạo mới Album',
+    'Create'=>                          'Tạo mới',
+    'The Description does not exist'=>  'Chưa có mô tả',
+    'Do you want to create'         =>  'Bạn có muốn tạo',
+    'There are no songs in the album'=> 'Không có bài hát trong album',
+    'Please, add song or create song'=> 'Xin vui lòng, thêm bài hát hoặc tạo bài hát mới',
+    'Confim Remove'=>                   'Xác nhận Xóa',
+    'Add Song'=>                        'Thêm bài hát',
+    'The lyric does not exist'      =>  'Lời bài hát không tồn tại',
+    ' Edit Song'                    =>  'Chỉnh sửa bài hát',
+    'Edit Album'                    =>  'Chỉnh sửa Album',
+    'No Album'                      =>  'không có Album',
+    'Would you like to create a'    =>  'Bạn có muốn tạo ra một',
+    'Search Song'                   =>  'Tìm kiếm bài hát',
+    'search name song'              =>  'Tìm kiếm tên bài hát',
+    'Find your favorite song'       =>  'Tìm bài hát yêu thích của bạn',
+    'Go to Album'                   =>  'Đi đến Album',
+    'have successfully added the song'=>'đã thêm thành công bài hát',
+
+
 
 
 
