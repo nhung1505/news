@@ -112,6 +112,11 @@
 <script src="{{ asset('js/autocomplete.js') }}"></script>
 <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('js/myJs.js') }}"></script>
+<script>
+    function myFunction() {
+        return confirm("Are you want delete ?");
+    }
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 @yield('footer')
 </body>

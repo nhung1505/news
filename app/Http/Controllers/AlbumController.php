@@ -98,6 +98,15 @@ class AlbumController extends Controller
         return redirect()->route('album.detail_album', ['id' => $id]);
     }
 
+
+    public function addOneSong(Request $request, $id)
+    {
+        $album = Album::find($id);
+        return view();
+    }
+
+    public function showSong($id ){}
+
     public function searchAddSong(Request $request,$id ){
         $album = Album::find($id);
         $user = User::find(Auth::id());
@@ -166,7 +175,4 @@ class AlbumController extends Controller
             abort('404');
         }
     }
-
-
 }
-

@@ -79,7 +79,8 @@
         <div class="row well">
             <h3 class="col-md-2 text-center">{{__('label.Lyrics')}}</h3>
             @if(!isset($detail_song->lyric))
-                <h5 class="col-md-8 text-center">{{__('label.No Lyrics are available.Do you want to create')}} <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> {{__('label.new lyric')}} </a>?</h5>
+                <h5 class="col-md-8 text-center">{{__('label.No Lyrics are available. Do you want to create')}}
+                    <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> {{__('label.new lyric')}} </a>?</h5>
             @else
                 <h5 class="col-md-8 tex-center">{{$detail_song->lyric}}</h5>
             @endif
