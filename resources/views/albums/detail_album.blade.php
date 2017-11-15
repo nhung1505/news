@@ -13,9 +13,9 @@
                     <h3>{{__('label.Album')}}: {{$detail_album->name}}</h3>
                     <div class="well text-center">
                         @if($detail_album->description !=null)
-                            {{$detail_album->description}}
+                            <h5>{{$detail_album->description}}</h5>
                         @else
-                            {{__('label.The Description does not exist')}}. {{__('label.Do you want to create')}} <a href="{{route('album.edit',$detail_album->id)}}">{{__('label.new description')}}</a>
+                            <h5>{{__('label.The Description does not exist')}}. {{__('label.Do you want to create')}} <a href="{{route('album.edit',$detail_album->id)}}">{{__('label.new description')}}</a></h5>
                         @endif
                     </div>
                 </div>
@@ -118,8 +118,9 @@
             </div>
         </div>
         <div class="container well">
+        <div class="container well">
             <h3 class="col-md-2 text-center">{{__('label.Lyric')}}</h3>
-            <div class=" col-md-8 text-center">{{__('label.The lyric does not exist')}}. {{__('label.Do you want to create')}} <a href="{{route('album.edit',$detail_album->id)}}">{{__('label.new lyric')}}</a> ?</div>
+            <h5 class=" col-md-8 text-center">{{__('label.The lyric does not exist')}}. {{__('label.Do you want to create')}} <a href="{{route('album.edit',$detail_album->id)}}">{{__('label.new lyric')}}</a> ?</h5>
         </div>
     </div>
 @endsection
