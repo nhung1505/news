@@ -1,0 +1,3 @@
+[submodule "lempdock"]
+	path = lempdock
+	url = https://github.com/binhsonnguyen/lempdock.git
