@@ -10,12 +10,12 @@
                     <img src="{{asset('storage/'.$detail_album->image)}}" width="100%">
                 </div>
                 <div class="col-md-6">
-                    <h3>Album : {{$detail_album->name}}</h3>
+                    <h3>{{__('label.Album')}}: {{$detail_album->name}}</h3>
                     <div class="well text-center">
                         @if($detail_album->description !=null)
                             {{$detail_album->description}}
                         @else
-                            The Description does not exist. Do you want to create <a href="{{route('album.edit',$detail_album->id)}}">new description</a> ?
+                            {{__('label.The Description does not exist')}}. {{__('label.Do you want to create')}} <a href="{{route('album.edit',$detail_album->id)}}">{{__('label.new description')}}</a>
                         @endif
                     </div>
                 </div>
@@ -42,14 +42,14 @@
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title text-danger text-center">Confim Delete</h4>
+                            <h4 class="modal-title text-danger text-center">{{__('label.Confim Delete')}}</h4>
                         </div>
                         <div class="modal-body text-danger text-center">
-                            <p>Are you sure ?</p>
+                            <p>{{__('label.Are you sure ?')}}</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-danger col-md-6" >Yes</button>
-                            <button type="button" class="btn btn-default col-md-6" data-dismiss="modal">No</button>
+                            <button type="submit" class="btn btn-danger col-md-6" >{{__('label.Yes')}}</button>
+                            <button type="button" class="btn btn-default col-md-6" data-dismiss="modal">{{__('label.No')}}</button>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                     <table class="table">
                         <tbody>
                         @if($detail_album->songs->all()==[])
-                        <td class="text-center text-danger">There are no songs in the album. Please, add song or create song!</td>
+                        <td class="text-center text-danger">{{__('label.There are no songs in the album')}}. {{__('label.Please, add song or create song')}}!</td>
                         @else
                         @foreach($detail_album->songs as $key=>$song)
                         <tr>
@@ -84,14 +84,14 @@
                                             <div class="modal-dialog modal-sm">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title text-danger text-center">Confim Remove</h4>
+                                                        <h4 class="modal-title text-danger text-center">{{__('label.Confim Remove')}}</h4>
                                                     </div>
                                                     <div class="modal-body text-danger text-center">
-                                                        <p>Are you sure ?</p>
+                                                        <p>{{__('label.Are you sure ?')}} </p>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-danger col-md-6" >Yes</button>
-                                                        <button type="button" class="btn btn-default col-md-6" data-dismiss="modal">No</button>
+                                                        <button type="submit" class="btn btn-danger col-md-6" >{{__('label.Yes')}}</button>
+                                                        <button type="button" class="btn btn-default col-md-6" data-dismiss="modal">{{__('label.No')}}</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -107,19 +107,19 @@
                 </div>
                 <div class="row">
                     <div class="col-md-2">
-                        <a href="{{route('album.search_add', $detail_album->id)}}" class=" btn btn-success" role="button">Add Song</a>
+                        <a href="{{route('album.search_add', $detail_album->id)}}" class=" btn btn-success" role="button">{{__('label.Add Song')}}</a>
                     </div>
                     <div class="col-md-2">
                         <a href="{{route('song.upload',['id'=>$detail_album->id])}}"  class="btn btn-default">
-                            <span class="glyphicon glyphicon-plus"></span> Upload Song
+                            <span class="glyphicon glyphicon-plus"></span> {{__('label.Upload Song')}}
                         </a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container well">
-            <h3 class="col-md-2 text-center">Lyric</h3>
-            <div class=" col-md-8 text-center">The lyric does not exist. Do you want to create <a href="{{route('album.edit',$detail_album->id)}}">new lyric</a> ?</div>
+            <h3 class="col-md-2 text-center">{{__('label.Lyric')}}</h3>
+            <div class=" col-md-8 text-center">{{__('label.The lyric does not exist')}}. {{__('label.Do you want to create')}} <a href="{{route('album.edit',$detail_album->id)}}">{{__('label.new lyric')}}</a> ?</div>
         </div>
     </div>
 @endsection

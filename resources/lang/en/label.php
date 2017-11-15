@@ -28,7 +28,6 @@ return [
     'Do you want to create a'=>       'Do you want to create a',
     'new album'              =>       'new album',
     'Lyrics'=>                        'Lyrics',
-    'Description'=>                   'Description',
     'No Lyrics are available.Do you want to create'=>       'No Lyrics are available.Do you want to create',
     'new lyric'=>'new lyric',
     'No description available. Do you want to create'=>     'No description available. Do you want to create',
@@ -48,6 +47,26 @@ return [
     'Upload'=>'Upload',
     'Note'=>'Note',
     'not be empty'=>'not be empty',
+    'Create Album'=>'Create Album',
+    'Create'=>'Create',
+    'The Description does not exist'=>  'The Description does not exist',
+    'Do you want to create'=> 'Do you want to create',
+    'There are no songs in the album'=>'There are no songs in the album',
+    'Please, add song or create song'=>'Please, add song or create song',
+    'Confim Remove'=>'Confim Remove',
+    'Add Song'=>                        'Add Song',
+    'The lyric does not exist'=>'The lyric does not exist',
+    'Edit Song'                    =>  'Edit Song',
+    'Edit Album'                    =>  'Edit Album',
+    'No Album'                      =>  'No Album',
+    'Would you like to create a'    => 'Would you like to create a',
+    'Search Song'                   =>  'Search Song',
+    'search name song'              =>  'search name song',
+    'Find your favorite song'       =>  'Find your favorite song',
+    'Go to Album'                   =>  'Go to Album',
+    'have successfully added the song'=>'have successfully added the song',
+
+
 
 
 

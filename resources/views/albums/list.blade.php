@@ -11,12 +11,12 @@
             </div>
             <div class="col-xs-5 text-right ">
                 <a href="{{route('album.create')}}" class="btn btn-default btn-lg">
-                    <span class="glyphicon glyphicon-plus"></span> Create
+                    <span class="glyphicon glyphicon-plus"></span> {{__('label.Create')}}
                 </a>
             </div>
         </div>
         @if(count($albums)==0)
-            <p>No Album. Would you like to create a <a href="{{route('album.create')}}"> new album</a> ?</p>
+            <p>{{__('label.No Album')}}. {{__('label.Would you like to create a ')}}<a href="{{route('album.create')}}"> {{__('label.new album')}}</a> ?</p>
         @else
         @foreach($albums as $album)
         <div class="col-md 12 text-center">
