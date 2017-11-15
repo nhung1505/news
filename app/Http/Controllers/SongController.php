@@ -53,10 +53,11 @@ class SongController extends Controller
         }
     }
 
-    public function index(){
+    public function index(Request $request){
         $songs = Song::orderBy('id', 'desc')->paginate(10);
+        $testsession=$request->session()->get('lacale');
         if ($songs){
-            return view('songs.list', compact('songs'));
+            return view('songs.list', compact('songs','testsession'));
         } else {
             abort('404');
         }
@@ -64,7 +65,7 @@ class SongController extends Controller
     }
 
     public function detailSong($id){
-        $detail_song = Song::with('user')->find($id);
+        $detail_song = Song::with('user')->where('user_id',Auth::id())->find($id);
         $albums = Album::with('user')->get();
         if ($detail_song){
 
@@ -92,7 +93,7 @@ class SongController extends Controller
         }
     }
 
-    public function edit($id) {
+    public function edit(Request $request,$id) {
         $song = Song::find($id);
         if ($song){
             return view('songs.edit', compact('song'));;
@@ -107,7 +108,6 @@ class SongController extends Controller
             'name' => 'required|min:3|max:50',
             'image' => 'mimes:jpeg,jpg,png,svg'
         ]);
-
         if ($request->hasFile('image')) {
             Storage::disk('public')->delete(''.$song->image);
             $song->image = $request->file('image')->store('image_songs/' . auth()->id(),'public');

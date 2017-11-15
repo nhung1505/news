@@ -3,10 +3,20 @@
  */
 function openAlbum() {
     document.getElementById("myAlbum").style.display = "block";
-    document.getElementById("myAlbum").style.width = "200px";
+    document.getElementById("myAlbum").style.width = "300px";
 
 
 }
+
 function closeAlbum() {
     document.getElementById("myAlbum").style.display = "none";
 }
+
+
+function myFunction() {
+    return confirm("Are you sure ?");
+}
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});

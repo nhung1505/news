@@ -16,7 +16,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-
 </head>
 <body>
 <div class="container-fluid">
@@ -26,31 +25,40 @@
                 <nav class="navbar navbar-static-top bg-faded pb-0 mb-0">
                     <div class="container">
                         <div class="collapse navbar-collapse pt-2 " id="app-navbar-collapse">
-                            <ul class="nav navbar-left col-md-2 ">
+                            <ul class="nav navbar-left col-md-2 pt-3 mr-5">
                                 <a href="{{route('song.list')}}"><img class="logo" src="{{asset('storage/amusic.png')}}"/></a>
                             </ul>
                             <!-- Left Side Of Navbar -->
-                            <ul class="nav navbar-nav text-center col-md-8 pt-3">
-                                <form class="form-inline  text-center col-md-12 p-0" action="{{route('song.search')}}">
-                                    <div class="form-group text-center col-md-10">
+                            <ul class="nav navbar-nav col-md-8 pt-3">
+                                <form class="form-inline text-right col-md-10 p-0" action="{{route('song.search')}}">
+                                    <div class="form-group col-md-10">
                                         <input type="text" class="form-control" style="width: 100%"
-                                               placeholder="Search" name="key">
+                                               placeholder="{{__('label.Search')}}" name="key">
                                     </div>
-                                    <button type="submit" class="btn btn-faded">Search</button>
+                                    <button type="submit" class="btn btn-faded">{{__('label.Search')}}</button>
                                 </form>&nbsp;
                             </ul>
 
                             <!-- Right Side Of Navbar -->
-                            <ul class="nav navbar-nav navbar-right col-md-2 p-4">
+                            <ul class="nav navbar-nav navbar-right">
 
                                 <!-- Authentication Links -->
                                 @guest
                                     <ul class="pl-0">
-                                        <li class="nav navbar-left "><a href="{{ route('login') }}">Login</a></li>
-                                        <li class=" nav navbar-right"><a href="{{ route('register') }}">Register</a>
+                                        <li class="nav navbar-left "><a href="{{ route('login') }}">{{__('label.login')}}</a></li>
+                                        <li class=" nav navbar-right"><a href="{{ route('register') }}">{{__('label.Register')}}</a>
                                         </li>
                                     </ul>
                                     @else
+                                         <li class="nav-item menu-select text-right col-md-12">
+                                            <form action="{{route("postLang")}}" class="form-lang" method="post">
+                                            {{ csrf_field() }}
+                                               <select class="custom-select" name="locale" onchange='this.form.submit();'>
+                                                  <option selected value="en" >EN</option>
+                                                   <option  value="vn"{{ Lang::locale() === 'vn' ? 'selected' : '' }} >VI</option>
+                                               </select>
+                                             </form>
+                                         </li>
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle btn btn-outline-success my-1 my-sm-0 p-1"
                                                data-toggle="dropdown" role="button" aria-expanded="false"
@@ -63,7 +71,7 @@
                                                     <a href="{{ route('logout') }}"
                                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                                        Logout
+                                                        {{__('label.logout')}}
                                                     </a>
 
                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -86,25 +94,16 @@
                                     aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
-                            <a class="navbar-brand" href="{{route('song.list')}}">Song</a>
-                            <a class="navbar-brand" href="{{route('album.list')}}">Album</a>
-                            <a class="navbar-brand" href="#">Singer</a>
+                            <a class="navbar-brand" href="{{route('song.list')}}">{{__('label.Song')}}</a>
+                            <a class="navbar-brand" href="{{route('album.list')}}">{{__('label.Album')}}</a>
+                            <a class="navbar-brand" href="#">{{__('label.Singer')}}</a>
                             <a class="navbar-brand" href="#">Hit</a>
                         </div>
-                            <a href="{{ route('song.create') }}" class="btn btn-success" role="button">Upload Song</a>
+                            <a href="{{ route('song.create') }}" class="btn btn-success" role="button">{{__('label.Upload Song')}}</a>
                     </div>
                 </nav>
             </div>
             @yield('content')
-            {{--<div class="footer mt-5">--}}
-                {{--<nav class="navbar navbar-default navbar-bottom  mb-0">--}}
-                    {{--<div class="container-fluid ">--}}
-                        {{--<div class="navbar-header ">--}}
-                            {{--<a class="navbar-brand" href="#">WebSiteName</a>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</nav>--}}
-            {{--</div>--}}
         </div>
     </div>
 </div>
@@ -118,6 +117,7 @@
         return confirm("Are you want delete ?");
     }
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 @yield('footer')
 </body>
 </html>
