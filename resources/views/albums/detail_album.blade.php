@@ -13,9 +13,9 @@
                     <h3>Album : {{$detail_album->name}}</h3>
                     <div class="well text-center">
                         @if($detail_album->description !=null)
-                            {{$detail_album->description}}
+                            <h5>{{$detail_album->description}}</h5>
                         @else
-                            The Description does not exist. Do you want to create <a href="{{route('album.edit',$detail_album->id)}}">new description</a> ?
+                            <h5>The Description does not exist. Do you want to create <a href="{{route('album.edit',$detail_album->id)}}">new description</a> ?</h5>
                         @endif
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                     <table class="table">
                         <tbody>
                         @if($detail_album->songs->all()==[])
-                        <td class="text-center text-danger">There are no songs in the album. Please, add song or create song!</td>
+                            <td class="text-center text-danger"><h3>There are no songs in the album. Please, add song or create song!</h3></td>
                         @else
                         @foreach($detail_album->songs as $key=>$song)
                         <tr>
@@ -119,7 +119,7 @@
         </div>
         <div class="container well">
             <h3 class="col-md-2 text-center">Lyric</h3>
-            <div class=" col-md-8 text-center">The lyric does not exist. Do you want to create <a href="{{route('album.edit',$detail_album->id)}}">new lyric</a> ?</div>
+            <h5 class=" col-md-8 text-center">The lyric does not exist. Do you want to create <a href="{{route('album.edit',$detail_album->id)}}">new lyric</a> ?</h5>
         </div>
     </div>
 @endsection
