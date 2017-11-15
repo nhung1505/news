@@ -81,7 +81,7 @@
             @if(!isset($detail_song->lyric))
                 <h5 class="col-md-8 text-center">{{__('label.No Lyrics are available.Do you want to create')}} <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> {{__('label.new lyric')}} </a>?</h5>
             @else
-                <h5 class="col-md-8 tex-center">{{$detail_song->lyric}}</h5>
+                <h5 class="col-md-8 text-center">{{$detail_song->lyric}}</h5>
             @endif
         </div>
 
@@ -90,7 +90,7 @@
             @if(!isset($detail_song->description))
                 <h5 class="col-md-8 text-center">{{__('label.No description available. Do you want to create')}} <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> {{__('label.new description')}} </a>?</h5>
             @else
-                <h5 class="col-md-8 tex-center">{{$detail_song->description}}</h5>
+                <h5 class="col-md-8 text-center">{{$detail_song->description}}</h5>
             @endif
             </div>
         </div>
