@@ -19,22 +19,20 @@
         <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
             {{csrf_field()}}
             <div class="form-group">
-                <label class="control-label col-sm-2">Name<span style="color:red;"> *</span></label>
+                <label class="control-label col-sm-2 text-left">Name<span style="color:red;"> *</span></label>
                 <div class="col-sm-10">
-                    <label class="sr-only">Name</label>
                     <input  type='text' class="form-control" name = 'name' value="{{$album->name}}">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2">Image<span style="color:white;"> *</span></label>
-                <div class=" col-sm-8">
+                <label class="control-label col-sm-2 text-left">Image</label>
+                <div class="col-sm-10">
                     <div class="edit-width pb-3"><img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$album->image)}}"/></div>
                     <input type="file" name="image" value="{{old('image')}}">
                 </div>
             </div>
-
             <div class="form-group">
-                <label class="control-label col-sm-2">Description <span style="color:white;"> *</span></label>
+                <label class="control-label col-sm-2 text-left">Description</label>
                 <div class="col-sm-10">
                     <textarea class="form-control" rows="3" name="description">{{$album->description}}</textarea>
                 </div>
@@ -46,5 +44,6 @@
                 </div>
             </div>
         </form>
+        <h5 class="text-danger">Note: * not be empty </h5>
     </div>
 @endsection
