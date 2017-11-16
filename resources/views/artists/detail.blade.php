@@ -18,10 +18,25 @@
 
         </div>
         <div class="col-md-12 well mt-0">
-            <ul class="nav nav-tabs">
+            <ul class="nav nav-tabs col-md-6">
                 <li class="active"><a href="">Tieu su</a></li>
                 <li><a href="">Bai hat</a></li>
             </ul>
+            <div class="col-md-6 dropdown text-right">
+                <button class="btn btn-default dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown"></button>
+                <ul class="dropdown-menu dropdown-action-detail-album text-center pull-right">
+                    <li>
+                        <a href="" >
+                            <span class="glyphicon glyphicon-edit text-info"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="modal" data-target="#confirmDelete-">
+                            <span class="glyphicon glyphicon-remove text-danger"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <div class="col-md-12 well">
                 <h4 class="col-md-2 text-center">Tieu su</h4>
                 <div class=" col-md-10">

@@ -9,8 +9,19 @@ use App\User;
 
 class ArtistController extends Controller
 {
-    public function IndexDetail($id=1){
+
+    public function index(){
+        $artists = Artist::orderBy('id','desc')->paginate(8); ;
+        return view('artists.list' , compact('artists'));
+    }
+
+    public function IndexDetail($id){
         $artist = Artist::with('songs')->find($id);
         return view('artists.detail',compact('artist'));
     }
+
+
+
+
+
 }
