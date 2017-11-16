@@ -54,9 +54,11 @@ Route::middleware(["auth","localization"])->group(function () {
         Route::post('/{id}/album_list_song', 'AlbumController@addSong')->name('album.addSong');
         Route::post('/{id}/upload/song' , 'AlbumController@ upload_song_album')->name('album_song.upload');
         Route::post('/{id}/remove' , 'AlbumController@remove')->name('album.remove');
+    });
 
+    Route::prefix('artists')->group(function (){
 
-
+        Route::get('/','ArtistController@index')->name('artist.list');
     });
     Route::prefix('artists')->group(function () {
         Route::get('/', 'ArtistController@index')->name('artist.list');

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -12,22 +13,12 @@ use App\Artist;
 
 class ArtistController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $artist = Artist::orderBy('id', 'desc')->paginate(8);
-        return view('artists.list', compact('artist'));
+    
+    public function index(){
+        $artists = Artist::orderBy('id','desc')->paginate(8);
+        return view('artists.list' , compact('artists'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Request $request)
     {
         if (isset($request->id)){
@@ -110,4 +101,10 @@ class ArtistController extends Controller
     {
         //
     }
+
+
+
+
+
+
 }

@@ -96,7 +96,7 @@
                             </button>
                             <a class="navbar-brand" href="{{route('song.list')}}">{{__('label.Song')}}</a>
                             <a class="navbar-brand" href="{{route('album.list')}}">{{__('label.Album')}}</a>
-                            <a class="navbar-brand" href="#">{{__('label.Singer')}}</a>
+                            <a class="navbar-brand" href="{{route('artist.list')}}">{{__('label.Singer')}}</a>
                             <a class="navbar-brand" href="#">Hit</a>
                         </div>
                             <a href="{{ route('song.create') }}" class="btn btn-success" role="button">{{__('label.Upload Song')}}</a>
