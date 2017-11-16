@@ -19,7 +19,6 @@ class ArtistsTableSeeder extends Seeder
         $artist->dob = '1995-08-08';
         $artist->stage_name = 'Bi Beo';
         $artist->description = '....';
-        $artist->song_id = 1;
         $artist->user_id = 1;
         $artist->save();
 
@@ -29,7 +28,6 @@ class ArtistsTableSeeder extends Seeder
         $artist->dob = '1993-08-08';
         $artist->stage_name = 'Bi Beo';
         $artist->description = '....';
-        $artist->song_id = 2;
         $artist->user_id = 1;
         $artist->save();
 
@@ -39,7 +37,6 @@ class ArtistsTableSeeder extends Seeder
         $artist->dob = '1994-08-08';
         $artist->stage_name = 'Bi Beo';
         $artist->description = '....';
-        $artist->song_id = 3;
         $artist->user_id = 1;
         $artist->save();
 
@@ -49,7 +46,6 @@ class ArtistsTableSeeder extends Seeder
         $artist->dob = '1996-08-08';
         $artist->stage_name = 'Bi Beo';
         $artist->description = '....';
-        $artist->song_id = 4;
         $artist->user_id = 1;
         $artist->save();
 
@@ -59,7 +55,6 @@ class ArtistsTableSeeder extends Seeder
         $artist->dob = '1997-08-08';
         $artist->stage_name = 'Bi Beo';
         $artist->description = '....';
-        $artist->song_id = 5;
         $artist->user_id = 1;
         $artist->save();
 
@@ -69,7 +64,6 @@ class ArtistsTableSeeder extends Seeder
         $artist->dob = '1991-08-08';
         $artist->stage_name = 'Bi Beo';
         $artist->description = '....';
-        $artist->song_id = 6;
         $artist->user_id = 1;
         $artist->save();
 
@@ -79,7 +73,6 @@ class ArtistsTableSeeder extends Seeder
         $artist->dob = '1990-08-08';
         $artist->stage_name = 'Bi Beo';
         $artist->description = '....';
-        $artist->song_id = 7;
         $artist->user_id = 1;
         $artist->save();
 
@@ -89,7 +82,6 @@ class ArtistsTableSeeder extends Seeder
         $artist->dob = '1999-08-08';
         $artist->stage_name = 'Bi Beo';
         $artist->description = '....';
-        $artist->song_id = 8;
         $artist->user_id = 1;
         $artist->save();
 
@@ -99,7 +91,6 @@ class ArtistsTableSeeder extends Seeder
         $artist->dob = '1989-08-08';
         $artist->stage_name = 'Bi Beo';
         $artist->description = '....';
-        $artist->song_id = 9;
         $artist->user_id = 1;
         $artist->save();
 
@@ -109,7 +100,6 @@ class ArtistsTableSeeder extends Seeder
         $artist->dob = '1988-08-08';
         $artist->stage_name = 'Bi Beo';
         $artist->description = '....';
-        $artist->song_id = 10;
         $artist->user_id = 1;
         $artist->save();
     }
