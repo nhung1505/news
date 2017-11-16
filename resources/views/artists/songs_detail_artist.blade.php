@@ -36,27 +36,54 @@
                     </li>
                 </ul>
             </div>
+            <form action="" method="post">
+                {{ csrf_field() }}
+                <div class="modal fade" id="confirmDelete-" role="dialog">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title text-danger text-center">{{__('label.Confim Delete')}}</h4>
+                            </div>
+                            <div class="modal-body text-danger text-center">
+                                <p>{{__('label.Are you sure ?')}}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-danger col-md-6" >{{__('label.Yes')}}</button>
+                                <button type="button" class="btn btn-default col-md-6" data-dismiss="modal">{{__('label.No')}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
             <div class="col-md-12 well">
                 <div class="col-md-2">
                     <h3 class="col-md-12 text-center">{{__('label.Song')}}
-                        <span class="glyphicon glyphicon-arrow-right text-right"></span>
+                        <span class="glyphicon glyphicon-arrow-right pull-right"></span>
                     </h3>
-                    <button class='col-md-12 pull-center text-success' style="font-size:15px">Play All <i class="fa fa-play-circle-o"></i>
+                    @if($artist->songs->all()==[])
+                    @else
+                    <a href="{{route('artist.songs.play',['artist_id'=>$artist->id])}}" class="btn btn-default col-md-12 text-center" role="button">Play All
+                        <span class="glyphicon glyphicon-play-circle"></span>
+                    </a>
+                    @endif
                 </div>
                 <div class=" col-md-10 well">
                     @if($artist->songs->all()==[])
                         <div class="text-center text-danger">No Songs</div>
                     @else
-                        @foreach($artist->songs as $song)
+                        @foreach($songs as $song)
                             <div class="col-md-10">{{$song->name}}</div>
-                            <a class="text-right col-md-1">
+                            <a hefr="" class="text-right col-md-1">
                                 <span class="glyphicon glyphicon-edit text-info"></span>
                             </a>
-                            <a class="text-right col-md-1">
+                            <a href="" class="text-right col-md-1 " data-toggle="modal" data-target="#confirmDelete-">
                                 <span class="glyphicon glyphicon-remove text-danger" ></span>
                             </a>
-                            @endforeach
+                        @endforeach
                     @endif
+                        <div class="col-md-12 text-center paginate_artist_songs">
+                            {!! $songs->links() !!}
+                        </div>
                 </div>
             </div>
         </div>
