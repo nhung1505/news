@@ -46,7 +46,7 @@
                                 <!-- Authentication Links -->
                                 @guest
                                     <ul class="pl-0">
-                                        <li class="nav navbar-left "><a href="{{ route('login') }}">{{__('label.login')}}</a></li>
+                                        <li class="nav navbar-left"><a href="{{ route('login') }}">{{__('label.login')}}</a></li>
                                         <li class=" nav navbar-right"><a href="{{ route('register') }}">{{__('label.Register')}}</a>
                                         </li>
                                     </ul>

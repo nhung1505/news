@@ -8391,3 +8391,8 @@ button.close {
   bottom: 50px;
 }
 
+.paginate_artist_songs {
+  height: 25px;
+  font-size: 50%;
+}
+

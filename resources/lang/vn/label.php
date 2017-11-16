@@ -68,6 +68,7 @@ return [
     'have successfully added the song'=>'đã thêm thành công bài hát',
     'Artists'                         =>'Nghệ Sĩ',
     'Artist'                          =>'Nghệ Sĩ',
+    'Song of'                         =>'Bài hát của',
 
 
 

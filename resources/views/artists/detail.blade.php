@@ -36,6 +36,25 @@
                     </li>
                 </ul>
             </div>
+            <form action="" method="post">
+                {{ csrf_field() }}
+                <div class="modal fade" id="confirmDelete-" role="dialog">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title text-danger text-center">{{__('label.Confim Delete')}}</h4>
+                            </div>
+                            <div class="modal-body text-danger text-center">
+                                <p>{{__('label.Are you sure ?')}}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-danger col-md-6" >{{__('label.Yes')}}</button>
+                                <button type="button" class="btn btn-default col-md-6" data-dismiss="modal">{{__('label.No')}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
             <div class="col-md-12 well">
                 <h3 class="col-md-2 text-center">{{__('label.Description')}}</h3>
                 <div class=" col-md-10">
