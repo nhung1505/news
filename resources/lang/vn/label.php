@@ -66,7 +66,8 @@ return [
     'Find your favorite song'       =>  'Tìm bài hát yêu thích của bạn',
     'Go to Album'                   =>  'Đi đến Album',
     'have successfully added the song'=>'đã thêm thành công bài hát',
-
+    'Artists'                         =>'Nghệ Sĩ',
+    'Artist'                          =>'Nghệ Sĩ',
 
 
 

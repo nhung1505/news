@@ -60,6 +60,7 @@ Route::middleware(["auth","localization"])->group(function () {
 
         Route::get('/','ArtistController@index')->name('artist.list');
         Route::get('/{id}/detail','ArtistController@IndexDetail')->name('artist.detail');
+        Route::get('/{id}/detail/songs','ArtistController@IndexArtitsSong')->name('artist.detail_artist_song');
     });
 
 

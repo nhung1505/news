@@ -20,8 +20,9 @@ class ArtistController extends Controller
         return view('artists.detail',compact('artist'));
     }
 
-
-
-
+    public function IndexArtitsSong($id){
+        $artist = Artist::with('songs')->find($id);
+        return view('artists.songs_detail_artist',compact('artist'));
+    }
 
 }

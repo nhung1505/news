@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-        {{$artist->name}}
+    {{$artist->name}}
 @endsection
 
 @section('content')
@@ -18,8 +18,8 @@
         </div>
         <div class="col-md-12 well mt-0">
             <ul class="nav nav-tabs col-md-6">
-                <li class="active"><a href="">{{__('label.Description')}}</a></li>
-                <li><a href="{{route('artist.detail_artist_song',['detail_artist'=>$artist->id])}}">{{__('label.Song')}}</a></li>
+                <li><a href="{{route('artist.detail',['artist_id'=>$artist->id])}}">{{__('label.Description')}}</a></li>
+                <li class="active"><a href="">{{__('label.Song')}}</a></li>
             </ul>
             <div class="col-md-6 dropdown text-right">
                 <button class="btn btn-default dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown"></button>
@@ -37,11 +37,26 @@
                 </ul>
             </div>
             <div class="col-md-12 well">
-                <h3 class="col-md-2 text-center">{{__('label.Description')}}</h3>
-                <div class=" col-md-10">
-                    <h5 class="'text-left">
-                        {{$artist->description}}
-                    </h5>
+                <div class="col-md-2">
+                    <h3 class="col-md-12 text-center">{{__('label.Song')}}
+                        <span class="glyphicon glyphicon-arrow-right text-right"></span>
+                    </h3>
+                    <button class='col-md-12 pull-center text-success' style="font-size:15px">Play All <i class="fa fa-play-circle-o"></i>
+                </div>
+                <div class=" col-md-10 well">
+                    @if($artist->songs->all()==[])
+                        <div class="text-center text-danger">No Songs</div>
+                    @else
+                        @foreach($artist->songs as $song)
+                            <div class="col-md-10">{{$song->name}}</div>
+                            <a class="text-right col-md-1">
+                                <span class="glyphicon glyphicon-edit text-info"></span>
+                            </a>
+                            <a class="text-right col-md-1">
+                                <span class="glyphicon glyphicon-remove text-danger" ></span>
+                            </a>
+                            @endforeach
+                    @endif
                 </div>
             </div>
         </div>

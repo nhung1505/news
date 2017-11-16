@@ -65,8 +65,8 @@ return [
     'Find your favorite song'       =>  'Find your favorite song',
     'Go to Album'                   =>  'Go to Album',
     'have successfully added the song'=>'have successfully added the song',
-
-
+    'Artists'                         =>'Artists',
+    'Artist'                         => 'Artist',
 
 
 

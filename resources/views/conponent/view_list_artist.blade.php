@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Artist
+    {{__('label.Artist')}}
 @endsection
 
 @section('content')
@@ -22,7 +22,6 @@
                 <div class="col-md 12 text-center">
                     <div class="col-md-3 well">
                         <div class="img-rounded song-cover-img-large">
-                            {{--{{route('album.detail_album', $album->id)}}--}}
                             <a class="pl-3" href="{{route('artist.detail',['artist'=>$artist->id])}}"><img   alt="Cinque Terre" width="304" height="236" src="{{asset('storage/'.$artist->image)}}"></a>
                         </div>
                         <p>

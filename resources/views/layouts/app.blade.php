@@ -15,6 +15,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
@@ -96,8 +97,7 @@
                             </button>
                             <a class="navbar-brand" href="{{route('song.list')}}">{{__('label.Song')}}</a>
                             <a class="navbar-brand" href="{{route('album.list')}}">{{__('label.Album')}}</a>
-                            <a class="navbar-brand" href="{{route('artist.list')}}">Artists</a>
-                            <a class="navbar-brand" href="#">Hit</a>
+                            <a class="navbar-brand" href="{{route('artist.list')}}">{{__('label.Artists')}}</a>
                         </div>
                             <a href="{{ route('song.create') }}" class="btn btn-success" role="button">{{__('label.Upload Song')}}</a>
                     </div>
