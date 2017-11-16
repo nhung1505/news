@@ -13,7 +13,7 @@ use App\Artist;
 
 class ArtistController extends Controller
 {
-    
+
     public function index(){
         $artists = Artist::orderBy('id','desc')->paginate(8);
         return view('artists.list' , compact('artists'));

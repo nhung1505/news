@@ -20,7 +20,7 @@ class CreateArtistsTable extends Migration
             $table->date('dob');
             $table->string('stage_name');
             $table->string('description');
-            $table->integer('song_id')->unsigned();
+            $table->integer('song_id')->unsigned()->nullable();
             $table->foreign('song_id')->references('id')->on('songs');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
