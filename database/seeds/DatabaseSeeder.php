@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use \App\User;
 use \App\Song;
 use \App\Album;
+use \App\Artist;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,5 +18,6 @@ class DatabaseSeeder extends Seeder
          $this->call(UsersTableSeeder::class);
         $this->call(SongsTableSeeder::class);
         $this->call(AlbumsTableSeeder::class);
+        $this->call(ArtistsTableSeeder::class);
     }
 }

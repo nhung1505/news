@@ -82,7 +82,7 @@
                 <h5 class="col-md-8 text-center">{{__('label.No Lyrics are available. Do you want to create')}}
                     <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> {{__('label.new lyric')}} </a>?</h5>
             @else
-                <h5 class="col-md-8 text-center">{{$detail_song->lyric}}</h5>
+                <pre class="col-md-8 text-center">{{$detail_song->lyric}}</pre>
             @endif
         </div>
 

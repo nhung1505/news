@@ -31,6 +31,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Song');
     }
 
+    public function artists(){
+        return $this->hasMany('App\Artist');
+    }
+
     public function albums(){
         return $this->belongsToMany('App\Album');
     }
