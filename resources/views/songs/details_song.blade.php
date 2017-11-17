@@ -21,7 +21,14 @@
                     <source src="{{asset('storage/'.$detail_song->audio)}}" type="audio/mpeg">
                 </audio>
             </div>
-            <h2 class="text-info col-md-4">{{$detail_song->name}}</h2>
+            <div class="text-center col-md-4">
+                <div class="text-info">
+                    <h2>{{$detail_song->name}}</h2>
+                </div></br>
+                <div>
+                    <h3><a href="{{route('artist.detail',['artist'=>$detail_song->artist->id])}}">{{$detail_song->artist->name}}</a></h3>
+                </div>
+            </div>
             <div class="col-md-2">
                 <button class="btn btn-default dropdown-toggle glyphicon glyphicon-cog" type="button" data-toggle="dropdown"></button>
                 <ul class="dropdown-menu dropdown-action-detail-song">
@@ -65,7 +72,7 @@
                         @foreach($albums as $album)
                             <form method="post" action="{{route('album_song.add',['album_id'=>$album->id,'id'=>$detail_song->id])}}">
                                 {{csrf_field()}}
-                                <input type="hidden" name="id" value="{{$detail_song->id}}"></input>
+                                <input type="hidden" name="id" value="{{$detail_song->id}}">
                                 <button name="album_id" type="submit" class="btn btn-default col-md-12" value="{{$album->id}}">{{$album->name}}</button>
                             </form>
                         @endforeach
