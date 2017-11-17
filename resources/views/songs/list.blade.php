@@ -19,8 +19,8 @@
                     <td><p class="text-center">No song. Would you like to create a <a href="{{route('song.upload')}}"> new song </a>?</p></td>
                 </tr>
             @else
-            @foreach($songs as $song)
-                <tr>
+                @foreach($songs as $song)
+                    <tr>
                     <td class="edit-width col-md-3 well">
                         <div class="img-rounded song-cover-img" >
                             <a href="{{route('song.details_song', $song->id)}}">
@@ -28,7 +28,14 @@
                             </a>
                         </div>
                     </td>
-                    <td class="col-md-7 text-center"><a href="{{route('song.details_song', $song->id)}}">{{$song->name}}</a></td>
+                    <td class="col-md-7 text-center">
+                        <div>
+                            <a href="{{route('song.details_song', $song->id)}}">{{$song->name}}</a>
+                        </div>
+                        <div>
+                            <a href="{{route('artist.detail',['artist'=>$song->artist->id])}}">{{$song->artist->name}}</a>
+                        </div>
+                    </td>
                     <td class="col-md-1">
                         <a href="{{route('song.showEdit_song', ['id' => $song->id])}}">
                             <span class="glyphicon glyphicon-edit text-info"></span>
