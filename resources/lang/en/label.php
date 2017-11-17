@@ -66,9 +66,10 @@ return [
     'Go to Album'                   =>  'Go to Album',
     'have successfully added the song'=>'have successfully added the song',
     'Dob'=>'Birthday',
-    'Stage_name'=>'Stage name'
-
-
+    'Stage_name'=>'Stage name',
+    'Artists'                         =>'Artists',
+    'Artist'                         => 'Artist',
+    'Song of'                         =>'Song of',
 
 
 

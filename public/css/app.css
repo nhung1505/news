@@ -8386,3 +8386,13 @@ button.close {
   max-height: 100%;
 }
 
+.text-image {
+  position: absolute;
+  bottom: 50px;
+}
+
+.paginate_artist_songs {
+  height: 25px;
+  font-size: 50%;
+}
+

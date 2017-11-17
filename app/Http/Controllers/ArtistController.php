@@ -13,9 +13,8 @@ use App\Artist;
 
 class ArtistController extends Controller
 {
-
     public function index(){
-        $artists = Artist::orderBy('id','desc')->paginate(8);
+        $artists = Artist::orderBy('id','desc')->paginate(8); ;
         return view('artists.list' , compact('artists'));
     }
 
@@ -27,12 +26,6 @@ class ArtistController extends Controller
         return view('artists.create',compact('song'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -57,54 +50,29 @@ class ArtistController extends Controller
         return redirect()->route('artist.list');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function IndexDetail($id){
+        $artist = Artist::with('songs')->find($id);
+        if ($artist) {
+            return view('artists.detail',compact('artist'));
+        } else {
+            abort('404');
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function IndexArtitsSong($id){
+        $artist = Artist::with('songs')->find($id);
+        $songs = Song::where('artist_id',$id)
+            ->paginate(10);
+
+
+        return view('artists.songs_detail_artist',compact('artist','songs'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    public function PlaySongsArtist($id){
+        $artist = Artist::find($id);
+        $songs = Song::where('artist_id',$id) ->get();
+
+        return view('artists.play_songs',compact('artist','songs'));
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-
-
-
-
 
 }

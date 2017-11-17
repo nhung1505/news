@@ -68,7 +68,9 @@ return [
     'have successfully added the song'=>'đã thêm thành công bài hát',
     'Dob'=>'Ngày sinh',
     'Stage_name'=>'Nghệ danh',
-
+    'Artists'                         =>'Nghệ Sĩ',
+    'Artist'                          =>'Nghệ Sĩ',
+    'Song of'                         =>'Bài hát của',
 
 
 
