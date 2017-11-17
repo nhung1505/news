@@ -68,10 +68,11 @@ return [
     'have successfully added the song'=>'đã thêm thành công bài hát',
     'Artists'                         =>'Nghệ Sĩ',
     'Artist'                          =>'Nghệ Sĩ',
-    'Song of'                         =>'Bài hát của',
-
-
-
+    'Playlist'                         =>'Danh Sách Phát',
+    'Songs'                           =>'Danh Sách Bài Hát',
+    'Choose Artist'                   =>'Chọn Nghệ Sĩ',
+    'See all'                          =>'Xem toàn bộ',
+    'Hidden'                          =>'Thu gọn',
 
 
 

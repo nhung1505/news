@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Song;
 use App\User;
 use App\Album;
+use App\Artist;
 
 class SongController extends Controller
 {
@@ -16,12 +17,15 @@ class SongController extends Controller
         if(isset($request->id)){
             $album=Album::find($request->id);
         }
-        return view('songs.upload',compact('album'));
+        $artists =  Artist::all();
+
+        return view('songs.upload',compact('album','artists'));
     }
 
     public function upload(Request $request){
         $this->validate($request,[
             'name' => 'required|min:3|max:50',
+            'artist' => 'required',
             'audio' => 'required|mimes:mpga',
             'image' => 'mimes:jpeg,jpg,png,svg'
         ]);
@@ -29,6 +33,7 @@ class SongController extends Controller
         $song->name = $request->input('name');
         $song->lyric = $request->input('lyric');
         $song->description = $request->input('description');
+        $song->artist_id = $request->input('artist_id');
         if ($request->hasFile('image')){
             $song->image = $request->file('image')->store('image_songs/' . auth()->id(),'public');
         }
@@ -66,10 +71,11 @@ class SongController extends Controller
 
     public function detailSong($id){
         $detail_song = Song::with('user')->where('user_id',Auth::id())->find($id);
+        $lyric = str_limit($detail_song->lyric,100);
         $albums = Album::with('user')->get();
         if ($detail_song){
 
-            return view('songs.details_song', compact('detail_song','albums'));
+            return view('songs.details_song', compact('detail_song','albums','lyric'));
 
         } else {
             
@@ -85,6 +91,7 @@ class SongController extends Controller
             }
             Storage::delete('public/'.$song->audio);
             $song->albums()->detach();
+            $song->artist()->detach();
             $song->delete();
             Session::flash('announcement','Delete Success');
             return redirect()->route('song.list');
@@ -95,8 +102,9 @@ class SongController extends Controller
 
     public function edit(Request $request,$id) {
         $song = Song::find($id);
+        $artists =  Artist::all();
         if ($song){
-            return view('songs.edit', compact('song'));;
+            return view('songs.edit', compact('song','artists'));
         }else{
             abort('404');
         }

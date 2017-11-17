@@ -8396,3 +8396,7 @@ button.close {
   font-size: 50%;
 }
 
+#lyric-song-full {
+  display: none;
+}
+

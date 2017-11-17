@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Songs
+    {{__('label.Songs')}}
 @endsection
 
 @section('content')
@@ -28,7 +28,7 @@
                             </a>
                         </div>
                     </td>
-                    <td class="col-md-7 text-center"><a href="{{route('song.details_song', $song->id)}}">{{$song->name}}</a></td>
+                    <td class="col-md-7 text-center"><a href="{{route('song.details_song', $song->id)}}"><h3>{{$song->name}}</h3></a></td>
                     <td class="col-md-1">
                         <a href="{{route('song.showEdit_song', ['id' => $song->id])}}">
                             <span class="glyphicon glyphicon-edit text-info"></span>

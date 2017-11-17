@@ -67,7 +67,12 @@ return [
     'have successfully added the song'=>'have successfully added the song',
     'Artists'                         =>'Artists',
     'Artist'                         => 'Artist',
-    'Song of'                         =>'Song of',
+    'Playlist'                         =>'Playlist',
+    'Songs'                           =>'Songs',
+    'Choose Artist'                   =>'Choose Artist',
+    'See all'                         =>'See all',
+    'Hidden'                         =>'Hidden',
+
 
 
 
