@@ -66,6 +66,8 @@ return [
     'Find your favorite song'       =>  'Tìm bài hát yêu thích của bạn',
     'Go to Album'                   =>  'Đi đến Album',
     'have successfully added the song'=>'đã thêm thành công bài hát',
+    'Dob'=>'Ngày sinh',
+    'Stage_name'=>'Nghệ danh',
     'Artists'                         =>'Nghệ Sĩ',
     'Artist'                          =>'Nghệ Sĩ',
     'Song of'                         =>'Bài hát của',

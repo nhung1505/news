@@ -28,18 +28,12 @@ class AlbumController extends Controller
         $this->validate($request, [
             'name' => 'required|min:3|max:50',
             'image' => 'mimes:jpeg,jpg,png,svg'
-
         ]);
-
         $album = new Album();
-
         $album->name = $request->input('name');
-
         if ($request->hasFile('image')) {
             $album->image = $request->file('image')->store('image_albums/' . auth()->id(), 'public');
-
         }
-
         $album->description = $request->input('description');
         $album->user_id = Auth::id();
         $album->save();
