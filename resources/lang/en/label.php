@@ -69,8 +69,13 @@ return [
     'Stage_name'=>'Stage name',
     'Artists'                         =>'Artists',
     'Artist'                         => 'Artist',
+    'Playlist'                         =>'Playlist',
+    'Songs'                           =>'Songs',
+    'Choose Artist'                   =>'Choose Artist',
+    'See all'                         =>'See all',
+    'Hidden'                         =>'Hidden',
     'Song of'                         =>'Song of',
-    'Create Artist'=>'Create Artist',
+    'Create Artist'                  =>'Create Artist',
 
 
 

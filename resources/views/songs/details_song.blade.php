@@ -87,12 +87,17 @@
             <h3 class="col-md-2 text-center">{{__('label.Lyrics')}}</h3>
             @if(!isset($detail_song->lyric))
                 <h5 class="col-md-8 text-center">{{__('label.No Lyrics are available. Do you want to create')}}
-                    <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> {{__('label.new lyric')}} </a>?</h5>
+                    <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> {{__('label.new lyric')}} </a>?
+                </h5>
             @else
-                <pre class="col-md-8 text-center">{{$detail_song->lyric}}</pre>
+                <pre class="col-md-8 border-0"  id="lyric-song">
+                    <h5 class="text-center">{{$lyric}}<span class="text-primary" role="button" onclick="seeAlllyric()">{{__('label.See all')}}</span></h5>
+                </pre>
+                <pre class="col-md-8 border-0"  id="lyric-song-full">
+                    <h5 class="text-center">{{$detail_song->lyric}}</h5><span class="text-primary col-md-12 text-center" role="button" onclick="back_lyricsong()">{{__('label.Hidden')}}</span>
+                </pre>
             @endif
         </div>
-
         <div class="row well">
             <h3 class="col-md-2 text-center">{{__('label.Description')}}</h3>
             @if(!isset($detail_song->description))
@@ -100,7 +105,6 @@
             @else
                 <h5 class="col-md-8 text-center">{{$detail_song->description}}</h5>
             @endif
-            </div>
         </div>
     </div>
 @endsection

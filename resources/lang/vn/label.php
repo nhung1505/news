@@ -70,8 +70,13 @@ return [
     'Stage_name'=>'Nghệ danh',
     'Artists'                         =>'Nghệ Sĩ',
     'Artist'                          =>'Nghệ Sĩ',
+    'Playlist'                         =>'Danh Sách Phát',
+    'Songs'                           =>'Danh Sách Bài Hát',
+    'Choose Artist'                   =>'Chọn Nghệ Sĩ',
+    'See all'                          =>'Xem toàn bộ',
+    'Hidden'                          =>'Thu gọn',
     'Song of'                         =>'Bài hát của',
-    'Create Artist'=>'Thêm nghệ sĩ',
+    'Create Artist'                  => 'Thêm nghệ sĩ',
 
 
 
