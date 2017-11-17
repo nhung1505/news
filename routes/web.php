@@ -62,6 +62,7 @@ Route::middleware(["auth","localization"])->group(function () {
         Route::get('/{id}/detail','ArtistController@IndexDetail')->name('artist.detail');
         Route::get('/{id}/detail/songs','ArtistController@IndexArtitsSong')->name('artist.detail_artist_song');
         Route::get('/{id}/detail/songs/play','ArtistController@PlaySongsArtist')->name('artist.songs.play');
+
     });
 
 
