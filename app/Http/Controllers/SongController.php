@@ -76,9 +76,8 @@ class SongController extends Controller
         $lyric = str_limit($detail_song->lyric,100);
         $albums = Album::with('user')->get();
         if ($detail_song){
-            return view('songs.details_song', compact('detail_song','albums', 'artists'));
+            return view('songs.details_song', compact('detail_song','albums', 'artists','lyric'));
         } else {
-
             abort('404');
         }
     }

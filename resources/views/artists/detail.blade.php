@@ -30,15 +30,15 @@
                         </a>
                     </li>
                     <li>
-                        <a data-toggle="modal" data-target="#confirmDelete-">
+                        <a data-toggle="modal" data-target="#confirmDelete-{{$artist->id}}">
                             <span class="glyphicon glyphicon-remove text-danger"></span>
                         </a>
                     </li>
                 </ul>
             </div>
-            <form action="" method="post">
+            <form action="{{route('artist.delete',$artist->id)}}" method="post">
                 {{ csrf_field() }}
-                <div class="modal fade" id="confirmDelete-" role="dialog">
+                <div class="modal fade" id="confirmDelete-{{$artist->id}}" role="dialog">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-header">

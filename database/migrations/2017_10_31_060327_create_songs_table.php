@@ -22,7 +22,7 @@ class CreateSongsTable extends Migration
             $table->text('description')->nullable();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('artist_id')->unsigned();
+            $table->integer('artist_id')->unsigned()->nullable();
             $table->foreign('artist_id')->references('id')->on('artists');
             $table->timestamps();
         });
