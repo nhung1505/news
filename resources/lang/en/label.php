@@ -65,6 +65,8 @@ return [
     'Find your favorite song'       =>  'Find your favorite song',
     'Go to Album'                   =>  'Go to Album',
     'have successfully added the song'=>'have successfully added the song',
+    'Dob'=>'Birthday',
+    'Stage_name'=>'Stage name',
     'Artists'                         =>'Artists',
     'Artist'                         => 'Artist',
     'Playlist'                         =>'Playlist',
