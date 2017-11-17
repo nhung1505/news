@@ -71,6 +71,7 @@ return [
     'Artists'                         =>'Nghệ Sĩ',
     'Artist'                          =>'Nghệ Sĩ',
     'Song of'                         =>'Bài hát của',
+    'Create Artist'=>'Thêm nghệ sĩ',
 
 
 
