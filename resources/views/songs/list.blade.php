@@ -36,7 +36,7 @@
                             <div>
 
                                     @if($song->artist_id == null)
-                                    <p>{{ 'Ca si khong xac dinh' }}</p>
+                                    <p>{{ __('label.No Data') }}</p>
                                     @else
                                     <a href="{{route('artist.detail',['artist'=>$song->artist_id])}}">{{$song->artist->name}}</a>
                                     @endif
