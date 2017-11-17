@@ -70,4 +70,25 @@ class ArtistController extends Controller
         return view('artists.play_songs',compact('artist','songs'));
     }
 
+    public function delete($id)
+    {
+        $artist = Artist::with('songs')->find($id);
+        if ($artist) {
+            if (count($artist->songs) > 0){
+                foreach($artist->songs as $key=>$song){
+                    $songId = $song->id;
+                    $song2 = Song::where('id','=',$songId)->update(['artist_id'=>null]);
+                }
+            }
+            if (isset($artist->image)) {
+                Storage::delete('public/' . $artist->image);
+            }
+            $artist->delete();
+            Session::flash('announcement', 'Delete Success');
+            return redirect()->route('artist.list');
+        } else {
+            abort('404');
+        }
+    }
+
 }
