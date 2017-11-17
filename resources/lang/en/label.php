@@ -70,6 +70,7 @@ return [
     'Artists'                         =>'Artists',
     'Artist'                         => 'Artist',
     'Song of'                         =>'Song of',
+    'Create Artist'=>'Create Artist',
 
 
 
