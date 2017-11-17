@@ -58,9 +58,13 @@
             <div class="col-md-12 well">
                 <h3 class="col-md-2 text-center">{{__('label.Description')}}</h3>
                 <div class=" col-md-10">
-                    <h5 class="'text-left">
+                    @if(!isset($artist->description))
+                        <h5 class="text-center">No description. Do you want create <a href="">new description</a></h5>
+                    @else
+                    <h5 class="text-left">
                         {{$artist->description}}
                     </h5>
+                    @endif
                 </div>
             </div>
         </div>
