@@ -72,11 +72,11 @@ class SongController extends Controller
 
     public function detailSong($id){
         $artists = Artist::all();
-        $detail_song = Song::with('user')->where('user_id',Auth::id())->find($id);
+        $detail_song = Song::with('user')->find($id);
         $lyric = str_limit($detail_song->lyric,100);
         $albums = Album::with('user')->get();
         if ($detail_song){
-            return view('songs.details_song', compact('detail_song','albums', 'artists'));
+            return view('songs.details_song', compact('detail_song','albums', 'artists','lyric'));
         } else {
 
             abort('404');

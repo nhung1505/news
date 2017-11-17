@@ -73,7 +73,7 @@ return [
     'Playlist'                        =>'Danh Sách Phát',
     'Songs'                           =>'Danh Sách Bài Hát',
     'Choose Artist'                   =>'Chọn Nghệ Sĩ',
-    'See all'                          ='Xem toàn bộ',
+    'See all'                          =>'Xem toàn bộ',
     'Hidden'                          =>'Thu gọn',
     'Song of'                         =>'Bài hát của',
     'Create Artist'                  => 'Thêm nghệ sĩ',
