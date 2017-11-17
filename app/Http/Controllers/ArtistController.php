@@ -30,6 +30,7 @@ class ArtistController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|min:3|max:50',
+            'stage_name' => 'required|unique:artists|max:50',
             'image' => 'mimes:jpeg,jpg,png,svg'
         ]);
         $artist = new Artist();
@@ -43,10 +44,6 @@ class ArtistController extends Controller
         $artist->description = $request->input('description');
         $artist->user_id = Auth::id();
         $artist->save();
-        if (isset($request->id)){
-            $song = Song::find($request->id);
-            return redirect()->route('song.details_song',['id'=>$song->id]);
-        }
         return redirect()->route('artist.list');
     }
 
@@ -63,8 +60,6 @@ class ArtistController extends Controller
         $artist = Artist::with('songs')->find($id);
         $songs = Song::where('artist_id',$id)
             ->paginate(10);
-
-
         return view('artists.songs_detail_artist',compact('artist','songs'));
     }
 

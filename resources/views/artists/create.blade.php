@@ -19,6 +19,17 @@
                     @endif
                 </div>
             </div>
+            <div class="form-group {{ ($errors->has('stage_name')) ? 'has-error' : '' }}"">
+                <label class="control-label col-sm-2 text-left">{{__('label.Stage_name')}}<span style="color:red;"> *</span></label>
+                <div class="col-sm-10">
+                    <input  type='text' class="form-control" name = 'stage_name'value="{{old('stage_name')}}">
+                    @if($errors->has('stage_name'))
+                        <div class="has-feedback text-danger">
+                            {{$errors->first('stage_name')}}
+                        </div>
+                    @endif
+                </div>
+            </div>
             <div class="form-group {{ ($errors->has('image')) ? 'has-error' : '' }}">
                 <label class="control-label col-sm-2 text-left">{{__('label.Image')}}</label>
                 <div class=" col-sm-8">
@@ -31,19 +42,13 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2 text-left">{{__('label.Dob')}}<span style="color:red;"> *</span></label>
+                <label class="control-label col-sm-2 text-left">{{__('label.Dob')}}</label>
                 <div class="col-sm-10">
                     <input  type='date' class="form-control" name = 'dob'value="{{old('dob')}}">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2 text-left">{{__('label.Stage_name')}}<span style="color:red;"> *</span></label>
-                <div class="col-sm-10">
-                    <input  type='text' class="form-control" name = 'stage_name'value="{{old('stage_name')}}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2 text-left">{{__('label.Description')}}<span style="color:red;"> *</span></label>
+                <label class="control-label col-sm-2 text-left">{{__('label.Description')}}</label>
                 <div class="col-sm-10">
                     <textarea class="form-control" rows="3" name="description">{{old('description')}}</textarea>
                 </div>

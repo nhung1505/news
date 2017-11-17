@@ -59,26 +59,26 @@ class SongController extends Controller
     }
 
     public function index(Request $request){
+        $artists = Artist::all();
         $songs = Song::orderBy('id', 'desc')->paginate(10);
         $testsession=$request->session()->get('lacale');
         if ($songs){
-            return view('songs.list', compact('songs','testsession'));
+            return view('songs.list', compact('songs','testsession','artists'));
         } else {
             abort('404');
         }
-        
+
     }
 
     public function detailSong($id){
+        $artists = Artist::all();
         $detail_song = Song::with('user')->where('user_id',Auth::id())->find($id);
         $lyric = str_limit($detail_song->lyric,100);
         $albums = Album::with('user')->get();
         if ($detail_song){
-
-            return view('songs.details_song', compact('detail_song','albums','lyric'));
-
+            return view('songs.details_song', compact('detail_song','albums', 'artists'));
         } else {
-            
+
             abort('404');
         }
     }

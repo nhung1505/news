@@ -75,6 +75,11 @@ return [
     'Choose Artist'                   =>'Chọn Nghệ Sĩ',
     'See all'                          =>'Xem toàn bộ',
     'Hidden'                          =>'Thu gọn',
+    'Song of'                         =>'Bài hát của',
+    'Create Artist'                  => 'Thêm nghệ sĩ',
+
+
+
 
 
 

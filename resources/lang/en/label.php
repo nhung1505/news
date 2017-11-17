@@ -74,7 +74,8 @@ return [
     'Choose Artist'                   =>'Choose Artist',
     'See all'                         =>'See all',
     'Hidden'                         =>'Hidden',
-
+    'Song of'                         =>'Song of',
+    'Create Artist'                  =>'Create Artist',
 
 
 
