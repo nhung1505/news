@@ -30,8 +30,8 @@
                     </td>
                     <td class="col-md-7 text-center">
                         <div>
-                            <a href="{{route('song.details_song', $song->id)}}">{{$song->name}}</a>
-                        </div>
+                            <h3><a class="text-info" href="{{route('song.details_song', $song->id)}}">{{$song->name}}</a></h3>
+                        </div></br>
                         <div>
                             <a href="{{route('artist.detail',['artist'=>$song->artist->id])}}">{{$song->artist->name}}</a>
                         </div>

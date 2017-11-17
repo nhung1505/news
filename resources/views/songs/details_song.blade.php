@@ -21,14 +21,14 @@
                     <source src="{{asset('storage/'.$detail_song->audio)}}" type="audio/mpeg">
                 </audio>
             </div>
-            <h2 class="text-center text-info col-md-4">
-                <div>
-                    {{$detail_song->name}}
+            <div class="text-center col-md-4">
+                <div class="text-info">
+                    <h2>{{$detail_song->name}}</h2>
                 </div></br>
                 <div>
-                    {{$detail_song->artist->name}}
+                    <h3><a href="{{route('artist.detail',['artist'=>$detail_song->artist->id])}}">{{$detail_song->artist->name}}</a></h3>
                 </div>
-            </h2>
+            </div>
             <div class="col-md-2">
                 <button class="btn btn-default dropdown-toggle glyphicon glyphicon-cog" type="button" data-toggle="dropdown"></button>
                 <ul class="dropdown-menu dropdown-action-detail-song">
