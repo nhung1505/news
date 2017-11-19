@@ -50,20 +50,10 @@
                     @endif
                 </div>
             </div>
-            <div class="form-group {{ ($errors->has('artist')) ? 'has-error' : '' }}"">
-                <label class="control-label col-sm-2 text-left">{{__('label.Artist')}}<span style="color:red;"> *</span></label>
-                <div class="col-sm-8">
-                    <select name="artist_id" class="col-md-4">
-                        <option>{{__('label.Choose Artist')}}</option>
-                        @foreach($artists as $artist)
-                        <option value="{{$artist->id}}">{{$artist->name}}</option>
-                        @endforeach
-                    </select>
-                    @if($errors->has('artist'))
-                        <div class="has-feedback text-danger">
-                            {{$errors->first('artist')}}
-                        </div>
-                    @endif
+            <div class="form-group">
+                <label class="control-label col-sm-2 text-left">{{__('label.Artist')}}</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="1" name="artist" value="{{old('artist')}}"></textarea>
                 </div>
             </div>
             <div class="form-group">

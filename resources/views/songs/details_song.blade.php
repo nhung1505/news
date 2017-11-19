@@ -14,22 +14,22 @@
             </div>
         @endif
         <div class="row well">
-            <div class="col-md-6 well">
-                <img class="col-md-12 p-0" src="{{asset('storage/'.$detail_song->image)}}">
+            <div class="col-md-6 well mb-0"><div class=" song-cover-img-detail-song">                <img class="col-md-12 p-0 mr-5" src="{{asset('storage/'.$detail_song->image)}}">
+                </div>
                 <audio id="myAudio" class="col-md-12 p-0" controls="controls" loop="loop" preload="auto">
                     <source src="{{asset('storage/'.$detail_song->audio)}}" type="audio/ogg">
                     <source src="{{asset('storage/'.$detail_song->audio)}}" type="audio/mpeg">
                 </audio>
             </div>
-            <div class="text-center col-md-4">
-                <div class="text-info">
-                    <h2>{{$detail_song->name}}</h2>
-                </div></br>
-                <div>
-                    <h3><a href="{{route('artist.detail',['artist'=>$detail_song->artist->id])}}">{{$detail_song->artist->name}}</a></h3>
-                </div>
+            <div class=" col-md-5">
+                <h2 class="text-info col-md-12 text-center">{{$detail_song->name}}</h2>
+                @if(isset($detail_song->artist->id))
+                <h4 class="col-md-12 text-center"><a href="{{route('artist.detail',['artist'=>$detail_song->artist->id])}}">{{$detail_song->artist->name}}</a></h4>
+                @else
+                <h4 class="col-md-12 text-center">{{ __('label.No Artist') }}</h4>
+                @endif
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <button class="btn btn-default dropdown-toggle glyphicon glyphicon-cog" type="button" data-toggle="dropdown"></button>
                 <ul class="dropdown-menu dropdown-action-detail-song">
                     <li class="col-md-6">

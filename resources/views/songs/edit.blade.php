@@ -32,18 +32,12 @@
                 </div>
             </div>
             <div class="form-group {{ ($errors->has('artist')) ? 'has-error' : '' }}"">
-                <label class="control-label col-sm-2 text-left">{{__('label.Artist')}}<span style="color:red;"> *</span></label>
-                <div class="col-sm-8">
-                    <select name="artist_id" class="col-md-4">
-                        <option>{{__('label.Choose Artist')}}</option>
-                        @foreach($artists as $artist)
-                            <option @if($song->artist_id == $artist->id) selected @endif value="{{$artist->id}}">{{$artist->name}}</option>
-                        @endforeach
-                    </select>
-                    @if($errors->has('artist'))
-                        <div class="has-feedback text-danger">
-                            {{$errors->first('artist')}}
-                        </div>
+                <label class="control-label col-sm-2 text-left">{{__('label.Artist')}}</label>
+                <div class="col-sm-10">
+                    @if(isset($song->artist->name))
+                    <textarea class="form-control" rows="1" name="artist" >{{$song->artist->name}}</textarea>
+                    @else
+                        <textarea class="form-control" rows="1" name="artist" ></textarea>
                     @endif
                 </div>
             </div>

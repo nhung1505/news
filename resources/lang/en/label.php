@@ -41,7 +41,7 @@ return [
     'Search results for'=>'Search results for',
     'Found'=>'Found',
     'keyword results'=>'keyword results',
-    'No Data'=>'No Data',
+    'No Artist'=>'No Artist',
     'Audio'=>'Audio',
     'Do you want to upload more song'=>'Do you want to upload more song',
     'Upload'=>'Upload',
@@ -76,6 +76,9 @@ return [
     'Hidden'                         =>'Hidden',
     'Song of'                         =>'Song of',
     'Create Artist'                  =>'Create Artist',
+    'Personal page'                 =>'Personal page',
+     'Admin page'                   =>'Trang admin',
+    'Create by'                     =>'Create by',
 
 
 

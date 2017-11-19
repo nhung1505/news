@@ -64,6 +64,19 @@ Route::middleware(["auth","localization"])->group(function () {
         Route::get('/{id}/detail/songs/play','ArtistController@PlaySongsArtist')->name('artist.songs.play');
         Route::get('/create', 'ArtistController@create')->name('artist.create');
         Route::post('/create', 'ArtistController@store')->name('artist.store');
+        Route::post('/{id}/delete', 'ArtistController@delete')->name('artist.delete');
+
+    });
+
+    Route::prefix('manager')->group(function (){
+
+        Route::get('/','MenuController@index')->name('menu');
+        Route::get('/create/menu','MenuController@create')->name('menu.create');
+        Route::post('/create/menu','MenuController@store')->name('menu.store');
+        Route::get('/edit/menu/{id}','MenuController@edit')->name('menu.edit');
+        Route::post('/edit/menu/{id}','MenuController@update')->name('menu.update');
+        Route::post('/delete/menu/{id}','MenuController@delete')->name('menu.delete');
+
     });
 
 });

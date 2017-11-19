@@ -25,7 +25,6 @@ class SongController extends Controller
     public function upload(Request $request){
         $this->validate($request,[
             'name' => 'required|min:3|max:50',
-            'artist' => 'required',
             'audio' => 'required|mimes:mpga',
             'image' => 'mimes:jpeg,jpg,png,svg'
         ]);
@@ -78,7 +77,6 @@ class SongController extends Controller
         if ($detail_song){
             return view('songs.details_song', compact('detail_song','albums', 'artists','lyric'));
         } else {
-
             abort('404');
         }
     }
@@ -91,7 +89,6 @@ class SongController extends Controller
             }
             Storage::delete('public/'.$song->audio);
             $song->albums()->detach();
-            $song->artist()->detach();
             $song->delete();
             Session::flash('announcement','Delete Success');
             return redirect()->route('song.list');

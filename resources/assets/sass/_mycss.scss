@@ -4,14 +4,20 @@
 .dropdown-action-detail-song{
   top:40px;
 }
+
 .song-cover-img {
-  width: 300px;
-  height: 200px;
+  width: 250px;
+  height: 220px;
   overflow: hidden;
 }
-.song-cover-img-large {
-  width: 220px;
-  height: 220px;
+.song-cover-img-detail-song{
+  width: 525px;
+  height: 430px;
+  overflow: hidden;
+}
+.song-cover-img-detail-album{
+  width: 370px;
+  height: 340px;
   overflow: hidden;
 }
 

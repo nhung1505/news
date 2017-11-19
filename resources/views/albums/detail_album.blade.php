@@ -6,12 +6,13 @@
     <div>
         <div class="container alert">
             <div class="row well">
-                <div class="col-md-4">
-                    <img src="{{asset('storage/'.$detail_album->image)}}" width="100%">
+                <div class="col-md-4 song-cover-img-detail-album img-rounded">
+                    <img src="{{asset('storage/'.$detail_album->image)}}">
                 </div>
                 <div class="col-md-6">
                     <h3>{{__('label.Album')}}: {{$detail_album->name}}</h3>
-                    <div class="well text-center">
+                    <p class="col-md-12">{{__('label.Create by')}}:</p>
+                    <div class="well text-center mt-5">
                         @if($detail_album->description !=null)
                             <h5>{{$detail_album->description}}</h5>
                         @else
@@ -117,7 +118,6 @@
                 </div>
             </div>
         </div>
-        <div class="container well">
         <div class="container well">
             <h3 class="col-md-2 text-center">{{__('label.Lyric')}}</h3>
             <h5 class=" col-md-8 text-center">{{__('label.The lyric does not exist')}}. {{__('label.Do you want to create')}} <a href="{{route('album.edit',$detail_album->id)}}">{{__('label.new lyric')}}</a> ?</h5>
