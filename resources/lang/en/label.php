@@ -70,6 +70,9 @@ return [
     'Artists'                         =>'Artists',
     'Artist'                         => 'Artist',
     'Song of'                         =>'Song of',
+    'Edit Artist'                     =>'Edit Artist',
+    'Birthday'                        =>'Birthday',
+    'Stage name'                      =>'Stage name',
 
 
 

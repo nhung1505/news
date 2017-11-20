@@ -59,6 +59,34 @@ class ArtistController extends Controller
         }
     }
 
+    public function indexEditArtist($id){
+        $artist = Artist::find($id);
+        if ($artist) {
+            return view('artists.edit', compact('artist'));
+        } else {
+            abort('404');
+        }
+    }
+
+    public function update(Request $request , $id){
+        $artist = Artist::find($id);
+        $this->validate($request, [
+            'name' => 'required|min:3|max:50',
+            'image' => 'mimes:jpeg,jpg,png,svg'
+        ]);
+        if ($request->hasFile('image')){
+            Storage::disk('public')->delete('' . $artist->image);
+            $artist->image = $request->file('image')->store('image_songs/' . auth()->id(), 'public');
+        }
+        $artist->name = $request->input('name');
+        $artist->dob  = $request->input('dob');
+        $artist->stage_name = $request->input('stage_name');
+        $artist->description = $request->input('description');
+        $artist->save();
+        Session::flash('announcement', 'Edit Success!');
+        return redirect()->route('artist.detail_artist_song', ['id' => $id]);
+    }
+
     public function IndexArtitsSong($id){
         $artist = Artist::with('songs')->find($id);
         $songs = Song::where('artist_id',$id)
