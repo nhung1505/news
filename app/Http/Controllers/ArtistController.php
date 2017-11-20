@@ -30,6 +30,7 @@ class ArtistController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|min:3|max:50',
+            'stage_name' => 'required|unique:artists|max:50',
             'image' => 'mimes:jpeg,jpg,png,svg'
         ]);
         $artist = new Artist();
@@ -43,10 +44,6 @@ class ArtistController extends Controller
         $artist->description = $request->input('description');
         $artist->user_id = Auth::id();
         $artist->save();
-        if (isset($request->id)){
-            $song = Song::find($request->id);
-            return redirect()->route('song.details_song',['id'=>$song->id]);
-        }
         return redirect()->route('artist.list');
     }
 
@@ -91,8 +88,6 @@ class ArtistController extends Controller
         $artist = Artist::with('songs')->find($id);
         $songs = Song::where('artist_id',$id)
             ->paginate(10);
-
-
         return view('artists.songs_detail_artist',compact('artist','songs'));
     }
 
@@ -101,6 +96,27 @@ class ArtistController extends Controller
         $songs = Song::where('artist_id',$id) ->get();
 
         return view('artists.play_songs',compact('artist','songs'));
+    }
+
+    public function delete($id)
+    {
+        $artist = Artist::with('songs')->find($id);
+        if ($artist) {
+            if (count($artist->songs) > 0){
+                foreach($artist->songs as $key=>$song){
+                    $songId = $song->id;
+                    $song2 = Song::where('id','=',$songId)->update(['artist_id'=>null]);
+                }
+            }
+            if (isset($artist->image)) {
+                Storage::delete('public/' . $artist->image);
+            }
+            $artist->delete();
+            Session::flash('announcement', 'Delete Success');
+            return redirect()->route('artist.list');
+        } else {
+            abort('404');
+        }
     }
 
 }

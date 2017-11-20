@@ -66,8 +66,7 @@ Route::middleware(["auth","localization"])->group(function () {
         Route::post('/create', 'ArtistController@store')->name('artist.store');
         Route::get('/{id}/edit' , 'ArtistController@indexEditArtist')->name('artist.showEdit');
         Route::post('/{id}/edit' , 'ArtistController@update')->name('artist.edit');
-
-
+        Route::post('/{id}/delete', 'ArtistController@delete')->name('artist.delete');
     });
 
 });

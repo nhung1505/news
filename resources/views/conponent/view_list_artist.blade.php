@@ -10,7 +10,6 @@
             <div class="col-xs-7">
             </div>
             <div class="col-xs-5 text-right ">
-                {{--{{route('album.create')}}--}}
                 <a href="{{route('artist.create')}}" class="btn btn-default btn-lg">
                     <span class="glyphicon glyphicon-plus"></span> {{__('label.Create')}}
                 </a>
