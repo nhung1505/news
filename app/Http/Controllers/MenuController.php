@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class MenuController extends Controller
 {
     public function index(Request $request){
-        $menu = Menu::all();
+        $menu = Menu::all()->sortBy('oder');
         $request->session()->put('menu',$menu);
         return view('manager.menu',compact('menu'));
     }
@@ -52,17 +52,16 @@ class MenuController extends Controller
         $menu->name = $request->input('name');
         $menu->link = $request->input('link');
         $menu->oder = $request->input('oder');
-        $menu->save();
-//
-//        $allMenu = Menu::all();
-//        foreach ($allMenu as $itemMenu) {
-//            $itemMenu = Menu::where('oder',$menu->oder)->update(['id'=>$menu->id]);
-//            dd($itemMenu);
-//            $menu = Menu::where('id',$id)->update(['id'=>$itemMenu->id]);
-//        }
 
-//        dd($menu);
+        $all_menu = Menu::all();
+        for($i=0; $i<count($all_menu);$i++){
 
+            if ($all_menu[$i]->oder >= $request->input('oder')){
+
+                $all_menu = Menu::where('oder','=',$all_menu[$i]->oder)->update(['oder'=>(($all_menu[$i]->oder) +1)]);
+                $menu->save();
+            }
+        }
         return redirect()->route('menu');
     }
 

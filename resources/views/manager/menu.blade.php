@@ -10,7 +10,7 @@
         <div class="col-md-12 well">
             <div class="col-md-10 text-left mb-5">
                 <h3 class="col-md-10">Manager Menu</h3>
-                <a href="{{route('menu.create')}}" class="col-md-2 btn btn-success">Create Menu
+                <a href="{{route('menu.create')}}" class="col-md-2 btn btn-success pull-right">Create Menu
                     <span class="glyphicon glyphicon-plus text-white"></span>
                 </a>
             </div>
