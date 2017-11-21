@@ -24,5 +24,6 @@ class HomeController extends Controller
     public function index()
     {
         return redirect()->route('song.list');
+//        return view('home');
     }
 }
