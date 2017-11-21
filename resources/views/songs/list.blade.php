@@ -12,71 +12,67 @@
                 <strong>{{session('announcement')}}!</strong>
             </div>
         @endif
-        <table class="table well">
-            <tbody>
+        <div class="container well">
             @if(count($songs) == 0)
-                <tr>
-                    <td><p class="text-center">No song. Would you like to create a <a href="{{route('song.upload')}}"> new song </a>?</p></td>
-                </tr>
+            <div>
+                <p class="text-center">No song. Would you like to create a <a href="{{route('song.upload')}}"> new song </a>?</p>
+            </div>
             @else
-                @foreach($songs as $song)
-                    <tr>
-                        <td class="edit-width col-md-3 well">
-                            <div class="img-rounded song-cover-img" >
-                                <a href="{{route('song.details_song', $song->id)}}">
-                                    <img src="{{asset('storage/'.$song->image)}}"/>
-                                </a>
+            @foreach($songs as $song)
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <div class="img-rounded song-cover-img pt-3" >
+                        <a href="{{route('song.details_song', $song->id)}}">
+                            <img src="{{asset('storage/'.$song->image)}}"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-left">
+                    <div>
+                        <h3><a class="text-info" href="{{route('song.details_song', $song->id)}}">{{$song->name}}</a></h3>
+                    </div>
+                    </br>
+                    <div>
+                        @if($song->artist_id == null)
+                        <p>{{ __('label.No Artist') }}</p>
+                        @else
+                        <a href="{{route('artist.detail',['artist'=>$song->artist_id])}}">{{$song->artist->name}}</a>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <a href="{{route('song.showEdit_song', ['id' => $song->id])}}">
+                        <span class="glyphicon glyphicon-edit text-info"></span>
+                    </a>
+                </div>
+                <div class="col-md-1">
+                    <a data-toggle="modal" data-target="#confirmDelete-{{$song->id}}" >
+                        <span class="glyphicon glyphicon-remove text-danger" ></span>
+                    </a>
+                </div>
+            </div>
+            <form action="{{route('song.delete',$song->id)}}" method="post">
+            {{ csrf_field() }}
+                <div class="modal fade" id="confirmDelete-{{$song->id}}" role="dialog">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title text-danger text-center">{{__('label.Confim Delete')}}</h4>
                             </div>
-                        </td>
-                        <td class="col-md-7 text-center">
-                            <div>
-                                <h3><a class="text-info" href="{{route('song.details_song', $song->id)}}">{{$song->name}}</a></h3>
+                            <div class="modal-body text-danger text-center">
+                                <p>{{__('label.Are you sure ?')}}</p>
                             </div>
-                            </br>
-                            <div>
-
-                                    @if($song->artist_id == null)
-                                    <p>{{ __('label.No Data') }}</p>
-                                    @else
-                                    <a href="{{route('artist.detail',['artist'=>$song->artist_id])}}">{{$song->artist->name}}</a>
-                                    @endif
-                            </div>
-                        </td>
-                        <td class="col-md-1">
-                            <a href="{{route('song.showEdit_song', ['id' => $song->id])}}">
-                                <span class="glyphicon glyphicon-edit text-info"></span>
-                            </a>
-                        </td>
-                        <td class="col-md-1">
-                            <a data-toggle="modal" data-target="#confirmDelete-{{$song->id}}" >
-                                <span class="glyphicon glyphicon-remove text-danger" ></span>
-
-                            </a>
-                        </td>
-                    </tr>
-                    <form action="{{route('song.delete',$song->id)}}" method="post">
-                    {{ csrf_field() }}
-                        <div class="modal fade" id="confirmDelete-{{$song->id}}" role="dialog">
-                            <div class="modal-dialog modal-sm">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title text-danger text-center">{{__('label.Confim Delete')}}</h4>
-                                    </div>
-                                    <div class="modal-body text-danger text-center">
-                                        <p>{{__('label.Are you sure ?')}}</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-danger col-md-6" >{{__('label.Yes')}}</button>
-                                        <button type="button" class="btn btn-default col-md-6" data-dismiss="modal">{{__('label.No')}}</button>
-                                    </div>
-                                </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-danger col-md-6" >{{__('label.Yes')}}</button>
+                                <button type="button" class="btn btn-default col-md-6" data-dismiss="modal">{{__('label.No')}}</button>
                             </div>
                         </div>
-                    </form>
-                @endforeach
+                    </div>
+                </div>
+            </form>
+            @endforeach
             @endif
-            </tbody>
-        </table>
+        </div>
         <div class="col-md-12 text-center">
             {!! $songs->render() !!}
         </div>

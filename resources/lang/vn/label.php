@@ -42,7 +42,7 @@ return [
     'Search results for'=>              'Kết quả tìm kiếm',
     'Found'=>                           'Tìm thấy',
     'keyword results'=>                 'Kết quả theo từ khóa',
-    'No Data'=>                         'Không có dữ liệu',
+    'No Artist'=>                         'Không có nghệ sĩ',
     'Audio'=>                           'Âm thanh',
     'Do you want to upload more song'=> 'Bạn có muốn tải lên nhiều bài hát',
     'Upload'=>                          'Tải lên',
@@ -70,7 +70,7 @@ return [
     'Stage_name'                      =>'Nghệ danh',
     'Artists'                         =>'Nghệ Sĩ',
     'Artist'                          =>'Nghệ Sĩ',
-    'Playlist'                         =>'Danh Sách Phát',
+    'Playlist'                        =>'Danh Sách Phát',
     'Songs'                           =>'Danh Sách Bài Hát',
     'Choose Artist'                   =>'Chọn Nghệ Sĩ',
     'See all'                          =>'Xem toàn bộ',
@@ -80,4 +80,16 @@ return [
     'Birthday'                        =>'Ngày sinh',
     'Stage name'                      =>'Nghệ danh',
     'Create Artist'                  => 'Thêm nghệ sĩ',
+    'Personal page'                 =>'Trang cá nhân',
+    'Admin page'                    =>' Trang Admin',
+    'Create by'                       =>'Tạo bởi',
+
+
+
+
+
+
+
+=======
+>>>>>>> 0c45b117f08111a9982a07cb8345aeb1abc0461a
 ];

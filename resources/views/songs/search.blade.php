@@ -19,7 +19,7 @@
                 @foreach($songs as $key=>$song)
                     <tr>
                         <td>{{++$key}}</td>
-                        <td class="edit-width col-md-3 well">
+                        <td class="edit-width col-md-3">
                             <div class="img-rounded song-cover-img" >
                                 <a href="{{route('song.details_song', $song->id)}}">
                                     <img src="{{asset('storage/'.$song->image)}}"/>

@@ -58,7 +58,6 @@
             <div class="col-md-12 well">
                 <div class="col-md-2">
                     <h3 class="col-md-12 text-center">{{__('label.Song')}}
-                        <span class="glyphicon glyphicon-arrow-right pull-right"></span>
                     </h3>
                     @if($artist->songs->all()==[])
                     @else
@@ -67,7 +66,7 @@
                     </a>
                     @endif
                 </div>
-                <div class=" col-md-10 well">
+                <div class=" col-md-10">
                     @if($artist->songs->all()==[])
                         <div class="text-center text-danger">No Songs</div>
                     @else
