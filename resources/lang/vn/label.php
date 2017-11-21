@@ -66,8 +66,8 @@ return [
     'Find your favorite song'       =>  'Tìm bài hát yêu thích của bạn',
     'Go to Album'                   =>  'Đi đến Album',
     'have successfully added the song'=>'đã thêm thành công bài hát',
-    'Dob'=>'Ngày sinh',
-    'Stage_name'=>'Nghệ danh',
+    'Dob'                             =>'Ngày sinh',
+    'Stage_name'                      =>'Nghệ danh',
     'Artists'                         =>'Nghệ Sĩ',
     'Artist'                          =>'Nghệ Sĩ',
     'Playlist'                        =>'Danh Sách Phát',
@@ -76,6 +76,9 @@ return [
     'See all'                          =>'Xem toàn bộ',
     'Hidden'                          =>'Thu gọn',
     'Song of'                         =>'Bài hát của',
+    'Edit Artist'                     =>'Chỉnh sửa nghệ sĩ',
+    'Birthday'                        =>'Ngày sinh',
+    'Stage name'                      =>'Nghệ danh',
     'Create Artist'                  => 'Thêm nghệ sĩ',
     'Personal page'                 =>'Trang cá nhân',
     'Admin page'                    =>' Trang Admin',
@@ -87,4 +90,6 @@ return [
 
 
 
+=======
+>>>>>>> 0c45b117f08111a9982a07cb8345aeb1abc0461a
 ];

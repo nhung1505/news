@@ -75,16 +75,12 @@ return [
     'See all'                         =>'See all',
     'Hidden'                         =>'Hidden',
     'Song of'                         =>'Song of',
+    'Edit Artist'                     =>'Edit Artist',
+    'Birthday'                        =>'Birthday',
+    'Stage name'                      =>'Stage name',
     'Create Artist'                  =>'Create Artist',
     'Personal page'                 =>'Personal page',
      'Admin page'                   =>'Trang admin',
     'Create by'                     =>'Create by',
-
-
-
-
-
-
-
 
 ];

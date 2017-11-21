@@ -64,8 +64,9 @@ Route::middleware(["auth","localization"])->group(function () {
         Route::get('/{id}/detail/songs/play','ArtistController@PlaySongsArtist')->name('artist.songs.play');
         Route::get('/create', 'ArtistController@create')->name('artist.create');
         Route::post('/create', 'ArtistController@store')->name('artist.store');
+        Route::get('/{id}/edit' , 'ArtistController@indexEditArtist')->name('artist.showEdit');
+        Route::post('/{id}/edit' , 'ArtistController@update')->name('artist.edit');
         Route::post('/{id}/delete', 'ArtistController@delete')->name('artist.delete');
-
     });
 
     Route::prefix('manager')->group(function (){

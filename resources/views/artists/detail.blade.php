@@ -25,7 +25,7 @@
                 <button class="btn btn-default dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown"></button>
                 <ul class="dropdown-menu dropdown-action-detail-album text-center pull-right">
                     <li>
-                        <a href="" >
+                        <a href="{{route('artist.showEdit', ['id' =>$artist->id])}}">
                             <span class="glyphicon glyphicon-edit text-info"></span>
                         </a>
                     </li>
