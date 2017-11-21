@@ -53,7 +53,12 @@
             <div class="form-group">
                 <label class="control-label col-sm-2 text-left">{{__('label.Artist')}}</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" rows="1" name="artist" value="{{old('artist')}}"></textarea>
+                    <select name="artist_id">
+                        <option value="{{null}}">Choose Artist</option>
+                        @foreach($artists as $artist)
+                        <option value="{{$artist->id}}">{{$artist->name}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="form-group">

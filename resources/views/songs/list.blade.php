@@ -40,16 +40,20 @@
                         @endif
                     </div>
                 </div>
+                @can('crud',$song)
                 <div class="col-md-1">
                     <a href="{{route('song.showEdit_song', ['id' => $song->id])}}">
                         <span class="glyphicon glyphicon-edit text-info"></span>
                     </a>
                 </div>
+                @endcan
+                @can('crud',$song)
                 <div class="col-md-1">
                     <a data-toggle="modal" data-target="#confirmDelete-{{$song->id}}" >
                         <span class="glyphicon glyphicon-remove text-danger" ></span>
                     </a>
                 </div>
+                @endcan
             </div>
             <form action="{{route('song.delete',$song->id)}}" method="post">
             {{ csrf_field() }}

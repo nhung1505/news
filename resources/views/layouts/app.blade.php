@@ -106,7 +106,9 @@
                             @endforeach
                             @endif
                         </div>
+                            @can('create')
                             <a href="{{ route('song.create') }}" class="btn btn-success" role="button">{{__('label.Upload Song')}}</a>
+                            @endcan
                     </div>
                 </nav>
             </div>

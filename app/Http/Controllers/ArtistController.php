@@ -84,8 +84,7 @@ class ArtistController extends Controller
         return redirect()->route('artist.detail_artist_song', ['id' => $id]);
     }
 
-    public function IndexArtitsSong($id){
->>>>>>> 0c45b117f08111a9982a07cb8345aeb1abc0461a
+    public function IndexSongsArtist($id){
         $artist = Artist::with('songs')->find($id);
         $songs = Song::where('artist_id',$id)
             ->paginate(10);

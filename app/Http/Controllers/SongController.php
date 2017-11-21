@@ -18,7 +18,6 @@ class SongController extends Controller
             $album=Album::find($request->id);
         }
         $artists =  Artist::all();
-
         return view('songs.upload',compact('album','artists'));
     }
 
@@ -108,6 +107,8 @@ class SongController extends Controller
     }
 
     public function update(Request $request, $id) {
+
+
         $song = Song::find($id);
         $this->validate($request,[
             'name' => 'required|min:3|max:50',

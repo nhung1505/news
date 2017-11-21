@@ -28,6 +28,7 @@ class User extends Authenticatable
     ];
 
     public function songs(){
+
         return $this->hasMany('App\Song');
     }
 
