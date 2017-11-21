@@ -37,7 +37,7 @@
                     <td class="col-md-1">
                         <a data-toggle="modal" data-target="#confirmDelete-{{$song->id}}" >
                             <span class="glyphicon glyphicon-remove text-danger" ></span>
-                        <a/>
+                        </a>
                     </td>
                 </tr>
                 <form action="{{route('song.delete',$song->id)}}" method="post">
