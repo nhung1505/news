@@ -52,7 +52,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
 
-        Gate::define('create', function ($user) {
+        Gate::define('upload', function ($user) {
             return $user->id == Auth::id();
 
         });
