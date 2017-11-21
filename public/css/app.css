@@ -3846,7 +3846,7 @@ select[multiple].input-lg,
 @media (min-width: 768px) {
   .form-inline .form-group {
     display: inline-block;
-    margin-bottom: 0;
+    margin-bottom: 14px;
     vertical-align: middle;
   }
 
@@ -3961,7 +3961,7 @@ select[multiple].input-lg,
 
 .btn {
   display: inline-block;
-  margin-bottom: 0;
+  margin-bottom: 14px;
   font-weight: normal;
   text-align: center;
   vertical-align: middle;

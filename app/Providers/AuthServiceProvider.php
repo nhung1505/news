@@ -33,31 +33,18 @@ class AuthServiceProvider extends ServiceProvider
             return $user->id == $song->user_id;
 
         });
-
-        Gate::define('search.add', function ($user, $song) {
-            return $user->id == $song->user_id;
-
-        });
-
-
         Gate::define('crud', function ($user, $album) {
             return $user->id == $album->user_id;
 
         });
-
-
         Gate::define('crud', function ($user, $artist) {
             return $user->id == $artist->user_id;
 
         });
-
-
         Gate::define('upload', function ($user) {
             return $user->id == Auth::id();
 
         });
-
-
 
     }
 }
