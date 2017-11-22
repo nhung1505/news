@@ -21,7 +21,7 @@
                 <li><a href="{{route('artist.detail',['artist_id'=>$artist->id])}}">{{__('label.Description')}}</a></li>
                 <li class="active"><a href="">{{__('label.Song')}}</a></li>
             </ul>
-            @can('showEdit','delete',$artist)
+            @can('crud',$artist)
                 <div class="col-md-6 dropdown text-right">
                     <button class="btn btn-default dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown"></button>
                     <ul class="dropdown-menu dropdown-action-detail-album text-center pull-right">
@@ -74,12 +74,10 @@
                     @else
                         @foreach($songs as $song)
                             <div class="col-md-10">{{$song->name}}</div>
-                            @can('edit',$song)
+                            @can('crud',$song)
                             <a hefr="" class="text-right col-md-1">
                                 <span class="glyphicon glyphicon-edit text-info"></span>
                             </a>
-                            @endcan
-                            @can('delete',$song)
                             <a href="" class="text-right col-md-1 " data-toggle="modal" data-target="#confirmDelete-">
                                 <span class="glyphicon glyphicon-remove text-danger" ></span>
                             </a>

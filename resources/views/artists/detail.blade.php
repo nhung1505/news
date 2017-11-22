@@ -21,7 +21,7 @@
                 <li class="active"><a href="">{{__('label.Description')}}</a></li>
                 <li><a href="{{route('artist.detail_artist_song',['detail_artist'=>$artist->id])}}">{{__('label.Song')}}</a></li>
             </ul>
-            @can('showEdit','delete',$artist)
+            @can('crud',$artist)
             <div class="col-md-6 dropdown text-right">
                 <button class="btn btn-default dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown"></button>
                 <ul class="dropdown-menu dropdown-action-detail-album text-center pull-right">
