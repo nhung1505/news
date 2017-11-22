@@ -64,11 +64,6 @@ class MenuController extends Controller
             $menu->save();
         }
 
-
-
-
-
-
         return redirect()->route('menu');
     }
 
