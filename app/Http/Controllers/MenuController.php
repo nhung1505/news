@@ -56,18 +56,18 @@ class MenuController extends Controller
         $allMenu = Menu::all();
 
         foreach ($allMenu as $item){
-            if ($item->oder == $request->input('oder')){
-                $item = Menu::where('oder','=',$item->oder)->update(['oder'=>$item->oder + 1]);
-                $menu->save();
-            }
-            if ($item->oder < $request->input('oder')){
-                $menu->save();
-            }
-            if ($item->oder > $request->input('oder')){
-                $item = Menu::where('oder','=',$item->oder)->update(['oder'=>$item->oder + 1]);
-                $menu->save();
-            }
+            if ($item->oder >= $request->input('oder')){
+                $item = Menu::where('oder','=',$request->input('oder'))->update(['oder'=>($item->oder + 1)]);
+
+            }else{}
+
+            $menu->save();
         }
+
+
+
+
+
 
         return redirect()->route('menu');
     }

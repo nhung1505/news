@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller;
 use App\Song;
 use App\User;
 use App\Album;
@@ -107,13 +108,11 @@ class SongController extends Controller
     }
 
     public function update(Request $request, $id) {
-
-
-        $song = Song::find($id);
         $this->validate($request,[
             'name' => 'required|min:3|max:50',
             'image' => 'mimes:jpeg,jpg,png,svg'
         ]);
+        $song = Song::find($id);
         if ($request->hasFile('image')) {
             Storage::disk('public')->delete(''.$song->image);
             $song->image = $request->file('image')->store('image_songs/' . auth()->id(),'public');
