@@ -21,24 +21,26 @@
                 <li><a href="{{route('artist.detail',['artist_id'=>$artist->id])}}">{{__('label.Description')}}</a></li>
                 <li class="active"><a href="">{{__('label.Song')}}</a></li>
             </ul>
-            <div class="col-md-6 dropdown text-right">
-                <button class="btn btn-default dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown"></button>
-                <ul class="dropdown-menu dropdown-action-detail-album text-center pull-right">
-                    <li>
-                        <a href="" >
-                            <span class="glyphicon glyphicon-edit text-info"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="modal" data-target="#confirmDelete-">
-                            <span class="glyphicon glyphicon-remove text-danger"></span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <form action="" method="post">
+            @can('crud',$artist)
+                <div class="col-md-6 dropdown text-right">
+                    <button class="btn btn-default dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown"></button>
+                    <ul class="dropdown-menu dropdown-action-detail-album text-center pull-right">
+                        <li>
+                            <a href="{{route('artist.showEdit', ['id' =>$artist->id])}}">
+                                <span class="glyphicon glyphicon-edit text-info"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="modal" data-target="#confirmDelete-{{$artist->id}}">
+                                <span class="glyphicon glyphicon-remove text-danger"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            @endcan
+            <form action="{{route('artist.delete',$artist->id)}}" method="post">
                 {{ csrf_field() }}
-                <div class="modal fade" id="confirmDelete-" role="dialog">
+                <div class="modal fade" id="confirmDelete-{{$artist->id}}" role="dialog">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -72,12 +74,14 @@
                     @else
                         @foreach($songs as $song)
                             <div class="col-md-10">{{$song->name}}</div>
+                            @can('crud',$song)
                             <a hefr="" class="text-right col-md-1">
                                 <span class="glyphicon glyphicon-edit text-info"></span>
                             </a>
                             <a href="" class="text-right col-md-1 " data-toggle="modal" data-target="#confirmDelete-">
                                 <span class="glyphicon glyphicon-remove text-danger" ></span>
                             </a>
+                            @endcan
                         @endforeach
                     @endif
                         <div class="col-md-12 text-center paginate_artist_songs">
