@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -11,6 +12,7 @@ use App\Song;
 use App\User;
 use App\Album;
 use App\Artist;
+use App\Comment;
 
 class SongController extends Controller
 {
@@ -69,13 +71,18 @@ class SongController extends Controller
 
     }
 
-    public function detailSong($id){
-        $artists = Artist::all();
+    public function detailSong(Request $request, $id){
         $detail_song = Song::with('user')->find($id);
-        $lyric = str_limit($detail_song->lyric,100);
-        $albums = Album::with('user')->get();
         if ($detail_song){
-            return view('songs.details_song', compact('detail_song','albums', 'artists','lyric'));
+            $comments = $detail_song->comments()->orderBy('id','desc')->paginate(10);
+            $lyric = str_limit($detail_song->lyric,100);
+        } else {
+            abort('404');
+        }
+        $albums = Album::with('user')->get();
+        $artists = Artist::all();
+        if ($detail_song){
+            return view('songs.details_song', compact('detail_song','albums', 'artists','lyric','comments'));
         } else {
             abort('404');
         }
@@ -141,6 +148,26 @@ class SongController extends Controller
             return redirect()->route('song.details_song',['id'=>$song->id]);
         } else {
             abort('404');
+        }
+    }
+    public function storeComment(Request $request, $id){
+        $song = Song::find($id);
+        $comment = new Comment();
+        $comment->content = $request->input('content');
+        $comment->user_id = Auth::id();
+        $comment->save();
+        $song->comments()->attach($comment->id);
+        return redirect()->back();
+    }
+
+    public function deleteComment(Request $request, $id)
+    {
+        $song = Song::find($id);
+        $comment = Comment::find($request->comment_id);
+        if (isset($comment)){
+            $song->comments()->detach($comment->id);
+            $comment->delete();
+            return redirect()->back();
         }
     }
 

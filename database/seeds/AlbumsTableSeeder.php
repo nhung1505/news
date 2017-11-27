@@ -19,6 +19,8 @@ class AlbumsTableSeeder extends Seeder
         $album->user_id = 1;
         $album->save();
         $album->songs()->attach([1,2,3,4,5,6]);
+        $album->commentalbums()->attach(1);
+        $album->likealbums()->attach(1);
 
         $album = new Album();
         $album->name = 'Nhạc trữ tình';
@@ -27,6 +29,10 @@ class AlbumsTableSeeder extends Seeder
         $album->user_id = 1;
         $album->save();
         $album->songs()->attach(2);
+        $album->commentalbums()->attach(1);
+        $album->likealbums()->attach(1);
+
+
 
         $album = new Album();
         $album->name = 'Nhạc thư giãn';
@@ -35,6 +41,10 @@ class AlbumsTableSeeder extends Seeder
         $album->user_id = 1;
         $album->save();
         $album->songs()->attach(3);
+        $album->commentalbums()->attach(1);
+        $album->likealbums()->attach(1);
+
+
 
         $album = new Album();
         $album->name = 'Nhạc tiệc tùng';
@@ -43,6 +53,10 @@ class AlbumsTableSeeder extends Seeder
         $album->user_id = 1;
         $album->save();
         $album->songs()->attach(4);
+        $album->commentalbums()->attach(1);
+        $album->likealbums()->attach(1);
+
+
 
         $album = new Album();
         $album->name = 'Nhạc EDM';
@@ -51,6 +65,10 @@ class AlbumsTableSeeder extends Seeder
         $album->user_id = 1;
         $album->save();
         $album->songs()->attach(5);
+        $album->commentalbums()->attach(1);
+        $album->likealbums()->attach(1);
+
+
 
         $album = new Album();
         $album->name = 'Nhạc giao hưởng';
@@ -59,6 +77,10 @@ class AlbumsTableSeeder extends Seeder
         $album->user_id = 1;
         $album->save();
         $album->songs()->attach(7);
+        $album->commentalbums()->attach(1);
+        $album->likealbums()->attach(1);
+
+
 
         $album = new Album();
         $album->name = 'Nhạc phim';
@@ -67,6 +89,10 @@ class AlbumsTableSeeder extends Seeder
         $album->user_id = 1;
         $album->save();
         $album->songs()->attach(8);
+        $album->commentalbums()->attach(1);
+        $album->likealbums()->attach(1);
+
+
 
         $album = new Album();
         $album->name = 'Nhạc thiếu nhi';
@@ -75,6 +101,10 @@ class AlbumsTableSeeder extends Seeder
         $album->user_id = 1;
         $album->save();
         $album->songs()->attach(9);
+        $album->commentalbums()->attach(1);
+        $album->likealbums()->attach(1);
+
+
 
         $album = new Album();
         $album->name = 'Nhạc Motivation';
@@ -83,6 +113,10 @@ class AlbumsTableSeeder extends Seeder
         $album->user_id = 1;
         $album->save();
         $album->songs()->attach(10);
+        $album->commentalbums()->attach(1);
+        $album->likealbums()->attach(1);
+
+
 
     }
 }

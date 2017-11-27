@@ -43,6 +43,8 @@ class SongsTableSeeder extends Seeder
         $song->user_id = 1;
         $song->artist_id = 1;
         $song->save();
+        $song->comments()->attach(1);
+
 
         $song = new Song();
         $song->name = 'Tình đơn phương';
@@ -70,6 +72,8 @@ Dù lòng nhiều đớn đau yêu em từ lâu.
         $song->user_id = 1;
         $song->artist_id = 1;
         $song->save();
+        $song->comments()->attach(1);
+
 
         $song = new Song();
         $song->name = 'Sống xa anh chẳng dễ dàng';
@@ -125,6 +129,8 @@ Nặng lời nhau đau vỡ trái tim, người tổn thương không về.
         $song->user_id = 1;
         $song->artist_id = 1;
         $song->save();
+        $song->comments()->attach(1);
+
 
         $song = new Song();
         $song->name = 'Forever';
@@ -152,6 +158,8 @@ would you wait for me forever?
         $song->user_id = 1;
         $song->artist_id = 1;
         $song->save();
+        $song->comments()->attach(1);
+
 
         $song = new Song();
         $song->name = 'Forever and one';
@@ -198,6 +206,8 @@ Your lies
         $song->user_id = 1;
         $song->artist_id =1;
         $song->save();
+        $song->comments()->attach(1);
+
 
         $song = new Song();
         $song->name = 'Fly away';
@@ -296,6 +306,8 @@ Calling us to fly away
         $song->user_id = 1;
         $song->artist_id = 1;
         $song->save();
+        $song->comments()->attach(1);
+
 
         $song = new Song();
         $song->name = 'Hallelujah';
@@ -336,6 +348,8 @@ Aleluya, aleluya
         $song->user_id = 1;
         $song->artist_id = 1;
         $song->save();
+        $song->comments()->attach(1);
+
 
         $song = new Song();
         $song->name = 'Hello';
@@ -387,6 +401,8 @@ But let me start by saying I love you
         $song->user_id = 1;
         $song->artist_id = 1;
         $song->save();
+        $song->comments()->attach(1);
+
 
         $song = new Song();
         $song->name = 'Hello';
@@ -459,6 +475,8 @@ Anymore
         $song->user_id = 1;
         $song->artist_id = 1;
         $song->save();
+        $song->comments()->attach(1);
+
 
         $song = new Song();
         $song->name = 'Right here waiting';
@@ -507,6 +525,8 @@ Waiting for you
         $song->user_id = 1;
         $song->artist_id = 1;
         $song->save();
+        $song->comments()->attach(1);
+
 
         $song = new Song();
         $song->name = 'Hotel California';
@@ -573,6 +593,8 @@ But you can never leave! "
         $song->user_id = 1;
         $song->artist_id = 1;
         $song->save();
+        $song->comments()->attach(1);
+
 
         $song = new Song();
         $song->name = 'Don\'t Speak';
@@ -645,5 +667,7 @@ Hush, hush don\'t tell me tell me \'cause it hurts
         $song->user_id = 1;
         $song->artist_id = 1;
         $song->save();
+        $song->comments()->attach(1);
+
     }
 }

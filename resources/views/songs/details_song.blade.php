@@ -65,7 +65,11 @@
                     </div>
                 </div>
             </form>
-            <h6 class="col-md-6">{{__('label.Upload by')}}: <span class="text-danger">{{$detail_song->user->name}}</span></h6>
+            <h6 class="col-md-4">{{__('label.Upload by')}}: <span class="text-danger">{{$detail_song->user->name}}</span></h6>
+            <button class="col-md-1 text-left p-0 btn-info mt-1">
+                <span class="glyphicon glyphicon-thumbs-up text-right pl-3"> Likes</span>
+            </button>
+            <p class="col-md-1 pt-2">11111</p>
             <form class="col-md-12">
                 <span class="glyphicon glyphicon-pushpin btn btn-default" onclick="openAlbum()"> {{__('label.Add')}}</span>
                 <div style="display:none;" id="myAlbum">
@@ -109,6 +113,32 @@
             @else
                 <h5 class="col-md-8 text-center">{{$detail_song->description}}</h5>
             @endif
+        </div>
+        <div class="row">
+            <form class="col-md-12 well" method="post" action="{{route('song.comment.store',['id'=>$detail_song->id])}}">
+                <h2 class="col-md-2 text-center">Comment</h2>
+                {{csrf_field()}}
+                <div class="col-md-12 pr-0">
+                    <textarea class="form-control col-md-12" rows="2" id="content" name="content" ></textarea>
+                </div>
+                <input type="submit" value="Send" class="btn btn-success col-md-1 pull-right mt-2"></input>
+            </form>
+            <div class="col-md-12 well">
+                @foreach($comments as $comment)
+                    <div class="col-md-12">
+                        <p class="col-md-12 text-danger pl-0">{{$comment->user->name}}</p>
+                    </div>
+                    <div class="col-md-12">
+                        <p class="col-md-7 pl-0">{{$comment->content}}</p>
+                        <p class="col-md-4 text-right">{{$comment->created_at}}</p>
+                        @can('editor')
+                        <a href = "{{route('song.comment.delete',['song_id'=>$detail_song->id, 'comment_id'=>$comment->id])}}" class="col-md-1 text-right">
+                            <span class="glyphicon glyphicon-remove text-danger"></span>
+                        </a>
+                        @endcan
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
 @endsection
