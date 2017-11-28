@@ -33,7 +33,6 @@ Route::middleware(["auth","localization"])->group(function () {
         Route::get('/{id}/edit' , 'SongController@edit')->name('song.showEdit_song');
         Route::post('/{id}/edit' , 'SongController@update')->name('song.edit_song');
         Route::get('/search' , 'SongController@search')->name('song.search');
-        Route::get('/search' , 'SongController@search')->name('song.search');
         Route::post('/{id}/remove' , 'SongController@remove')->name('song.remove');
         Route::post('/{id}/album/{album_id}' , 'SongController@addSong')->name('album_song.add');
 
@@ -63,13 +62,28 @@ Route::middleware(["auth","localization"])->group(function () {
 
         Route::get('/','ArtistController@index')->name('artist.list');
         Route::get('/{id}/detail','ArtistController@IndexDetail')->name('artist.detail');
-        Route::get('/{id}/detail/songs','ArtistController@IndexArtitsSong')->name('artist.detail_artist_song');
+        Route::get('/{id}/detail/songs','ArtistController@IndexSongsArtist')->name('artist.detail_artist_song');
         Route::get('/{id}/detail/songs/play','ArtistController@PlaySongsArtist')->name('artist.songs.play');
+
+
+
+        Route::get('/create', 'ArtistController@create')->name('artist.create');
+        Route::post('/create', 'ArtistController@store')->name('artist.store');
+        Route::get('/{id}/edit' , 'ArtistController@indexEditArtist')->name('artist.showEdit');
+        Route::post('/{id}/edit' , 'ArtistController@update')->name('artist.edit');
+        Route::post('/{id}/delete', 'ArtistController@delete')->name('artist.delete');
 
     });
 
+    Route::prefix('manager')->group(function (){
 
+        Route::get('/','MenuController@index')->name('menu');
+        Route::get('/create/menu','MenuController@create')->name('menu.create');
+        Route::post('/create/menu','MenuController@store')->name('menu.store');
+        Route::get('/edit/menu/{id}','MenuController@edit')->name('menu.edit');
+        Route::post('/edit/menu/{id}','MenuController@update')->name('menu.update');
+        Route::post('/delete/menu/{id}','MenuController@delete')->name('menu.delete');
 
-
+    });
 
 });

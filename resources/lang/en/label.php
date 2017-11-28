@@ -41,7 +41,7 @@ return [
     'Search results for'=>'Search results for',
     'Found'=>'Found',
     'keyword results'=>'keyword results',
-    'No Data'=>'No Data',
+    'No Artist'=>'No Artist',
     'Audio'=>'Audio',
     'Do you want to upload more song'=>'Do you want to upload more song',
     'Upload'=>'Upload',
@@ -65,15 +65,22 @@ return [
     'Find your favorite song'       =>  'Find your favorite song',
     'Go to Album'                   =>  'Go to Album',
     'have successfully added the song'=>'have successfully added the song',
+    'Dob'=>'Birthday',
+    'Stage_name'=>'Stage name',
     'Artists'                         =>'Artists',
     'Artist'                         => 'Artist',
+    'Playlist'                         =>'Playlist',
+    'Songs'                           =>'Songs',
+    'Choose Artist'                   =>'Choose Artist',
+    'See all'                         =>'See all',
+    'Hidden'                         =>'Hidden',
     'Song of'                         =>'Song of',
-
-
-
-
-
-
-
+    'Edit Artist'                     =>'Edit Artist',
+    'Birthday'                        =>'Birthday',
+    'Stage name'                      =>'Stage name',
+    'Create Artist'                  =>'Create Artist',
+    'Personal page'                 =>'Personal page',
+     'Admin page'                   =>'Trang admin',
+    'Create by'                     =>'Create by',
 
 ];
