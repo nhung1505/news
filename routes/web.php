@@ -45,6 +45,7 @@ Route::middleware(["auth","localization"])->group(function () {
         Route::get('/{id}/detail','AlbumController@detailAlbum')->name('album.detail_album');
         Route::post('/{id}/create/comment','AlbumController@storeCommentAlbum')->name('album.comment.store');
         Route::get('/{id}/delete/comment/{comment_id}','AlbumController@deleteComment')->name('album.comment.delete');
+
         Route::get('/add_one_song','AlbumController@addOneSong')->name('album.add_one_song');
         Route::get('/{id}/edit' , 'AlbumController@edit')->name('album.showEdit');
         Route::post('/{id}/edit' , 'AlbumController@update')->name('album.edit');

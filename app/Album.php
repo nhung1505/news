@@ -18,8 +18,4 @@ class Album extends Model
         return $this->belongsToMany('App\Commentalbum','commentalbum_album');
     }
 
-    public function likealbums(){
-        return $this->belongsToMany('App\Likealbum','likealbum_album');
-    }
-
 }

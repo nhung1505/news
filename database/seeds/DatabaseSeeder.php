@@ -9,7 +9,6 @@ use App\Menu;
 use App\Comment;
 use App\Commentalbum;
 use App\Role;
-use App\Likealbum;
 
 
 class DatabaseSeeder extends Seeder
@@ -26,7 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CommentsTableSeeder::class);
         $this->call(SongsTableSeeder::class);
         $this->call(CommentalbumsTableSeeder::class);
-        $this->call(LikealbumsTableSeeder::class);
         $this->call(AlbumsTableSeeder::class);
         $this->call(MenusTableSeeder::class);
         $this->call(RolesTableSeeder::class);

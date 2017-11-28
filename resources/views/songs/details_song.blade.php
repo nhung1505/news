@@ -126,7 +126,11 @@
             <div class="col-md-12 well">
                 @foreach($comments as $comment)
                     <div class="col-md-12">
-                        <p class="col-md-12 text-danger pl-0">{{$comment->user->name}}</p>
+                        @if($comment->user->name === null)
+                            <p class="col-md-12 text-danger pl-0">no name</p>
+                        @else
+                            <p class="col-md-12 text-danger pl-0">{{$comment->user->name}}</p>
+                        @endif
                     </div>
                     <div class="col-md-12">
                         <p class="col-md-7 pl-0">{{$comment->content}}</p>

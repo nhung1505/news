@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Likealbum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -52,7 +53,7 @@ class AlbumController extends Controller
 
     public function detailAlbum($id)
     {
-        $detail_album = Album::with('user', 'songs')->find($id);
+        $detail_album = Album::with('user', 'songs','commentalbums')->find($id);
         if ($detail_album) {
             $commentAlbums = $detail_album->commentalbums()->orderBy('id','desc')->paginate(10);
             return view('albums.detail_album', compact('detail_album','commentAlbums'));
@@ -194,4 +195,5 @@ class AlbumController extends Controller
             return redirect()->back();
         }
     }
+
 }

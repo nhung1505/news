@@ -125,10 +125,12 @@
                         </a>
                     </div>
                     @endcan
-                    <button class="col-md-1 text-left p-0 mb-3 btn-info">
+                    <a href="" class="btn btn-info" role="button">
                         <span class="glyphicon glyphicon-thumbs-up text-right pl-3 pt-0"> Likes</span>
-                    </button>
-                    <p class="col-md-1 pt-2">11111</p>
+                    </a>
+
+                    <p class=" pl-2 pt-1">{{$detail_album->likes}}</p>
+
                 </div>
             </div>
         </div>
@@ -153,7 +155,11 @@
             <div class="col-md-12 well">
                 @foreach($commentAlbums as $comment)
                     <div class="col-md-12">
+                        @if($comment->user->name === null)
+                        <p class="col-md-12 text-danger pl-0">no name</p>
+                        @else
                         <p class="col-md-12 text-danger pl-0">{{$comment->user->name}}</p>
+                        @endif
                     </div>
                     <div class="col-md-12">
                         <p class="col-md-7 pl-0">{{$comment->content}}</p>

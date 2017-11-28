@@ -126,13 +126,33 @@ class MenuController extends Controller
 
 
     public function deleteUser(Request $request){
-        $user = User::find($request->id);
+        $user = User::with('songs','albums','artists','comments','commentalbums')->find($request->id);
         if ($user){
-            $song = Song::where('user_id','=',$request->id)->update(['user_id'=>null]);
-            $album = Album::where('user_id','=',$request->id)->update(['user_id'=>null]);
-            $artist = Artist::where('user_id','=',$request->id)->update(['user_id'=>null]);
-            $comment = Comment::where('user_id','=',$request->id)->update(['user_id'=>null]);
-            $commentalbum = Commentalbum::where('user_id','=',$request->id)->update(['user_id'=>null]);
+            if(count($user->songs)>0){
+                foreach ($user->songs() as $song){
+                    $song = Song::where('user_id','=',$request->id)->update(['user_id'=>null]);
+                }
+            }
+            if(count($user->albums)>0){
+                foreach ($user->albums() as $album){
+                    $album = Album::where('user_id','=',$request->id)->update(['user_id'=>null]);
+                }
+            }
+            if(count($user->artists)>0){
+                foreach ($user->artists() as $artist){
+                    $artist = Artist::where('user_id','=',$request->id)->update(['user_id'=>null]);
+                }
+            }
+            if(count($user->comments)>0){
+                foreach ($user->comments() as $comment){
+                    $comment = Comment::where('user_id','=',$request->id)->update(['user_id'=>null]);
+                }
+            }
+            if(count($user->commentalbums)>0){
+                foreach ($user->commentalbums() as $commentalbum){
+                    $commentalbum = Commentalbum::where('user_id','=',$request->id)->update(['user_id'=>null]);
+                }
+            }
             $user->delete();
             return redirect()->route('menu');
         } else {
