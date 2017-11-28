@@ -196,4 +196,10 @@ class AlbumController extends Controller
         }
     }
 
+//    public function like($id){
+//        $album = Album::find($id);
+//        $album = Album::where('id',$album->id)->update(['likes'=>$album->likes + 1]);
+//
+//        return redirect()->route('album.detail_album',$id);
+//    }
 }

@@ -30,3 +30,15 @@ function back_lyricsong() {
     $("#lyric-song").show();
     $("#lyric-song-full").hide();
 }
+
+$("#unlike").hide();
+
+function like() {
+    $("#like").hide();
+    $("#unlike").show();
+}
+
+function unlike() {
+    $("#like").show();
+    $("#unlike").hide();
+}

@@ -125,12 +125,8 @@
                         </a>
                     </div>
                     @endcan
-                    <a href="" class="btn btn-info" role="button">
-                        <span class="glyphicon glyphicon-thumbs-up text-right pl-3 pt-0"> Likes</span>
-                    </a>
-
-                    <p class=" pl-2 pt-1">{{$detail_album->likes}}</p>
-
+                    <input type="submit" id='like' class="btn btn-info" onclick="like()" value="Like">
+                    <input type="submit" id="unlike" class="btn btn-info" onclick="unlike()" value="Unlike">
                 </div>
             </div>
         </div>
