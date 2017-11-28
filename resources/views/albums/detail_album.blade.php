@@ -6,12 +6,13 @@
     <div>
         <div class="container alert">
             <div class="row well">
-                <div class="col-md-4">
-                    <img src="{{asset('storage/'.$detail_album->image)}}" width="100%">
+                <div class="col-md-4 song-cover-img-detail-album img-rounded">
+                    <img src="{{asset('storage/'.$detail_album->image)}}">
                 </div>
                 <div class="col-md-6">
                     <h3>{{__('label.Album')}}: {{$detail_album->name}}</h3>
-                    <div class="well text-center">
+                    <p class="col-md-12">{{__('label.Create by')}}:</p>
+                    <div class="well text-center mt-5">
                         @if($detail_album->description !=null)
                             <h5>{{$detail_album->description}}</h5>
                         @else
@@ -19,6 +20,7 @@
                         @endif
                     </div>
                 </div>
+                @can('crud', $detail_album)
                 <div class="col-md-2 dropdown text-center">
                     <button class="btn btn-default dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown"></button>
                     <ul class="dropdown-menu dropdown-action-detail-album text-center">
@@ -27,6 +29,8 @@
                                 <span class="glyphicon glyphicon-edit text-info"></span>
                             </a>
                         </li>
+                        @endcan
+                        @can('crud', $detail_album)
                         <li>
                             <a data-toggle="modal" data-target="#confirmDelete-{{$detail_album->id}}">
                                 <span class="glyphicon glyphicon-remove text-danger"></span>
@@ -34,6 +38,7 @@
                         </li>
                     </ul>
                 </div>
+                @endcan
             </div>
         </div>
         <form action="{{route('album.delete',$detail_album->id)}}" method="post">
@@ -75,9 +80,11 @@
                             <td>{{$song->name}}</td>
                             <td>
                                 <sub>
+                                    @can('crud', $detail_album)
                                     <a data-toggle="modal" data-target="#confirmDelete-{{$song->id, $detail_album->id}}">
                                         <span class="glyphicon glyphicon-remove text-danger btn pull-right" ></span>
                                     </a>
+                                    @endcan
                                     <form action="{{route('album.remove',[$detail_album->id,'song'=>$song->id])}}" method="post">
                                         {{ csrf_field() }}
                                         <div class="modal fade" id="confirmDelete-{{$song->id, $detail_album->id}}" role="dialog">
@@ -106,18 +113,21 @@
                     </table>
                 </div>
                 <div class="row">
+                    @can('crud',$detail_album)
                     <div class="col-md-2">
                         <a href="{{route('album.search_add', $detail_album->id)}}" class=" btn btn-success" role="button">{{__('label.Add Song')}}</a>
                     </div>
+                    @endcan
+                    @can('crud',$detail_album)
                     <div class="col-md-2">
                         <a href="{{route('song.upload',['id'=>$detail_album->id])}}"  class="btn btn-default">
                             <span class="glyphicon glyphicon-plus"></span> {{__('label.Upload Song')}}
                         </a>
                     </div>
+                    @endcan
                 </div>
             </div>
         </div>
-        <div class="container well">
         <div class="container well">
             <h3 class="col-md-2 text-center">{{__('label.Lyric')}}</h3>
             <h5 class=" col-md-8 text-center">{{__('label.The lyric does not exist')}}. {{__('label.Do you want to create')}} <a href="{{route('album.edit',$detail_album->id)}}">{{__('label.new lyric')}}</a> ?</h5>

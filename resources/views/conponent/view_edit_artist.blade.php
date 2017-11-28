@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-    Edit Song
+    {{__('label.Edit Artist')}}
 @endsection
 
 @section('content')
     <div class="container well">
+        <h2>{{__('label.Edit Artist')}}</h2>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -20,37 +21,32 @@
             <div class="form-group">
                 <label class="control-label col-sm-2 text-left">{{__('label.Name')}}<span style="color:red;"> *</span></label>
                 <div class="col-sm-10">
-                    <label class="sr-only">Name</label>
-                    <input  type='text' class="form-control" name = 'name' value="{{$song->name}}">
+                    <input  type='text' class="form-control" name = 'name' value="{{$artist->name}}">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2 text-left">{{__('label.Image')}}<span style="color:white;"> *</span></label>
-                <div class=" col-sm-8">
-                    <div class="edit-width pb-3"><img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$song->image)}}"/></div>
+                <label class="control-label col-sm-2 text-left">{{__('label.Image')}}</label>
+                <div class="col-sm-10">
+                    <div class="edit-width pb-3"><img class="img-rounded song-cover-img-large"  src="{{asset('storage/'.$artist->image)}}"/></div>
                     <input type="file" name="image" value="{{old('image')}}">
                 </div>
             </div>
-            <div class="form-group {{ ($errors->has('artist')) ? 'has-error' : '' }}"">
-                <label class="control-label col-sm-2 text-left">{{__('label.Artist')}}</label>
+            <div class="form-group">
+                <label class="control-label col-sm-2 text-left">{{__('label.Birthday')}}<span style="color:red;"> *</span></label>
                 <div class="col-sm-10">
-                    @if(isset($song->artist->name))
-                    <textarea class="form-control" rows="1" name="artist" >{{$song->artist->name}}</textarea>
-                    @else
-                        <textarea class="form-control" rows="1" name="artist" ></textarea>
-                    @endif
+                    <input  type='text' class="form-control" name = 'dob' value="{{$artist->dob}}">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2 text-left" >{{__('label.Lyric')}} <span style="color:white;"> *</span> </label>
+                <label class="control-label col-sm-2 text-left">{{__('label.Stage name')}}<span style="color:red;"> *</span></label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" rows="3" name="lyric" >{{$song->lyric}}</textarea>
+                    <input  type='text' class="form-control" name = 'stage_name' value="{{$artist->stage_name}}">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2 text-left">{{__('label.Description')}} <span style="color:white;"> *</span></label>
+                <label class="control-label col-sm-2 text-left">{{__('label.Description')}}</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" rows="3" name="description">{{$song->description}}</textarea>
+                    <textarea class="form-control" rows="3" name="description">{{$artist->description}}</textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -60,5 +56,6 @@
                 </div>
             </div>
         </form>
+        <h5 class="text-danger">{{__('label.Note')}}: * {{__('label.not be empty')}}</h5>
     </div>
 @endsection

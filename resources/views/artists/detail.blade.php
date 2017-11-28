@@ -21,24 +21,26 @@
                 <li class="active"><a href="">{{__('label.Description')}}</a></li>
                 <li><a href="{{route('artist.detail_artist_song',['detail_artist'=>$artist->id])}}">{{__('label.Song')}}</a></li>
             </ul>
+            @can('crud',$artist)
             <div class="col-md-6 dropdown text-right">
                 <button class="btn btn-default dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown"></button>
                 <ul class="dropdown-menu dropdown-action-detail-album text-center pull-right">
                     <li>
-                        <a href="" >
+                        <a href="{{route('artist.showEdit', ['id' =>$artist->id])}}">
                             <span class="glyphicon glyphicon-edit text-info"></span>
                         </a>
                     </li>
                     <li>
-                        <a data-toggle="modal" data-target="#confirmDelete-">
+                        <a data-toggle="modal" data-target="#confirmDelete-{{$artist->id}}">
                             <span class="glyphicon glyphicon-remove text-danger"></span>
                         </a>
                     </li>
                 </ul>
             </div>
-            <form action="" method="post">
+            @endcan
+            <form action="{{route('artist.delete',$artist->id)}}" method="post">
                 {{ csrf_field() }}
-                <div class="modal fade" id="confirmDelete-" role="dialog">
+                <div class="modal fade" id="confirmDelete-{{$artist->id}}" role="dialog">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -58,9 +60,13 @@
             <div class="col-md-12 well">
                 <h3 class="col-md-2 text-center">{{__('label.Description')}}</h3>
                 <div class=" col-md-10">
-                    <h5 class="'text-left">
+                    @if(!isset($artist->description))
+                        <h5 class="text-center">No description. Do you want create <a href="">new description</a></h5>
+                    @else
+                    <h5 class="text-left">
                         {{$artist->description}}
                     </h5>
+                    @endif
                 </div>
             </div>
         </div>

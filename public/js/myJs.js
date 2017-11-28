@@ -20,3 +20,13 @@ function myFunction() {
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
+
+
+function seeAlllyric() {
+    $("#lyric-song").hide();
+    $("#lyric-song-full").show();
+}
+function back_lyricsong() {
+    $("#lyric-song").show();
+    $("#lyric-song-full").hide();
+}

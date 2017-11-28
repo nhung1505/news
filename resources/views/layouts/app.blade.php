@@ -26,8 +26,8 @@
                 <nav class="navbar navbar-static-top bg-faded pb-0 mb-0">
                     <div class="container">
                         <div class="collapse navbar-collapse pt-2 " id="app-navbar-collapse">
-                            <ul class="nav navbar-left col-md-2 pt-3 mr-5">
-                                <a href="{{route('song.list')}}"><img class="logo" src="{{asset('storage/amusic.png')}}"/></a>
+                            <ul class="nav navbar-left col-md-2">
+                                <a href="{{route('song.list')}}"><img class="logo"  src="{{asset('storage/AMusic.png')}}"/></a>
                             </ul>
                             <!-- Left Side Of Navbar -->
                             <ul class="nav navbar-nav col-md-8 pt-3">
@@ -69,6 +69,11 @@
 
                                             <ul class="dropdown-menu">
                                                 <li>
+                                                    @if(Auth::user()->id == 1)
+                                                    <a href="{{route('menu')}}" class='text-center'>{{__('label.Admin page')}}</a>
+                                                    @else
+                                                    <a href="{{route('menu')}}" class="text-center">{{__('label.Personal page')}}</a>
+                                                    @endif
                                                     <a class="text-center" href="{{ route('logout') }}"
                                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -95,11 +100,15 @@
                                     aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
-                            <a class="navbar-brand" href="{{route('song.list')}}">{{__('label.Song')}}</a>
-                            <a class="navbar-brand" href="{{route('album.list')}}">{{__('label.Album')}}</a>
-                            <a class="navbar-brand" href="{{route('artist.list')}}">{{__('label.Artists')}}</a>
+                            @if(session()->get('menu'))
+                            @foreach(session()->get('menu') as $menu)
+                            <a class="navbar-brand" href="{{$menu->link}}">{{$menu->name}}</a>
+                            @endforeach
+                            @endif
                         </div>
+                            @can('upload')
                             <a href="{{ route('song.create') }}" class="btn btn-success" role="button">{{__('label.Upload Song')}}</a>
+                            @endcan
                     </div>
                 </nav>
             </div>
