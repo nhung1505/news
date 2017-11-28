@@ -12,3 +12,5 @@ yarn-error.log
 .env
 lempdock/
 logs
+storage/
+

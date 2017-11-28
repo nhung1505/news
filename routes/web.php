@@ -14,6 +14,9 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/user',function (){
+    return view('layouts.user');
+});
 
 
 
@@ -64,11 +67,15 @@ Route::middleware(["auth","localization"])->group(function () {
         Route::get('/{id}/detail','ArtistController@IndexDetail')->name('artist.detail');
         Route::get('/{id}/detail/songs','ArtistController@IndexSongsArtist')->name('artist.detail_artist_song');
         Route::get('/{id}/detail/songs/play','ArtistController@PlaySongsArtist')->name('artist.songs.play');
+
+
+
         Route::get('/create', 'ArtistController@create')->name('artist.create');
         Route::post('/create', 'ArtistController@store')->name('artist.store');
         Route::get('/{id}/edit' , 'ArtistController@indexEditArtist')->name('artist.showEdit');
         Route::post('/{id}/edit' , 'ArtistController@update')->name('artist.edit');
         Route::post('/{id}/delete', 'ArtistController@delete')->name('artist.delete');
+
     });
 
     Route::prefix('manager')->group(function (){
