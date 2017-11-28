@@ -32,7 +32,7 @@ class HomeController extends Controller
     {
         $songs = Song::orderBy('id', 'desc')->paginate(8);
         $albums = Album::orderBy('id', 'desc')->paginate(8);
-        $artists = Artist::orderBy('id','desc');
+        $artists = Artist::orderBy('id','desc')->paginate(10);
         return view('home', compact('songs', 'albums', 'artists'));
     }
 }

@@ -5,7 +5,6 @@
   border: none;
   outline: none;
 }
-
 div.audio-player {
   position: relative;
   width: 100% !important;
@@ -100,8 +99,10 @@ div.audio-player {
 .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-handle {
   position: absolute;
   display: block;
+  width: 12px  !important;
+  height: 14px  !important;
   top: -2px;
-  background: url('../../storage/images/1.png') no-repeat 0px 0px;
+  background: url('../../storage/images/dot1.png') no-repeat 0px 0px;
 }
 /* time progress tooltip */
 .mejs-controls .mejs-time-rail .mejs-time-float {
