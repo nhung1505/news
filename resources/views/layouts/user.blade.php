@@ -66,13 +66,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <p>Download and Avail Special Songs Videos and Audios.</p>
                                 <div class="app-devices">
                                     <h5>Gets the app from</h5>
-                                    <a href="#"><img src="/storage/images/1.png" alt=""></a>
-                                    <a href="#"><img src="/storage/images/2.png" alt=""></a>
+                                    <a href="#"><img src="/images/1.png" alt=""></a>
+                                    <a href="#"><img src="/images/2.png" alt=""></a>
                                     <div class="clearfix"> </div>
                                 </div>
                             </div>
                             <div class="col-md-7 app-image">
-                                <img src="/storage/images/apps.png" alt="">
+                                <img src="/images/apps.png" alt="">
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -147,9 +147,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="audio-player">
                             <audio id="audio-player"  controls="controls">
                                 <source src="storage/media/Blue Browne.ogg" type="audio/ogg"></source>
-                                <source src="/storage/media/Blue Browne.mp3" type="audio/mpeg"></source>
-                                <source src="/storage/media/Georgia.ogg" type="audio/ogg"></source>
-                                <source src="/storage/media/Georgia.mp3" type="audio/mpeg"></source></audio>
+                                <source src="/media/Blue Browne.mp3" type="audio/mpeg"></source>
+                                <source src="/media/Georgia.ogg" type="audio/ogg"></source>
+                                <source src="/media/Georgia.mp3" type="audio/mpeg"></source></audio>
                         </div>
                         <!---->
                         <script type="text/javascript">
@@ -172,8 +172,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         <!--//-->
                         <ul class="next-top">
-                            <li><a class="ar" href="#"> <img src="../storage/images/arrow.png" alt=""/></a></li>
-                            <li><a class="ar2" href="#"><img src="../storage/images/arrow2.png" alt=""/></a></li>
+                            <li><a class="ar" href="#"> <img src="../images/arrow.png" alt=""/></a></li>
+                            <li><a class="ar2" href="#"><img src="../images/arrow2.png" alt=""/></a></li>
 
                         </ul>
                     </div>
