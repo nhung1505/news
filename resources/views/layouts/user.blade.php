@@ -9,8 +9,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <link href="{{asset('css/css/bootstrap.css')}}" rel='stylesheet' type='text/css' />
     <link href="{{asset('css/css/style.css')}}" rel='stylesheet' type='text/css' />
+    <link href="{{asset('css/css/jplayer.blue.monday.min.css')}}" rel='stylesheet' type='text/css' />
     <link href="{{asset('css/css/font-awesome.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/css/icon-font.css')}}" type='text/css' />
+    <link href="{{asset('css/css/popuo-box.css')}}" rel="stylesheet" type="text/css" media="all">
     <script src="{{asset('js/js/jquery-2.1.4.js')}}"></script>
 </head>
 <body class="sticky-header left-side-collapsed"  onload="initMap()">
@@ -135,7 +137,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <!-- search-scripts -->
                     <script src="{{asset('js/js/classie.js')}}"></script>
-                    <script src="{{asset('js/uisearch.js')}}"></script>
+                    <script src="{{asset('js/js/uisearch.js')}}"></script>
                     <script>
                         new UISearch( document.getElementById( 'sb-search' ) );
                     </script>
@@ -144,10 +146,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="col-md-4 player">
                         <div class="audio-player">
                             <audio id="audio-player"  controls="controls">
-                                <source src="media/Blue Browne.ogg" type="audio/ogg"></source>
-                                <source src="media/Blue Browne.mp3" type="audio/mpeg"></source>
-                                <source src="media/Georgia.ogg" type="audio/ogg"></source>
-                                <source src="media/Georgia.mp3" type="audio/mpeg"></source></audio>
+                                <source src="storage/media/Blue Browne.ogg" type="audio/ogg"></source>
+                                <source src="/storage/media/Blue Browne.mp3" type="audio/mpeg"></source>
+                                <source src="/storage/media/Georgia.ogg" type="audio/ogg"></source>
+                                <source src="/storage/media/Georgia.mp3" type="audio/mpeg"></source></audio>
                         </div>
                         <!---->
                         <script type="text/javascript">
@@ -171,7 +173,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <!--//-->
                         <ul class="next-top">
                             <li><a class="ar" href="#"> <img src="../storage/images/arrow.png" alt=""/></a></li>
-                            <li><a class="ar2" href="#"><img src="images/arrow2.png" alt=""/></a></li>
+                            <li><a class="ar2" href="#"><img src="../storage/images/arrow2.png" alt=""/></a></li>
 
                         </ul>
                     </div>
@@ -266,9 +268,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 
 </section>
-
-<script src="{{asset('js/js/jquery.nicescroll.js')}}"></script>
-<script src="{{asset('js/js/scripts.js')}}"></script>
+<script src="{{asset('js/js/responsiveslides.min.js')}}"></script>
+<script src="{{asset('js/js/jquery.magnific-popup.js')}}"></script>
 <script src="{{asset('js/js/bootstrap.js')}}"></script>
+<script src="{{asset('js/js/jplayer.playlist.js')}}"></script>
+<script src="{{asset('js/js/jquery.jplayer.js')}}"></script>
+<script src="{{asset('js/js/classie.js')}}"></script>
+<script src="{{asset('js/js/easyResponsiveTabs.js')}}"></script>
+<script src="{{asset('js/js/jquery.nicescroll.js')}}"></script>
+<script src="{{asset('js/scripts.js')}}"></script>
+<script src="{{asset('js/js/jquery.flexisel.js')}}"></script>
+<script src="{{asset('js/js/mediaelement-and-player.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery.jplayer.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jplayer.playlist.min.js')}}"></script>
+
+
+
 </body>
 </html>

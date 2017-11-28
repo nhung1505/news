@@ -79,7 +79,7 @@
                     @foreach($songs as $song)
                 {
                 title:"{{$song->name}}",
-                artist:"The Stark Palace",
+                artist:"",
                 mp3:"{{asset('storage/'.$song->audio)}}",
                 oga:"{{asset('storage/'.$song->audio)}}",
                 poster: "{{asset('storage/'.$song->image)}}"
