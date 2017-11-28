@@ -126,7 +126,7 @@ div.audio-player {
   text-align: center;
   z-index: 9999;
 }
-
+ 
 /* volume scrubber bar */
 .mejs-controls div.mejs-horizontal-volume-slider {
 	position: absolute;
