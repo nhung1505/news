@@ -55,8 +55,9 @@ class AlbumController extends Controller
     {
         $detail_album = Album::with('user', 'songs','commentalbums')->find($id);
         if ($detail_album) {
-            $commentAlbums = $detail_album->commentalbums()->orderBy('id','desc')->paginate(10);
-            return view('albums.detail_album', compact('detail_album','commentAlbums'));
+            $commentAlbums = $detail_album->commentalbums()->orderBy('id','desc')->paginate(5);
+            $AllcommentAlbums = $detail_album->commentalbums()->orderBy('id','desc')->get();
+            return view('albums.detail_album', compact('detail_album','commentAlbums','AllcommentAlbums'));
 
         } else {
 
@@ -196,10 +197,10 @@ class AlbumController extends Controller
         }
     }
 
-//    public function like($id){
-//        $album = Album::find($id);
-//        $album = Album::where('id',$album->id)->update(['likes'=>$album->likes + 1]);
-//
-//        return redirect()->route('album.detail_album',$id);
-//    }
+    public function like($id){
+        $album = Album::find($id);
+        $album = Album::where('id',$album->id)->update(['likes'=>$album->likes + 1]);
+
+        return redirect()->route('album.detail_album',$id);
+    }
 }

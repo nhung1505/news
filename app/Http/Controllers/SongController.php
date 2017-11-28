@@ -75,6 +75,7 @@ class SongController extends Controller
         $detail_song = Song::with('user')->find($id);
         if ($detail_song){
             $comments = $detail_song->comments()->orderBy('id','desc')->paginate(10);
+            $Allcomment = $detail_song->comments()->orderBy('id','desc')->get();
             $lyric = str_limit($detail_song->lyric,100);
         } else {
             abort('404');
@@ -82,7 +83,7 @@ class SongController extends Controller
         $albums = Album::with('user')->get();
         $artists = Artist::all();
         if ($detail_song){
-            return view('songs.details_song', compact('detail_song','albums', 'artists','lyric','comments'));
+            return view('songs.details_song', compact('detail_song','albums', 'artists','lyric','comments','Allcomment'));
         } else {
             abort('404');
         }

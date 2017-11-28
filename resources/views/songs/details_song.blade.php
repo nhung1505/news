@@ -123,7 +123,7 @@
                 </div>
                 <input type="submit" value="Send" class="btn btn-success col-md-1 pull-right mt-2"></input>
             </form>
-            <div class="col-md-12 well">
+            <div class="col-md-12 well" id="itemComment">
                 @foreach($comments as $comment)
                     <div class="col-md-12">
                         @if($comment->user->name === null)
@@ -142,6 +142,28 @@
                         @endcan
                     </div>
                 @endforeach
+                <span onclick="AllComment()" class="col-md-12 text-center btn text-info">All Comment</span>
+            </div>
+            <div class="col-md-12 well" id="AllComment">
+                @foreach($Allcomment as $comment)
+                    <div class="col-md-12">
+                        @if($comment->user->name === null)
+                            <p class="col-md-12 text-danger pl-0">no name</p>
+                        @else
+                            <p class="col-md-12 text-danger pl-0">{{$comment->user->name}}</p>
+                        @endif
+                    </div>
+                    <div class="col-md-12">
+                        <p class="col-md-7 pl-0">{{$comment->content}}</p>
+                        <p class="col-md-4 text-right">{{$comment->created_at}}</p>
+                        @can('editor')
+                            <a href = "{{route('song.comment.delete',['album_id'=>$detail_song->id, 'comment_id'=>$comment->id])}}" class="col-md-1 text-right">
+                                <span class="glyphicon glyphicon-remove text-danger"></span>
+                            </a>
+                        @endcan
+                    </div>
+                @endforeach
+                <span onclick="itemComment()" class="col-md-12 text-center btn text-info">Hiden</span>
             </div>
         </div>
     </div>

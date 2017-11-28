@@ -42,3 +42,14 @@ function unlike() {
     $("#like").show();
     $("#unlike").hide();
 }
+
+$("#AllComment").hide();
+function AllComment() {
+    $("#itemComment").hide();
+    $("#AllComment").show();
+}
+
+function itemComment() {
+    $("#itemComment").show();
+    $("#AllComment").hide();
+}
