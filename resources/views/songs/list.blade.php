@@ -25,6 +25,29 @@
                         <a href="{{route('song.details_song', $song->id)}}">
                             <img src="{{asset('storage/'.$song->image)}}"/>
                         </a>
+                    </td>
+                    <td class="col-md-1">
+                        <a data-toggle="modal" data-target="#confirmDelete-{{$song->id}}" >
+                            <span class="glyphicon glyphicon-remove text-danger" ></span>
+                        </a>
+                    </td>
+                </tr>
+                <form action="{{route('song.delete',$song->id)}}" method="post">
+                    {{ csrf_field() }}
+                    <div class="modal fade" id="confirmDelete-{{$song->id}}" role="dialog">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title text-danger text-center">{{__('label.Confim Delete')}}</h4>
+                                </div>
+                                <div class="modal-body text-danger text-center">
+                                    <p>{{__('label.Are you sure ?')}}</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-danger col-md-6" >{{__('label.Yes')}}</button>
+                                    <button type="button" class="btn btn-default col-md-6" data-dismiss="modal">{{__('label.No')}}</button>
+                                </div>
+
                     </div>
                 </div>
                 <div class="col-md-6 text-left">
@@ -69,6 +92,7 @@
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-danger col-md-6" >{{__('label.Yes')}}</button>
                                 <button type="button" class="btn btn-default col-md-6" data-dismiss="modal">{{__('label.No')}}</button>
+
                             </div>
                         </div>
                     </div>
