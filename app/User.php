@@ -28,7 +28,12 @@ class User extends Authenticatable
     ];
 
     public function songs(){
+
         return $this->hasMany('App\Song');
+    }
+
+    public function artists(){
+        return $this->hasMany('App\Artist');
     }
 
     public function albums(){

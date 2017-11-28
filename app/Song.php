@@ -10,6 +10,10 @@ class Song extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function artist(){
+        return $this->belongsTo('App\Artist');
+    }
+
     public function albums(){
         return $this->belongsToMany('App\Album','album_song');
     }

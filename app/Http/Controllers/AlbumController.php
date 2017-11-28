@@ -13,94 +13,160 @@ use App\User;
 class AlbumController extends Controller
 {
 
-    function create(){
-
-
-        return view('albums.create');
-
-    }
-
-    function store(Request $request){
-        $this->validate($request,[
-            'name' => 'required|min:3|max:50',
-            'image' => 'mimes:jpeg,jpg,png,svg'
-
-        ]);
-
-        $album = new Album();
-
-        $album->name = $request->input('name');
-
-        if($request->hasFile('image')){
-            $album->image = $request->file('image')->store('image_albums/' . auth()->id(),'public');
-
+    function create(Request $request)
+    {
+        if (isset($request->id)){
+           $song = Song::find($request->id);
         }
 
-        $album->description = $request->input('description');
-
-        $album->user_id = Auth::id();
-
-        $album->save();
-
-        return redirect()->route('album.list');
+        return view('albums.create',compact('song'));
 
     }
 
+    function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|min:3|max:50',
+            'image' => 'mimes:jpeg,jpg,png,svg'
+        ]);
+        $album = new Album();
+        $album->name = $request->input('name');
+        if ($request->hasFile('image')) {
+            $album->image = $request->file('image')->store('image_albums/' . auth()->id(), 'public');
+        }
+        $album->description = $request->input('description');
+        $album->user_id = Auth::id();
+        $album->save();
+        if (isset($request->id)){
+            $song = Song::find($request->id);
+            return redirect()->route('song.details_song',['id'=>$song->id]);
+        }
+        return redirect()->route('album.list');
+    }
 
-    public function index() {
-        $albums = Album::paginate(8);
+    public function index()
+    {
+        $albums = Album::orderBy('id', 'desc')->paginate(8);
         return view('albums.list', compact('albums'));
     }
 
-
-
-    public function detailAlbum($id){
-
-        $detail_album = Album::with('user','songs')->find($id);
-        if ($detail_album){
+    public function detailAlbum($id)
+    {
+        $detail_album = Album::with('user', 'songs')->find($id);
+        if ($detail_album) {
 
             return view('albums.detail_album', compact('detail_album'));
 
-        }else{
+        } else {
 
             abort('404');
         }
 
     }
-    public function edit($id) {
+
+    public function edit($id)
+    {
         $album = Album::find($id);
-        if ($album){
+        if ($album) {
             return view('albums.edit', compact('album'));;
-        }else{
+        } else {
             abort('404');
         }
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         $album = Album::find($id);
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => 'required|min:3|max:50',
             'image' => 'mimes:jpeg,jpg,png,svg'
         ]);
-
         if ($request->hasFile('image')) {
-            Storage::disk('public')->delete(''.$album->image);
-            $album->image = $request->file('image')->store('image_songs/' . auth()->id(),'public');
+            Storage::disk('public')->delete('' . $album->image);
+            $album->image = $request->file('image')->store('image_songs/' . auth()->id(), 'public');
         }
         $album->name = $request->input('name');
         $album->description = $request->input('description');
         $album->save();
-        Session::flash('announcement','Edit Success!');
+        Session::flash('announcement', 'Edit Success!');
         return redirect()->route('album.detail_album', ['id' => $id]);
     }
 
-    public function addOneSong(Request $request , $id){
-        $album = Album::find($id);
 
+    public function addOneSong(Request $request, $id)
+    {
+        $album = Album::find($id);
         return view();
     }
 
-    public function upload_song_album(Request $request, $id){
+    public function showSong($id ){}
 
+    public function searchAddSong(Request $request,$id ){
+        $album = Album::find($id);
+        $user = User::find(Auth::id());
+        if (isset($request->song_add)){
+            $songAdd = Song::find($request->song_add);
+        }
+        return view('albums.search_add',compact('album','songAdd','user'));
+    }
+
+    public function addSong(Request $request , $id ){
+        $album = Album::find($id);
+        $song_add = Song::find($request->input('song_id'));
+        $album->songs()->attach($request->input('song_id'));
+        return redirect(route('album.search_add',['id'=>$album->id,'song_add'=>$song_add]));
+
+    }
+
+    public function removeSongSearchAdd(Request $request,$id){
+        $album = Album::find($id);
+        $album->songs()->detach($request->input('songAdd_id'));
+        return redirect()->route('album.search_add',['id'=>$album->id]);
+    }
+
+    public function searchSong(Request $request , $id){
+        $songs = Song::
+                where('name' , 'LIKE' , '%'.$request->term.'%')
+                ->whereDoesntHave('albums' , function ($q) use($id){
+                    $q->where('albums.id','<>', $id);
+        })->get();
+        $result = array();
+        foreach ($songs as $song){
+            $result[] = ['id' =>$song->id , 'value' =>$song->name];
+        }
+        return response()->json($result);
+    }
+
+
+    public function delete($id)
+    {
+        $album = Album::find($id);
+        $album->songs()->detach();
+        if ($album) {
+            if (isset($album->image)) {
+                Storage::delete('public/' . $album->image);
+            }
+            $album->delete();
+            Session::flash('announcement', 'Delete Success');
+            return redirect()->route('album.list');
+        } else {
+            abort('404');
+        }
+    }
+
+
+    public function remove($albumId,$songId = null)
+    {
+        $songId = $_GET['song'];
+        $song = Song::find($songId);
+        $detail_album = Album::find($albumId);
+        if ($song) {
+            $detail_album->songs()->detach($songId);
+            Session::flash('announcement', 'Delete Success');
+            return redirect()->route('album.detail_album', ['id' => $albumId]);
+
+        } else {
+            abort('404');
+        }
     }
 }
