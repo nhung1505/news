@@ -25,7 +25,6 @@ class SongController extends Controller
     public function upload(Request $request){
         $this->validate($request,[
             'name' => 'required|min:3|max:50',
-            'artist' => 'required',
             'audio' => 'required|mimes:mpga',
             'image' => 'mimes:jpeg,jpg,png,svg'
         ]);
@@ -72,7 +71,7 @@ class SongController extends Controller
 
     public function detailSong($id){
         $artists = Artist::all();
-        $detail_song = Song::with('user')->where('user_id',Auth::id())->find($id);
+        $detail_song = Song::with('user')->find($id);
         $lyric = str_limit($detail_song->lyric,100);
         $albums = Album::with('user')->get();
         if ($detail_song){
@@ -90,7 +89,6 @@ class SongController extends Controller
             }
             Storage::delete('public/'.$song->audio);
             $song->albums()->detach();
-            $song->artist()->detach();
             $song->delete();
             Session::flash('announcement','Delete Success');
             return redirect()->route('song.list');

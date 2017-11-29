@@ -14,7 +14,7 @@ use App\Artist;
 class ArtistController extends Controller
 {
     public function index(){
-        $artists = Artist::orderBy('id','desc')->paginate(8); ;
+        $artists = Artist::orderBy('id','desc')->paginate(8);
         return view('artists.list' , compact('artists'));
     }
 
@@ -55,7 +55,7 @@ class ArtistController extends Controller
             abort('404');
         }
     }
-
+    
     public function indexEditArtist($id){
         $artist = Artist::find($id);
         if ($artist) {
@@ -84,7 +84,7 @@ class ArtistController extends Controller
         return redirect()->route('artist.detail_artist_song', ['id' => $id]);
     }
 
-    public function IndexArtitsSong($id){
+    public function IndexSongsArtist($id){
         $artist = Artist::with('songs')->find($id);
         $songs = Song::where('artist_id',$id)
             ->paginate(10);
@@ -103,9 +103,9 @@ class ArtistController extends Controller
         $artist = Artist::with('songs')->find($id);
         if ($artist) {
             if (count($artist->songs) > 0){
-                foreach($artist->songs as $key=>$song){
+                foreach($artist->songs as $song){
                     $songId = $song->id;
-                    $song2 = Song::where('id','=',$songId)->update(['artist_id'=>null]);
+                    $song = Song::where('id','=',$songId)->update(['artist_id'=>null]);
                 }
             }
             if (isset($artist->image)) {
