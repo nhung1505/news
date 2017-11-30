@@ -1,11 +1,21 @@
 
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('title')
     {{$detail_song->name}}
 @endsection
+@section('app.css')
+    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+@endsection
 @section('content')
+
     <div class="container">
         @if(session('announcement'))
             <div class="alert alert-success alert-dismissable">
@@ -13,10 +23,10 @@
                 <strong>{{session('announcement')}}!</strong>
             </div>
         @endif
-        <div class="row well">
-            <div class="col-md-6 well mb-0"><div class=" song-cover-img-detail-song"><img class="col-md-12 p-0 mr-5" src="{{asset('storage/'.$detail_song->image)}}">
+        <div class="row mt-5">
+            <div class="col-md-6 mb-0"><div class=" song-cover-img-detail-song"><img class="col-md-12 p-0 mr-5" src="{{asset('storage/'.$detail_song->image)}}">
                 </div>
-                <audio id="myAudio" class="col-md-12 p-0" controls="controls" loop="loop" preload="auto">
+                <audio id="myAudio" class="col-md-11 p-0" controls="controls" loop="loop" preload="auto">
                     <source src="{{asset('storage/'.$detail_song->audio)}}" type="audio/ogg">
                     <source src="{{asset('storage/'.$detail_song->audio)}}" type="audio/mpeg">
                 </audio>
@@ -66,10 +76,15 @@
                 </div>
             </form>
             <h6 class="col-md-4">{{__('label.Upload by')}}: <span class="text-danger">{{$detail_song->user->name}}</span></h6>
-            <button class="col-md-1 text-left p-0 btn-info mt-1">
-                <span class="glyphicon glyphicon-thumbs-up text-right pl-3"> Likes</span>
-            </button>
-            <p class="col-md-1 pt-2">11111</p>
+            @if(Auth::id())
+            <a href="{{route('song.like',['id'=>$detail_song->id])}}" id="like" onclick="like()" class="btn btn-info mt-3 mb-1" role="button">Like</a>
+            <a href="#" id="unlike" onclick="unlike()"class="btn btn-info mt-3 mb-1" role="button">Unlike</a>
+            <p class="col-md-1 mt-4">{{$detail_song->likes}}</p>
+            @else
+            <p class="btn btn-info mt-3 mb-1" role="button">Like</p>
+            <p class="col-md-1 mt-4">{{$detail_song->likes}}</p>
+            @endif
+            @if(Auth::id())
             <form class="col-md-12">
                 <span class="glyphicon glyphicon-pushpin btn btn-default" onclick="openAlbum()"> {{__('label.Add')}}</span>
                 <div style="display:none;" id="myAlbum">
@@ -90,9 +105,10 @@
                     </div>
                 </div>
             </form>
+            @endif
         </div>
-        <div class="row well">
-            <h3 class="col-md-2 text-center">{{__('label.Lyrics')}}</h3>
+        <div class="row mt-5">
+            <h3 class="col-md-2 text-left">{{__('label.Lyrics')}}</h3>
             @if(!isset($detail_song->lyric))
                 <h5 class="col-md-8 text-center">{{__('label.No Lyrics are available. Do you want to create')}}
                     <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> {{__('label.new lyric')}} </a>?
@@ -106,24 +122,26 @@
                 </pre>
             @endif
         </div>
-        <div class="row well">
-            <h3 class="col-md-2 text-center">{{__('label.Description')}}</h3>
+        <div class="row mt-5">
+            <h3 class="col-md-2 text-left">{{__('label.Description')}}</h3>
             @if(!isset($detail_song->description))
                 <h5 class="col-md-8 text-center">{{__('label.No description available. Do you want to create')}} <a href="{{route('song.edit_song',['id'=>$detail_song->id])}}"> {{__('label.new description')}} </a>?</h5>
             @else
                 <h5 class="col-md-8 text-center">{{$detail_song->description}}</h5>
             @endif
         </div>
-        <div class="row">
-            <form class="col-md-12 well" method="post" action="{{route('song.comment.store',['id'=>$detail_song->id])}}">
-                <h2 class="col-md-2 text-center">Comment</h2>
+        <div class="row mt-5">
+            <h3 class="col-md-2 text-left">Comment</h3>
+            @if(Auth::id())
+            <form class="col-md-12" method="post" action="{{route('song.comment.store',['id'=>$detail_song->id])}}">
                 {{csrf_field()}}
-                <div class="col-md-12 pr-0">
-                    <textarea class="form-control col-md-12" rows="2" id="content" name="content" ></textarea>
+                <div class="col-md-12 p-0">
+                    <textarea class="form-control col-md-12 " rows="2" id="content" name="content" ></textarea>
                 </div>
                 <input type="submit" value="Send" class="btn btn-success col-md-1 pull-right mt-2"></input>
             </form>
-            <div class="col-md-12 well" id="itemComment">
+            @endif
+            <div class="col-md-12 mt-5" id="itemComment">
                 @foreach($comments as $comment)
                     <div class="col-md-12">
                         @if($comment->user->name === null)
@@ -144,7 +162,7 @@
                 @endforeach
                 <span onclick="AllComment()" class="col-md-12 text-center btn text-info">All Comment</span>
             </div>
-            <div class="col-md-12 well" id="AllComment">
+            <div class="col-md-12 mt-5" id="AllComment">
                 @foreach($Allcomment as $comment)
                     <div class="col-md-12">
                         @if($comment->user->name === null)
@@ -167,4 +185,12 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('myjs')
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/autocomplete.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/myJs.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 @endsection

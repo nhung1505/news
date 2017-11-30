@@ -11,23 +11,26 @@
 |
 */
 
-Auth::routes();
-
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/user',function (){
-    return view('layouts.user');
-});
 
 
 
-Route::middleware(["auth","localization"])->group(function () {
+
+Route::middleware(["localization"])->group(function () {
+    Auth::routes();
+    Route::get('/', 'HomeController@index')->name('home');
+
+
+    Route::get('/user',function (){
+        return view('layouts.user');
+    });
+
     Route::post('/language', 'LangController@postLang')->name('postLang');
     Route::prefix('songs')->group(function () {
         Route::get('/upload', 'SongController@create')->name('song.create');
         Route::post('/upload', 'SongController@upload')->name('song.upload');
         Route::get('/', 'SongController@index')->name('song.list');
         Route::post('/{id}/delete', 'SongController@delete')->name('song.delete');
-        Route::get('/{id}/details' , 'SongController@detailSong')->name('song.details_song');
+        Route::get('/{id}' , 'SongController@detailSong')->name('song.details_song');
         Route::post('/{id}/create/comment' , 'SongController@storeComment')->name('song.comment.store');
         Route::get('/{id}/delete/comment/{comment_id}' , 'SongController@deleteComment')->name('song.comment.delete');
         Route::get('/{id}/edit' , 'SongController@edit')->name('song.showEdit_song');
@@ -35,6 +38,8 @@ Route::middleware(["auth","localization"])->group(function () {
         Route::get('/search' , 'SongController@search')->name('song.search');
         Route::post('/{id}/remove' , 'SongController@remove')->name('song.remove');
         Route::post('/{id}/album/{album_id}' , 'SongController@addSong')->name('album_song.add');
+        Route::get('/{id}/like','SongController@like')->name('song.like');
+
 
 
     });
@@ -45,11 +50,10 @@ Route::middleware(["auth","localization"])->group(function () {
         Route::post('/{id}/edit', 'AlbumController@edit')->name('album.edit');
         Route::post('/update', 'AlbumController@update')->name('album.update');
         Route::get('/', 'AlbumController@index')->name('album.list');
-        Route::get('/{id}/detail','AlbumController@detailAlbum')->name('album.detail_album');
+        Route::get('/{id}','AlbumController@detailAlbum')->name('album.detail_album');
         Route::post('/{id}/create/comment','AlbumController@storeCommentAlbum')->name('album.comment.store');
         Route::get('/{id}/delete/comment/{comment_id}','AlbumController@deleteComment')->name('album.comment.delete');
         Route::get('/{id}/like','AlbumController@like')->name('album.like');
-
         Route::get('/add_one_song','AlbumController@addOneSong')->name('album.add_one_song');
         Route::get('/{id}/edit' , 'AlbumController@edit')->name('album.showEdit');
         Route::post('/{id}/edit' , 'AlbumController@update')->name('album.edit');
@@ -64,12 +68,9 @@ Route::middleware(["auth","localization"])->group(function () {
 
     Route::prefix('artists')->group(function (){
         Route::get('/','ArtistController@index')->name('artist.list');
-        Route::get('/{id}/detail','ArtistController@IndexDetail')->name('artist.detail');
-        Route::get('/{id}/detail/songs','ArtistController@IndexSongsArtist')->name('artist.detail_artist_song');
-        Route::get('/{id}/detail/songs/play','ArtistController@PlaySongsArtist')->name('artist.songs.play');
-
-
-
+        Route::get('/{id}','ArtistController@IndexDetail')->name('artist.detail');
+        Route::get('/{id}/songs','ArtistController@IndexSongsArtist')->name('artist.detail_artist_song');
+        Route::get('/{id}/songs/play','ArtistController@PlaySongsArtist')->name('artist.songs.play');
         Route::get('/create', 'ArtistController@create')->name('artist.create');
         Route::post('/create', 'ArtistController@store')->name('artist.store');
         Route::get('/{id}/edit' , 'ArtistController@indexEditArtist')->name('artist.showEdit');

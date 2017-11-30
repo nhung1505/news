@@ -109,9 +109,9 @@
                             @endforeach
                             @endif
                         </div>
-                        @can('upload')
-                        <a href="{{ route('song.create') }}" class="btn btn-success" role="button">{{__('label.Upload Song')}}</a>
-                        @endcan
+                        {{--@can('upload')--}}
+                        {{--<a href="{{ route('song.create') }}" class="btn btn-success" role="button">{{__('label.Upload Song')}}</a>--}}
+                        {{--@endcan--}}
                     </div>
                 </nav>
             </div>
@@ -119,6 +119,9 @@
         </div>
     </div>
 </div>
+
+
+</body>
 
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/autocomplete.js') }}"></script>
@@ -131,5 +134,4 @@
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 @yield('footer')
-</body>
 </html>

@@ -42,6 +42,7 @@ class SongsTableSeeder extends Seeder
         $song->description = 'Được sáng tác vào năm 2002 bởi nhạc sĩ Nguyễn Văn Chung';
         $song->user_id = 1;
         $song->artist_id = 1;
+        $song->likes = 0;
         $song->save();
         $song->comments()->attach(1);
 
@@ -71,6 +72,7 @@ Dù lòng nhiều đớn đau yêu em từ lâu.
         $song->description = 'Được biểu diễn lại bởi ca sĩ Lam Trường';
         $song->user_id = 1;
         $song->artist_id = 1;
+        $song->likes = 0;
         $song->save();
         $song->comments()->attach(1);
 
@@ -128,6 +130,7 @@ Nặng lời nhau đau vỡ trái tim, người tổn thương không về.
         $song->description = 'Được ca sĩ Bảo Anh hát sau khi chia tay người yêu.';
         $song->user_id = 1;
         $song->artist_id = 1;
+        $song->likes = 0;
         $song->save();
         $song->comments()->attach(1);
 
@@ -157,6 +160,7 @@ would you wait for me forever?
         $song->description = 'Nhạc phim mối tình đầu nổi tiếng.';
         $song->user_id = 1;
         $song->artist_id = 1;
+        $song->likes = 0;
         $song->save();
         $song->comments()->attach(1);
 
@@ -205,6 +209,7 @@ Your lies
         $song->description = 'Trình diễn bởi nhóm nhạc rock Helloween vào năm 1996';
         $song->user_id = 1;
         $song->artist_id =1;
+        $song->likes = 0;
         $song->save();
         $song->comments()->attach(1);
 
@@ -305,6 +310,7 @@ Calling us to fly away
         $song->description = 'Được biểu diễn bởi ca sĩ The Fat Rat trên youtube';
         $song->user_id = 1;
         $song->artist_id = 1;
+        $song->likes = 0;
         $song->save();
         $song->comments()->attach(1);
 
@@ -347,6 +353,7 @@ Aleluya, aleluya
         $song->description = 'Được biểu diễn bởi nhóm nhạc Il Divo vào năm 2008.';
         $song->user_id = 1;
         $song->artist_id = 1;
+        $song->likes = 0;
         $song->save();
         $song->comments()->attach(1);
 
@@ -400,6 +407,7 @@ But let me start by saying I love you
         $song->description = 'Được biểu diễn bởi ca sĩ Lionel Richie vào năm 1983';
         $song->user_id = 1;
         $song->artist_id = 1;
+        $song->likes = 0;
         $song->save();
         $song->comments()->attach(1);
 
@@ -474,6 +482,7 @@ Anymore
         $song->description = 'Được biểu diễn bởi ca sĩ Adele vào năm 2015.';
         $song->user_id = 1;
         $song->artist_id = 1;
+        $song->likes = 0;
         $song->save();
         $song->comments()->attach(1);
 
@@ -524,6 +533,7 @@ Waiting for you
         $song->description = 'Biểu diễn bởi Richard Marx vào năm 1989';
         $song->user_id = 1;
         $song->artist_id = 1;
+        $song->likes = 0;
         $song->save();
         $song->comments()->attach(1);
 
@@ -592,6 +602,7 @@ But you can never leave! "
         $song->description = 'Biểu diễn bởi nhóm nhạc The Eagles vào năm 1976';
         $song->user_id = 1;
         $song->artist_id = 1;
+        $song->likes = 0;
         $song->save();
         $song->comments()->attach(1);
 
@@ -666,6 +677,7 @@ Hush, hush don\'t tell me tell me \'cause it hurts
         $song->description = 'Biểu diễn bởi nhóm nhạc No Doubt vào năm 1995s';
         $song->user_id = 1;
         $song->artist_id = 1;
+        $song->likes = 0;
         $song->save();
         $song->comments()->attach(1);
 

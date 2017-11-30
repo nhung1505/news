@@ -1,11 +1,21 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('title')
     {{__('label.Artists')}}
 @endsection
+@section('app.css')
+    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+@endsection
 
 @section('content')
-    <div class="container well">
+    <h1 class="col-md-12 mt-5">Artists</h1>
+    <div class="container">
         <div class="row">
             <div class="col-md-12 text-right">
                 <a href="{{route('artist.create')}}" class="btn btn-default btn-lg">
@@ -34,3 +44,11 @@
         </div>
     </div>
 @endsection
+@section('myjs')
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/autocomplete.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/myJs.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+@endsection
+

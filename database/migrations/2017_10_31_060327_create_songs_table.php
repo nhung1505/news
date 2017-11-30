@@ -19,6 +19,7 @@ class CreateSongsTable extends Migration
             $table->string('image')->nullable();
             $table->string('audio');
             $table->text('lyric')->nullable();
+            $table->integer('likes')->nullable();
             $table->text('description')->nullable();
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');

@@ -61,7 +61,7 @@ class SongController extends Controller
 
     public function index(Request $request){
         $artists = Artist::all();
-        $songs = Song::orderBy('id', 'desc')->paginate(10);
+        $songs = Song::orderBy('id', 'desc')->paginate(8);
         $testsession=$request->session()->get('lacale');
         if ($songs){
             return view('songs.list', compact('songs','testsession','artists'));
@@ -170,6 +170,13 @@ class SongController extends Controller
             $comment->delete();
             return redirect()->back();
         }
+    }
+
+    public function like($id){
+        $song = Song::find($id);
+        $song = Song::where('id',$song->id)->update(['likes'=>$song->likes + 1]);
+
+        return redirect()->route('song.details_song',$id);
     }
 
 }
