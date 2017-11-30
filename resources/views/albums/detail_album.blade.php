@@ -14,42 +14,126 @@
 @endsection
 @section('content')
     <div class="container mt-5">
-        <div class="">
+        <div>
             @component('conponent/audio_player', ['songs'=>$detail_album->songs])
             @endcomponent
-            <div class="text-center col-md-7">
-                <h3>{{__('label.Album')}}: {{$detail_album->name}}</h3>
-                <p class="col-md-12 text-left">{{__('label.Create by')}}:</p>
-                <div class=" col-md-12 text-center mt-5">
+            <div class="text-center col-md-8 pr-0">
+                <div class="col-md-12">
+                    <h3 class="text-left pl-5 col-md-11">{{__('label.Album')}}: {{$detail_album->name}}</h3>
+                    @can('crud', $detail_album)
+                        <div class=" dropdown text-center col-md-1">
+                            <button class="btn btn-default dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown"></button>
+                            <ul class="dropdown-menu dropdown-action-detail-album pull-right text-center">
+                                <li>
+                                    <a href="{{route('album.showEdit', ['id' => $detail_album->id])}}" >
+                                        <span class="glyphicon glyphicon-edit text-info"></span>
+                                    </a>
+                                </li>
+                                @endcan
+                                @can('crud', $detail_album)
+                                <li>
+                                    <a data-toggle="modal" data-target="#confirmDelete-{{$detail_album->id}}">
+                                        <span class="glyphicon glyphicon-remove text-danger"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    @endcan
+                </div>
+
+                <p class="col-md-12 text-left pl-5">{{__('label.Create by')}}: <span class="text-danger">{{$detail_album->user->name}}</span></p>
+                <div class=" col-md-12 text-left pl-5">
                     @if($detail_album->description !=null)
                         <h5>{{$detail_album->description}}</h5>
                     @else
                         <h5>{{__('label.The Description does not exist')}}. {{__('label.Do you want to create')}} <a href="{{route('album.edit',$detail_album->id)}}">{{__('label.new description')}}</a></h5>
                     @endif
                 </div>
-            </div>
-            @can('crud', $detail_album)
-            <div class=" dropdown text-center">
-                <button class="btn btn-default dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown"></button>
-                <ul class="dropdown-menu dropdown-action-detail-album pull-right text-center">
-                    <li>
-                        <a href="{{route('album.showEdit', ['id' => $detail_album->id])}}" >
-                            <span class="glyphicon glyphicon-edit text-info"></span>
-                        </a>
-                    </li>
+                <div class="col-md-12 mt-3">
+                    @can('crud',$detail_album)
+                        <div class="col-md-4 pr-0 ">
+                            <a href="{{route('album.search_add', $detail_album->id)}}" class=" btn btn-success" role="button">{{__('label.Add Song')}}</a>
+                        </div>
                     @endcan
-                    @can('crud', $detail_album)
-                    <li>
-                        <a data-toggle="modal" data-target="#confirmDelete-{{$detail_album->id}}">
-                            <span class="glyphicon glyphicon-remove text-danger"></span>
+                    @can('crud',$detail_album)
+                        <div class="col-md-4 text-left">
+                            <a href="{{route('song.upload',['id'=>$detail_album->id])}}"  class="btn btn-default">
+                                <span class="glyphicon glyphicon-plus"></span> {{__('label.Upload Song')}}
+                            </a>
+                        </div>
+                    @endcan
+                    @if(Auth::id()===null)
+                        <p class="ml-5 text-left col-md-1"><span class="glyphicon glyphicon-thumbs-up"></span></p>
+                         <p class=" col-md-1 pl-0 pt-0 text-left">{{$detail_album->likes}}</p>
+                    @else
+                        <a href="{{route('album.like',['id'=>$detail_album->id])}}" id="like" onclick="like()" role="button"><span class="glyphicon glyphicon-thumbs-up text-info"></span>
                         </a>
-                    </li>
-                </ul>
+                        <a href="#" id="unlike" onclick="unlike()"class="btn btn-info" role="button">Unlike</a>
+                        <p class=" col-md-3 pl-0 pt-0 text-right">{{$detail_album->likes}}</p>
+                    @endif
+                </div>
+
+                <div class="col-md-12  mt-5 pr-0 pl-4">
+                    <h3 class="col-md-2 text-left">Comment</h3>
+                    @if(Auth::id())
+                        <form class="col-md-12" method="post" action="{{route('album.comment.store',['album_id'=>$detail_album->id])}}">
+                            {{csrf_field()}}
+                            <div class="col-md-12 p-0 {{ ($errors->has('content')) ? 'has-error' : '' }}">
+                                <textarea class="form-control col-md-12" rows="2" name="content" ></textarea>
+                                @if($errors->has('content'))
+                                    <div class="has-feedback text-danger">
+                                        {{$errors->first('content')}}
+                                    </div>
+                                @endif
+                            </div>
+                            <input type="submit" value="Send" class="btn btn-success col-md-2 pull-right mt-2"></input>
+                        </form>
+                    @endif
+                    <div class="col-md-12 mt-5 pr-0" id="itemComment">
+                        @foreach($commentAlbums as $comment)
+                            <div class="col-md-12">
+                                @if($comment->user->name === null)
+                                    <p class="col-md-12 text-left text-danger pl-0">no name</p>
+                                @else
+                                    <p class="col-md-12 text-left text-danger pl-0">{{$comment->user->name}}</p>
+                                @endif
+                            </div>
+                            <div class="col-md-12">
+                                <p class="col-md-7 text-left pl-0">{{$comment->content}}</p>
+                                <p class="col-md-4 text-right">{{$comment->created_at}}</p>
+                                @can('editor')
+                                    <a href = "{{route('album.comment.delete',['album_id'=>$detail_album->id, 'comment_id'=>$comment->id])}}" class="col-md-1 text-right">
+                                        <span class="glyphicon glyphicon-remove text-danger"></span>
+                                    </a>
+                                @endcan
+                            </div>
+                        @endforeach
+                        <span onclick="AllComment()" class="col-md-12 text-center btn text-info">All Comment</span>
+                    </div>
+                    <div class="col-md-12 mt-5 pr-0" id="AllComment">
+                        @foreach($AllcommentAlbums as $comment)
+                            <div class="col-md-12">
+                                @if($comment->user->name === null)
+                                    <p class="col-md-12 text-left text-danger pl-0">no name</p>
+                                @else
+                                    <p class="col-md-12 text-left text-danger pl-0">{{$comment->user->name}}</p>
+                                @endif
+                            </div>
+                            <div class="col-md-12">
+                                <p class="col-md-7 text-left  pl-0">{{$comment->content}}</p>
+                                <p class="col-md-4 text-right">{{$comment->created_at}}</p>
+                                @can('editor')
+                                    <a href = "{{route('album.comment.delete',['album_id'=>$detail_album->id, 'comment_id'=>$comment->id])}}" class="col-md-1 text-right">
+                                        <span class="glyphicon glyphicon-remove text-danger"></span>
+                                    </a>
+                                @endcan
+                            </div>
+                        @endforeach
+                        <span onclick="itemComment()" class="col-md-12 text-center btn text-info">Hiden</span>
+                    </div>
+                </div>
             </div>
-            @endcan
         </div>
-    </div>
-    <div>
         <form action="{{route('album.delete',$detail_album->id)}}" method="post">
             {{ csrf_field() }}
             <div class="modal fade" id="confirmDelete-{{$detail_album->id}}" role="dialog">
@@ -69,94 +153,6 @@
                 </div>
             </div>
         </form>
-    </div>
-    <div class="container mt-5 p-4">
-         @can('crud',$detail_album)
-        <div class="col-md-2 ">
-            <a href="{{route('album.search_add', $detail_album->id)}}" class=" btn btn-success" role="button">{{__('label.Add Song')}}</a>
-        </div>
-        @endcan
-        @can('crud',$detail_album)
-        <div class="col-md-2 text-left">
-            <a href="{{route('song.upload',['id'=>$detail_album->id])}}"  class="btn btn-default">
-                <span class="glyphicon glyphicon-plus"></span> {{__('label.Upload Song')}}
-            </a>
-        </div>
-         @endcan
-        @if(Auth::id()===null)
-        <div class="col-md-12">
-            <div class="btn btn-info pull-right" role="button">Like</div>
-            <p class="pr-1 pl-2 pt-1 pull-right">{{$detail_album->likes}}</p>
-        </div>
-
-        @else
-        <a href="{{route('album.like',['id'=>$detail_album->id])}}" id="like" onclick="like()" class="btn btn-info" role="button">Like</a>
-        <a href="#" id="unlike" onclick="unlike()"class="btn btn-info" role="button">Unlike</a>
-        <p class="col-md-1 pl-2 pt-1 text-right">{{$detail_album->likes}}</p>
-        @endif
-    </div>
-    <div class="container mt-5 p-4">
-        <h3 class="col-md-2 text-left">{{__('label.Lyric')}}</h3>
-        <h5 class=" col-md-8 text-center">{{__('label.The lyric does not exist')}}. {{__('label.Do you want to create')}} <a href="{{route('album.edit',$detail_album->id)}}">{{__('label.new lyric')}}</a> ?</h5>
-    </div>
-    <div class="container mt-5 p-4">
-        <h3 class="col-md-2 text-left">Comment</h3>
-        @if(Auth::id())
-        <form class="col-md-12" method="post" action="{{route('album.comment.store',['album_id'=>$detail_album->id])}}">
-            {{csrf_field()}}
-            <div class="col-md-12 p-0 {{ ($errors->has('content')) ? 'has-error' : '' }}">
-                <textarea class="form-control col-md-12" rows="2" name="content" ></textarea>
-                @if($errors->has('content'))
-                    <div class="has-feedback text-danger">
-                        {{$errors->first('content')}}
-                    </div>
-                @endif
-            </div>
-            <input type="submit" value="Send" class="btn btn-success col-md-1 pull-right mt-2"></input>
-        </form>
-        @endif
-        <div class="col-md-12 mt-5" id="itemComment">
-            @foreach($commentAlbums as $comment)
-                <div class="col-md-12">
-                    @if($comment->user->name === null)
-                    <p class="col-md-12 text-danger pl-0">no name</p>
-                    @else
-                    <p class="col-md-12 text-danger pl-0">{{$comment->user->name}}</p>
-                    @endif
-                </div>
-                <div class="col-md-12">
-                    <p class="col-md-7 pl-0">{{$comment->content}}</p>
-                    <p class="col-md-4 text-right">{{$comment->created_at}}</p>
-                    @can('editor')
-                    <a href = "{{route('album.comment.delete',['album_id'=>$detail_album->id, 'comment_id'=>$comment->id])}}" class="col-md-1 text-right">
-                        <span class="glyphicon glyphicon-remove text-danger"></span>
-                    </a>
-                    @endcan
-                </div>
-            @endforeach
-            <span onclick="AllComment()" class="col-md-12 text-center btn text-info">All Comment</span>
-        </div>
-        <div class="col-md-12 mt-5" id="AllComment">
-            @foreach($AllcommentAlbums as $comment)
-                <div class="col-md-12">
-                    @if($comment->user->name === null)
-                        <p class="col-md-12 text-danger pl-0">no name</p>
-                    @else
-                        <p class="col-md-12 text-danger pl-0">{{$comment->user->name}}</p>
-                    @endif
-                </div>
-                <div class="col-md-12">
-                    <p class="col-md-7 pl-0">{{$comment->content}}</p>
-                    <p class="col-md-4 text-right">{{$comment->created_at}}</p>
-                    @can('editor')
-                        <a href = "{{route('album.comment.delete',['album_id'=>$detail_album->id, 'comment_id'=>$comment->id])}}" class="col-md-1 text-right">
-                            <span class="glyphicon glyphicon-remove text-danger"></span>
-                        </a>
-                    @endcan
-                </div>
-            @endforeach
-            <span onclick="itemComment()" class="col-md-12 text-center btn text-info">Hiden</span>
-        </div>
     </div>
 @endsection
 @section('myjs')
