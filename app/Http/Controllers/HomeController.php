@@ -30,7 +30,7 @@ class HomeController extends Controller
         $artists = Artist::orderBy('id','desc')->paginate(10);
         $menu = Menu::all();
         $request->session()->put('menu',$menu );
-        
+//        return redirect()->route('song.list');
         return view('home', compact('songs', 'albums', 'artists','menu'));
 
         

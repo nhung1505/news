@@ -1079,7 +1079,7 @@ a.trend:hover {
 /*--login-pop--*/
 #loginpop {
 	    position: relative;
-    float:left;
+    float:right;
 }
 i.arrow {
     font-size: 0.9em;
@@ -4097,6 +4097,9 @@ text-decoration:none;
 	.modal-body.modal-spa {
 		padding: 1em 1em;
 	}
+}
+.registerr{
+    float:right;
 }
 @media (max-width:384px){
 	footer p {

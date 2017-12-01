@@ -83,10 +83,4 @@ return [
     'Personal page'                 =>'Trang cá nhân',
     'Admin page'                    =>' Trang Admin',
     'Create by'                       =>'Tạo bởi',
-
-
-
-
-
-
 ];

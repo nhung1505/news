@@ -9,17 +9,17 @@
 						<ul class="rslides callbacks callbacks1" id="slider4">
 							<li>
 								<div class="banner-img">
-									<img  src="{{asset('storage/AMusic.png')}}"  class="img-responsive" alt="">
+									<img  src="{{asset('storage/amusic.png')}}"  class="img-responsive" alt="">
 								</div>
 							</li>
 							<li>
 								<div class="banner-img">
-									<img  src="{{asset('storage/AMusic.png')}}" class="img-responsive" alt="">
+									<img  src="{{asset('storage/2.jpg')}}" class="img-responsive" alt="">
 								</div>
 							</li>
 							<li>
 								<div class="banner-img">
-									<img  src="{{asset('storage/AMusic.png')}}" class="img-responsive" alt="">
+									<img  src="{{asset('storage/emgaimua.jpg')}}" class="img-responsive" alt="">
 								</div>
 							</li>
 						</ul>
@@ -36,9 +36,9 @@
 				<div class="col-md-12">
 					<div class="row">
 						@foreach($songs as $song)
-						<div class="col-md-3 content-grid">
+						<div class="content-grid">
 							<div class="css-image">
-								<a href="{{route('song.details_song', $song->id)}}"><img src="{{asset('storage/'.$song->image)}}" title="{{$song->name}} class="img-thumbnail"></a>
+								<a href="{{route('song.details_song', $song->id)}}"><img src="{{asset('storage/'.$song->image)}}" title="{{$song->name}}" class="img-thumbnail"></a>
 							</div>
 							<a href="{{route('song.details_song', $song->id)}}">{{$song->name}}</a>
 						</div>
@@ -56,7 +56,7 @@
 				<div class="col-md-12">
 					<div class="row">
 						@foreach($albums as $album)
-							<div class="col-md-3 content-grid">
+							<div class="content-grid">
 								<div class="css-image">
 									<a href="{{route('album.detail_album', $album->id)}}"><img src="{{asset('storage/'.$album->image)}}" title="{{$album->name}} class="img-thumbnail"></a>
 								</div>
@@ -96,3 +96,4 @@
 </div>
 <div class="clearfix"></div>
 @endsection
+

@@ -91,7 +91,7 @@
 
                 {
                 playlistOptions: {
-                    autoPlay: true,
+                    autoPlay: false,
                     enableRemoveControls: false,
                     loopOnPrevious: true,
                     shuffleOnLoop: true
