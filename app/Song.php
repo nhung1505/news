@@ -17,4 +17,8 @@ class Song extends Model
     public function albums(){
         return $this->belongsToMany('App\Album','album_song');
     }
+
+    public function comments(){
+        return $this->belongsToMany('App\Comment','comment_song');
+    }
 }

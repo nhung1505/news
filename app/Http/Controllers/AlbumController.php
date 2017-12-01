@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Likealbum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Album;
 use App\Song;
 use App\User;
+use App\Commentalbum;
 
 class AlbumController extends Controller
 {
@@ -18,7 +20,6 @@ class AlbumController extends Controller
         if (isset($request->id)){
            $song = Song::find($request->id);
         }
-
         return view('albums.create',compact('song'));
 
     }
@@ -52,16 +53,16 @@ class AlbumController extends Controller
 
     public function detailAlbum($id)
     {
-        $detail_album = Album::with('user', 'songs')->find($id);
+        $detail_album = Album::with('user', 'songs','commentalbums')->find($id);
         if ($detail_album) {
-
-            return view('albums.detail_album', compact('detail_album'));
+            $commentAlbums = $detail_album->commentalbums()->orderBy('id','desc')->paginate(5);
+            $AllcommentAlbums = $detail_album->commentalbums()->orderBy('id','desc')->get();
+            return view('albums.detail_album', compact('detail_album','commentAlbums','AllcommentAlbums'));
 
         } else {
 
             abort('404');
         }
-
     }
 
     public function edit($id)
@@ -76,11 +77,11 @@ class AlbumController extends Controller
 
     public function update(Request $request, $id)
     {
-        $album = Album::find($id);
         $this->validate($request, [
             'name' => 'required|min:3|max:50',
             'image' => 'mimes:jpeg,jpg,png,svg'
         ]);
+        $album = Album::find($id);
         if ($request->hasFile('image')) {
             Storage::disk('public')->delete('' . $album->image);
             $album->image = $request->file('image')->store('image_songs/' . auth()->id(), 'public');
@@ -99,9 +100,8 @@ class AlbumController extends Controller
         return view();
     }
 
-    public function showSong($id ){}
-
-    public function searchAddSong(Request $request,$id ){
+    public function searchAddSong(Request $request,$id )
+    {
         $album = Album::find($id);
         $user = User::find(Auth::id());
         if (isset($request->song_add)){
@@ -110,7 +110,8 @@ class AlbumController extends Controller
         return view('albums.search_add',compact('album','songAdd','user'));
     }
 
-    public function addSong(Request $request , $id ){
+    public function addSong(Request $request , $id )
+    {
         $album = Album::find($id);
         $song_add = Song::find($request->input('song_id'));
         $album->songs()->attach($request->input('song_id'));
@@ -118,13 +119,15 @@ class AlbumController extends Controller
 
     }
 
-    public function removeSongSearchAdd(Request $request,$id){
+    public function removeSongSearchAdd(Request $request,$id)
+    {
         $album = Album::find($id);
         $album->songs()->detach($request->input('songAdd_id'));
         return redirect()->route('album.search_add',['id'=>$album->id]);
     }
 
-    public function searchSong(Request $request , $id){
+    public function searchSong(Request $request , $id)
+    {
         $songs = Song::
                 where('name' , 'LIKE' , '%'.$request->term.'%')
                 ->whereDoesntHave('albums' , function ($q) use($id){
@@ -136,7 +139,6 @@ class AlbumController extends Controller
         }
         return response()->json($result);
     }
-
 
     public function delete($id)
     {
@@ -154,7 +156,6 @@ class AlbumController extends Controller
         }
     }
 
-
     public function remove($albumId,$songId = null)
     {
         $songId = $_GET['song'];
@@ -168,5 +169,38 @@ class AlbumController extends Controller
         } else {
             abort('404');
         }
+    }
+
+    public function storeCommentAlbum(Request $request, $id)
+    {
+        $this->validate($request, [
+            'content' => 'required|min:1|max:50',
+        ]);
+        $album = Album::find($id);
+        $commentAlbum = new Commentalbum();
+        $commentAlbum->content = $request->input('content');
+        $commentAlbum->user_id = Auth::id();
+        $commentAlbum->save();
+        $album->commentalbums()->attach($commentAlbum->id);
+        return redirect()->back();
+
+    }
+
+    public function deleteComment(Request $request, $id)
+    {
+        $album = Album::find($id);
+        $comment = Commentalbum::find($request->comment_id);
+        if (isset($comment)){
+            $album->commentalbums()->detach($comment->id);
+            $comment->delete();
+            return redirect()->back();
+        }
+    }
+
+    public function like($id){
+        $album = Album::find($id);
+        $album = Album::where('id',$album->id)->update(['likes'=>$album->likes + 1]);
+
+        return redirect()->route('album.detail_album',$id);
     }
 }

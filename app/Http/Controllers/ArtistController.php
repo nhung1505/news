@@ -86,9 +86,13 @@ class ArtistController extends Controller
 
     public function IndexSongsArtist($id){
         $artist = Artist::with('songs')->find($id);
-        $songs = Song::where('artist_id',$id)
-            ->paginate(10);
-        return view('artists.songs_detail_artist',compact('artist','songs'));
+        if($artist){
+            $songs = Song::where('artist_id',$id)
+                ->paginate(10);
+            return view('artists.songs_detail_artist',compact('artist','songs'));
+        }else{
+            abort('404');
+        }
     }
 
     public function PlaySongsArtist($id){

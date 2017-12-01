@@ -4,44 +4,37 @@
     <title>A music</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Mosaic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <link href="{{asset('css/css/bootstrap.css')}}" rel='stylesheet' type='text/css' />
     <link href="{{asset('css/css/style.css')}}" rel='stylesheet' type='text/css' />
     <link href="{{asset('css/css/jplayer.blue.monday.min.css')}}" rel='stylesheet' type='text/css' />
+    <link href="{{asset('css/css/bootstrap.css')}}" rel='stylesheet' type='text/css' />
     <link href="{{asset('css/css/font-awesome.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/css/icon-font.css')}}" type='text/css' />
     <link href="{{asset('css/css/popuo-box.css')}}" rel="stylesheet" type="text/css" media="all">
     <script src="{{asset('js/js/jquery-2.1.4.js')}}"></script>
+    <link href="css/css/popuo-box.css" rel="stylesheet" type="text/css" media="all">
+    @yield('app.css')
 </head>
-<body class="sticky-header left-side-collapsed"  onload="initMap()">
+<body class="sticky-header left-side-collapsed"  onload= "initMap()">
 <section>
     <div class="left-side sticky-left-side">
         <div class="logo">
-            <h1><a href="home.blade.php">Mosai<span>c</span></a></h1>
+            <a href="{{route('home')}}"><h1 style="margin-top: 5px;">Amusic</h1></a>
         </div>
         <div class="logo-icon text-center">
-            <a href="home.blade.php">M </a>
+            <a href="{{route('home')}}">M </a>
         </div>
         <div class="left-side-inner">
             <ul class="nav nav-pills nav-stacked custom-nav">
-                <li class="active"><a href="home.blade.php"><i class="lnr lnr-home"></i><span>Home</span></a></li>
-                <li><a href="radio.html"><i class="camera"></i> <span>Radio</span></a></li>
-                <li><a href="#" data-toggle="modal" data-target="#myModal1"><i class="fa fa-th"></i><span>Apps</span></a></li>
-                <li><a href="radio.html"><i class="lnr lnr-users"></i> <span>Artists</span></a></li>
-                <li><a href="browse.html"><i class="lnr lnr-music-note"></i> <span>Albums</span></a></li>
-                <li class="menu-list"><a href="browse.html"><i class="lnr lnr-indent-increase"></i> <span>Browser</span></a>
-                    <ul class="sub-menu-list">
-                        <li><a href="browse.html">Artists</a> </li>
-                        <li><a href="404.html">Services</a> </li>
-                    </ul>
-                </li>
-                <li><a href="blog.html"><i class="lnr lnr-book"></i><span>Blog</span></a></li>
-                <li><a href="typography.html"><i class="lnr lnr-pencil"></i> <span>Typography</span></a></li>
+                <li class="active"><a href="{{route('home')}}"><i class="lnr lnr-home"></i><span>Home</span></a></li>
+                <li><a href="{{route('artist.list')}}"><i class="lnr lnr-users"></i> <span>Artists</span></a></li>
+                <li><a href="{{route('song.list')}}"><i class="lnr lnr-music-note"></i> <span>Songs</span></a></li>
+                <li><a href="{{route('album.list')}}"><i class="lnr lnr-indent-increase"></i> <span>Albums</span></a></li>
                 <li class="menu-list"><a href="#"><i class="lnr lnr-heart"></i>  <span>My Favourities</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href="radio.html">All Songs</a></li>
+                        <li><a href="radio.html"> Songs</a></li>
+                        <li><a href="radio.html"> Albums</a></li>
+                        <li><a href="radio.html"> Artists</a></li>
                     </ul>
                 </li>
                 <li class="menu-list"><a href="contact.html"><i class="fa fa-thumb-tack"></i><span>Contact</span></a>
@@ -81,42 +74,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
     </div>
-    <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content modal-info">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body modal-spa">
-                    <div class="sign-grids">
-                        <div class="sign">
-                            <div class="sign-left">
-                                <ul>
-                                    <li><a class="fb" href="#"><i></i>Sign in with Facebook</a></li>
-                                    <li><a class="goog" href="#"><i></i>Sign in with Google</a></li>
-                                    <li><a class="linkin" href="#"><i></i>Sign in with Linkedin</a></li>
-                                </ul>
-                            </div>
-                            <div class="sign-right">
-                                <form action="#" method="post">
-
-                                    <h3>Create your account </h3>
-                                    <input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
-                                    <input type="text" value="Mobile number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mobile number';}" required="">
-                                    <input type="text" value="Email id" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email id';}" required="">
-                                    <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
-
-                                    <input type="submit" value="CREATE ACCOUNT" >
-                                </form>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <p>By logging in you agree to our <span>Terms and Conditions</span> and <span>Privacy Policy</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="main-content">
         <div class="header-section">
             <!--toggle button start-->
@@ -125,10 +82,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!--notification menu start -->
             <div class="menu-right">
                 <div class="profile_details">
-                    <div class="col-md-4 serch-part">
+                    <div class="col-md-5 serch-part">
                         <div id="sb-search" class="sb-search">
                             <form action="#" method="post">
-
                                 <input class="sb-search-input" placeholder="Search" type="search" name="search" id="search">
                                 <input class="sb-search-submit" type="submit" value="">
                                 <span class="sb-icon-search"> </span>
@@ -143,44 +99,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </script>
                     <!-- //search-scripts -->
                     <!---->
-                    <div class="col-md-4 player">
-                        <div class="audio-player">
-                            <audio id="audio-player"  controls="controls">
-                                <source src="storage/media/Blue Browne.ogg" type="audio/ogg"></source>
-                                <source src="/media/Blue Browne.mp3" type="audio/mpeg"></source>
-                                <source src="/media/Georgia.ogg" type="audio/ogg"></source>
-                                <source src="/media/Georgia.mp3" type="audio/mpeg"></source></audio>
+                    {{--<div class="col-md-4 player">--}}
+                        {{--<div class="audio-player">--}}
+                            {{--<audio id="audio-player"  controls="controls">--}}
+                                {{--<source src="storage/media/Blue Browne.ogg" type="audio/ogg"></source>--}}
+                                {{--<source src="/media/Blue Browne.mp3" type="audio/mpeg"></source>--}}
+                                {{--<source src="/media/Georgia.ogg" type="audio/ogg"></source>--}}
+                                {{--<source src="/media/Georgia.mp3" type="audio/mpeg"></source></audio>--}}
+                        {{--</div>--}}
+                        {{--<!---->--}}
+                        {{--<script type="text/javascript">--}}
+                            {{--$(function(){--}}
+                                {{--$('#audio-player').mediaelementplayer({--}}
+                                    {{--alwaysShowControls: true,--}}
+                                    {{--features: ['playpause','progress','volume'],--}}
+                                    {{--audioVolume: 'horizontal',--}}
+                                    {{--iPadUseNativeControls: true,--}}
+                                    {{--iPhoneUseNativeControls: true,--}}
+                                    {{--AndroidUseNativeControls: true--}}
+                                {{--});--}}
+                            {{--});--}}
+                        {{--</script>--}}
+                        {{--<!--audio-->--}}
+                        {{--<link rel="stylesheet" type="text/css" media="all" href="{{asset('css/css/audio.css')}}">--}}
+                        {{--<script type="text/javascript" src="{{asset('js/js/mediaelement-and-player.min.js')}}"></script>--}}
+                        {{--<!---->--}}
+                        {{--<!--//-->--}}
+                        {{--<ul class="next-top">--}}
+                            {{--<li><a class="ar" href="#"> <img src="../images/arrow.png" alt=""/></a></li>--}}
+                            {{--<li><a class="ar2" href="#"><img src="../images/arrow2.png" alt=""/></a></li>--}}
+                        {{--</ul>--}}
+                    {{--</div>--}}
+                    @guest
+                    <div class="col-md-6 login-pop ">
+                        <div class="registerr">
+                            <a href="{{ route('register') }}" class="col-md-2 btn ">Register</a>
+
                         </div>
-                        <!---->
-                        <script type="text/javascript">
-                            $(function(){
-                                $('#audio-player').mediaelementplayer({
-                                    alwaysShowControls: true,
-                                    features: ['playpause','progress','volume'],
-                                    audioVolume: 'horizontal',
-                                    iPadUseNativeControls: true,
-                                    iPhoneUseNativeControls: true,
-                                    AndroidUseNativeControls: true
-                                });
-                            });
-                        </script>
-                        <!--audio-->
-                        <link rel="stylesheet" type="text/css" media="all" href="{{asset('css/css/audio.css')}}">
-                        <script type="text/javascript" src="{{asset('js/js/mediaelement-and-player.min.js')}}"></script>
-                        <!---->
-
-
-                        <!--//-->
-                        <ul class="next-top">
-                            <li><a class="ar" href="#"> <img src="../images/arrow.png" alt=""/></a></li>
-                            <li><a class="ar2" href="#"><img src="../images/arrow2.png" alt=""/></a></li>
-
-                        </ul>
-                    </div>
-                    <div class="col-md-4 login-pop">
-                        <div id="loginpop"> <a href="#" id="loginButton"><span>Login <i class="arrow glyphicon glyphicon-chevron-right"></i></span></a><a class="top-sign" href="#" data-toggle="modal" data-target="#myModal5"><i class="fa fa-sign-in"></i></a>
+                        <div id="loginpop"> <a href="" id="loginButton"><span>Login <i class="arrow glyphicon glyphicon-chevron-right"></i></span></a>
                             <div id="loginBox">
-                                <form action="#" method="post" id="loginForm">
+                                <form action="{{ route('login') }}" method="post" id="loginForm">
+                                    {{ csrf_field() }}
                                     <fieldset id="body">
                                         <fieldset>
                                             <label for="email">Email Address</label>
@@ -193,81 +152,85 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <input type="submit" id="login" value="Sign in">
                                         <label for="checkbox"><input type="checkbox" id="checkbox"> <i>Remember me</i></label>
                                     </fieldset>
-                                    <span><a href="#">Forgot your password?</a></span>
+                                    <span><a href="{{ route('password.request') }}">Forgot your password?</a></span>
                                 </form>
                             </div>
                         </div>
-
                     </div>
-                    <div class="clearfix"> </div>
+                    <div class="registerr">
+                    @else
+                        @can('upload')
+                            <a href="{{ route('song.create') }}" class=" col-md-1 mt-3 text-right location-upload" role="button"><i class="fa fa-upload" aria-hidden="true"></i></a>
+                        @endcan
+                        <li class="dropdown col-md-1 text-right" style="list-style-type:none; padding:15px;">
+                            <a href="#" class="dropdown-toggle btn btn-outline-success my-1 my-sm-0 p-1 text-danger"
+                               data-toggle="dropdown" role="button" aria-expanded="false"
+                               aria-haspopup="true">
+                                {{ Auth::user()->name }}
+                            </a>
+                            <ul class="dropdown-menu col-md-12 text-right">
+                                <li>
+                                    @if(Auth::user()->role == 'admin')
+                                        <a href="{{route('menu')}}" class='text-center'>{{__('label.Admin page')}}</a>
+                                    @elseif( Auth::user()->role == 'editor')
+                                        <a href="{{route('menu')}}" class='text-center'>Editor page</a>
+                                    @else
+                                        <a href="{{route('menu')}}" class="text-center">{{__('label.Personal page')}}</a>
+                                    @endif
+                                    <a class="text-center" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                        {{__('label.logout')}}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item menu-select pull-right col-md-1 mt-3" style="list-style-type:none; margin-top:24px;">
+                            <form action="{{route("postLang")}}" class="form-lang" method="post">
+                                {{ csrf_field() }}
+                                <select class="custom-select" name="locale" onchange='this.form.submit();'>
+                                    <option selected value="en" >EN</option>
+                                    <option  value="vn"{{ Lang::locale() === 'vn' ? 'selected' : '' }} >VI</option>
+                                </select>
+                            </form>
+                        </li>
+                        @endguest
+                    </div>
                 </div>
-                <!-------->
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <!--notification menu end -->
-        <!-- //header-ends -->
-        <!-- /w3l-agileits -->
-        <!-- //header-ends -->
-
-    @yield('content')
-    <div class="footer">
-        <div class="footer-grid">
-            <h3>Navigation</h3>
-            <ul class="list1">
-                <li><a href="home.blade.php">Home</a></li>
-                <li><a href="radio.html">All Songs</a></li>
-                <li><a href="browse.html">Albums</a></li>
-                <li><a href="radio.html">New Collections</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-        <div class="footer-grid">
-            <h3>Our Account</h3>
-            <ul class="list1">
-                <li><a href="#" data-toggle="modal" data-target="#myModal5">Your Account</a></li>
-                <li><a href="#">Personal information</a></li>
-                <li><a href="#">Addresses</a></li>
-                <li><a href="#">Discount</a></li>
-                <li><a href="#">Orders history</a></li>
-                <li><a href="#">Addresses</a></li>
-                <li><a href="#">Search Terms</a></li>
-            </ul>
-        </div>
-        <div class="footer-grid">
-            <h3>Our Support</h3>
-            <ul class="list1">
-                <li><a href="contact.html">Site Map</a></li>
-                <li><a href="#">Search Terms</a></li>
-                <li><a href="#">Advanced Search</a></li>
-                <li><a href="#">Mobile</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="#">Mobile</a></li>
-                <li><a href="#">Addresses</a></li>
-            </ul>
-        </div>
-        <div class="footer-grid">
-            <h3>Newsletter</h3>
-            <p class="footer_desc">Nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat</p>
-            <div class="search_footer">
-                <form>
-                    <input type="text" placeholder="Email...." required="">
-                    <input type="submit" value="Submit">
-                </form>
             </div>
         </div>
-        <div class="footer-grid footer-grid_last">
-            <h3>About Us</h3>
-            <p class="footer_desc">Diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat enim ad minim veniam,.</p>
-            <p class="f_text">Phone:  &nbsp;&nbsp;&nbsp;00-250-2131</p>
-            <p class="email">Email : &nbsp;<span><a href="mailto:mail@example.com">info(at)mailing.com</a></span></p>
+        @yield('content')
+        <div class="footer">
+            <div class="footer-grid">
+                <h3>Navigation</h3>
+                <ul class="list1">
+                    <li><a href="home.blade.php">Home</a></li>
+                    <li><a href="radio.html">All Songs</a></li>
+                    <li><a href="browse.html">Albums</a></li>
+                    <li><a href="browse.html">Artists</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-grid footer-grid_last">
+                <h3>About Us</h3>
+                <p class="footer_desc"></p>
+                <p class="f_text">Phone:  &nbsp;&nbsp;&nbsp;</p>
+                <p class="email">Email : &nbsp;<span><a href="mailto:mail@example.com"></a></span></p>
+            </div>
+            <div class="clearfix"> </div>
         </div>
-        <div class="clearfix"> </div>
     </div>
-    </div>
-
 </section>
+</body>
+
+
+
+<script src="{{ asset('js/myJs.js') }}"></script>
 <script src="{{asset('js/js/responsiveslides.min.js')}}"></script>
 <script src="{{asset('js/js/jquery.magnific-popup.js')}}"></script>
 <script src="{{asset('js/js/bootstrap.js')}}"></script>
@@ -280,9 +243,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{{asset('js/js/jquery.flexisel.js')}}"></script>
 <script src="{{asset('js/js/mediaelement-and-player.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.jplayer.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/jplayer.playlist.min.js')}}"></script>
+<script src="js/js/responsiveslides.min.js"></script>
+<script src="css/js/jquery.magnific-popup.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/js/jquery.flexisel.js"></script>
+<script src="js/js/jquery.nicescroll.js"></script>
+<script src="js/js/scripts.js"></script>
+<script src="js/js/bootstrap.js"></script>
+@yield('app.js')
 
-
-
-</body>
 </html>
