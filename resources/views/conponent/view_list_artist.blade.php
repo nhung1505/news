@@ -7,6 +7,11 @@
 @section('content')
     <div class="container well">
         <div class="row">
+            <div class="col-xs-7">
+            </div>
+            <div class="col-xs-5 text-right ">
+                <a href="" class="btn btn-default btn-lg">
+
             <div class="col-md-12 text-right">
                 <a href="{{route('artist.create')}}" class="btn btn-default btn-lg">
                     <span class="glyphicon glyphicon-plus"></span> {{__('label.Create')}}

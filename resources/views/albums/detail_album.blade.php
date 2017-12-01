@@ -20,6 +20,7 @@
                         @endif
                     </div>
                 </div>
+                @can('crud', $detail_album)
                 <div class="col-md-2 dropdown text-center">
                     <button class="btn btn-default dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown"></button>
                     <ul class="dropdown-menu dropdown-action-detail-album text-center">
@@ -28,6 +29,8 @@
                                 <span class="glyphicon glyphicon-edit text-info"></span>
                             </a>
                         </li>
+                        @endcan
+                        @can('crud', $detail_album)
                         <li>
                             <a data-toggle="modal" data-target="#confirmDelete-{{$detail_album->id}}">
                                 <span class="glyphicon glyphicon-remove text-danger"></span>
@@ -35,6 +38,7 @@
                         </li>
                     </ul>
                 </div>
+                @endcan
             </div>
         </div>
         <form action="{{route('album.delete',$detail_album->id)}}" method="post">
@@ -76,9 +80,11 @@
                             <td>{{$song->name}}</td>
                             <td>
                                 <sub>
+                                    @can('crud', $detail_album)
                                     <a data-toggle="modal" data-target="#confirmDelete-{{$song->id, $detail_album->id}}">
                                         <span class="glyphicon glyphicon-remove text-danger btn pull-right" ></span>
                                     </a>
+                                    @endcan
                                     <form action="{{route('album.remove',[$detail_album->id,'song'=>$song->id])}}" method="post">
                                         {{ csrf_field() }}
                                         <div class="modal fade" id="confirmDelete-{{$song->id, $detail_album->id}}" role="dialog">
@@ -107,14 +113,18 @@
                     </table>
                 </div>
                 <div class="row">
+                    @can('crud',$detail_album)
                     <div class="col-md-2">
                         <a href="{{route('album.search_add', $detail_album->id)}}" class=" btn btn-success" role="button">{{__('label.Add Song')}}</a>
                     </div>
+                    @endcan
+                    @can('crud',$detail_album)
                     <div class="col-md-2">
                         <a href="{{route('song.upload',['id'=>$detail_album->id])}}"  class="btn btn-default">
                             <span class="glyphicon glyphicon-plus"></span> {{__('label.Upload Song')}}
                         </a>
                     </div>
+                    @endcan
                 </div>
             </div>
         </div>

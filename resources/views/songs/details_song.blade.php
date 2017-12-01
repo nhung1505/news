@@ -14,7 +14,7 @@
             </div>
         @endif
         <div class="row well">
-            <div class="col-md-6 well mb-0"><div class=" song-cover-img-detail-song">                <img class="col-md-12 p-0 mr-5" src="{{asset('storage/'.$detail_song->image)}}">
+            <div class="col-md-6 well mb-0"><div class=" song-cover-img-detail-song"><img class="col-md-12 p-0 mr-5" src="{{asset('storage/'.$detail_song->image)}}">
                 </div>
                 <audio id="myAudio" class="col-md-12 p-0" controls="controls" loop="loop" preload="auto">
                     <source src="{{asset('storage/'.$detail_song->audio)}}" type="audio/ogg">
@@ -29,6 +29,7 @@
                 <h4 class="col-md-12 text-center">{{ __('label.No Artist') }}</h4>
                 @endif
             </div>
+            @can('crud',$detail_song)
             <div class="col-md-1">
                 <button class="btn btn-default dropdown-toggle glyphicon glyphicon-cog" type="button" data-toggle="dropdown"></button>
                 <ul class="dropdown-menu dropdown-action-detail-song">
@@ -44,6 +45,7 @@
                     </li>
                 </ul>
             </div>
+            @endcan
             <form action="{{route('song.delete',$detail_song->id)}}" method="post">
                 {{ csrf_field() }}
                 <div class="modal fade" id="confirmDelete-{{$detail_song->id}}" role="dialog">
@@ -70,11 +72,13 @@
                     <div class="btn text-danger text-left col-md-12" onclick="closeAlbum()">&times; {{__('label.close')}}</div>
                     @if(isset($albums))
                         @foreach($albums as $album)
+                            @can('crud',$album)
                             <form method="post" action="{{route('album_song.add',['album_id'=>$album->id,'id'=>$detail_song->id])}}">
                                 {{csrf_field()}}
                                 <input type="hidden" name="id" value="{{$detail_song->id}}">
-                                <button name="album_id" type="submit" class="btn btn-default col-md-12" value="{{$album->id}}">{{$album->name}}</button>
+                                <button name="album_id" type="submit" class="btn btn-default col-md-6" value="{{$album->id}}">{{$album->name}}</button>
                             </form>
+                            @endcan
                         @endforeach
                     @endif
                     <div class="text-center">
