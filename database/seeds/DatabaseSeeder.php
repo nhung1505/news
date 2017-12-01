@@ -6,6 +6,10 @@ use App\Song;
 use App\Album;
 use App\Artist;
 use App\Menu;
+use App\Comment;
+use App\Commentalbum;
+use App\Role;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,9 +22,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UsersTableSeeder::class);
         $this->call(ArtistsTableSeeder::class);
+        $this->call(CommentsTableSeeder::class);
         $this->call(SongsTableSeeder::class);
+        $this->call(CommentalbumsTableSeeder::class);
         $this->call(AlbumsTableSeeder::class);
         $this->call(MenusTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
 
     }
 }

@@ -4,8 +4,8 @@
         <div class="video-record-list">
             <div id="jp_container_1" class="jp-video jp-video-270p" role="application" aria-label="media player">
                 <div class="jp-type-playlist">
-                    <div id="jquery_jplayer_1" class="jp-jplayer" style="width: 480px; height: 270px;">
-                        <img id="jp_poster_0" src="" style="width: 480px; height: 270px; display: inline;">
+                    <div id="jquery_jplayer_1" class="jp-jplayer" style="width: 467px; height: 270px;">
+                        <img id="jp_poster_0" src="" style="width: 467px; height: 270px; display: inline;">
                         <video id="jp_video_0" preload="metadata" src="http://192.168.30.9/vijayaa/2015/Dec/mosaic/web/video/Ellie-Goulding.webm" title="1. Ellie-Goulding" style="width: 0px; height: 0px;">
 
                         </video>
@@ -75,7 +75,9 @@
             new jPlayerPlaylist({
                 jPlayer: "#jquery_jplayer_1",
                 cssSelectorAncestor: "#jp_container_1"
-            }, [
+            },
+
+                [
                     @foreach($songs as $song)
                 {
                 title:"{{$song->name}}",
@@ -83,9 +85,11 @@
                 mp3:"{{asset('storage/'.$song->audio)}}",
                 oga:"{{asset('storage/'.$song->audio)}}",
                 poster: "{{asset('storage/'.$song->image)}}"
-        },
+                },
                 @endforeach
-            ], {
+            ],
+
+                {
                 playlistOptions: {
                     autoPlay: true,
                     enableRemoveControls: false,

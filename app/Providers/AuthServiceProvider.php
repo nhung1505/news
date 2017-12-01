@@ -30,21 +30,32 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('crud', function ($user, $song) {
-            return $user->id == $song->user_id;
+            return $user->id == $song->user_id or $user->role == 'editor' or $user->role == 'admin';
 
         });
         Gate::define('crud', function ($user, $album) {
-            return $user->id == $album->user_id;
+            return $user->id == $album->user_id or $user->role == 'editor' or $user->role == 'admin';
 
         });
         Gate::define('crud', function ($user, $artist) {
-            return $user->id == $artist->user_id;
+            return $user->id == $artist->user_id or $user->role == 'editor' or $user->role == 'admin';
 
         });
         Gate::define('upload', function ($user) {
-            return $user->id == Auth::id();
+            return $user->id == Auth::id() or $user->role == 'editor' or $user->role == 'admin';
 
         });
+
+        Gate::define('editor', function ($user) {
+            return $user->role == 'editor' or $user->role == 'admin';
+
+        });
+
+        Gate::define('admin', function ($user) {
+            return  $user->role == 'admin';
+
+        });
+
 
     }
 }
