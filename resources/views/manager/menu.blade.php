@@ -6,9 +6,10 @@
 
 @section('content')
     <div class="container">
-        @if(Auth::user()->id ==1)
+        @if(Auth::user()->role === 'admin' or Auth::user()->role === 'editor')
+        @can('admin')
         <div class="col-md-12 well">
-            <div class="col-md-10 text-left mb-5">
+            <div class="col-md-12 text-left mb-5">
                 <h3 class="col-md-10">Manager Menu</h3>
                 <a href="{{route('menu.create')}}" class="col-md-2 btn btn-success pull-right">Create Menu
                     <span class="glyphicon glyphicon-plus text-white"></span>
@@ -56,9 +57,55 @@
             </form>
             @endforeach
         </div>
-
-        <div class="col-md-12 well">
+        @endcan
+         <div class="col-md-12 well">
+            @if(Auth::user()->role == 'admin')
             <h3 class="col-md-10">Manager User</h3>
+            @else
+            <h3 class="col-md-10">List User</h3>
+            @endif
+            @can('admin')
+            <a href="{{route('user.create')}}" class="col-md-2 btn btn-success pull-right">Create User
+                <span class="glyphicon glyphicon-plus text-white"></span>
+            </a>
+            @endcan
+            <div class="col-md-12">
+                <h3 class="col-md-3 text-center">Name</h3>
+                <h3 class="col-md-4 text-center">Email</h3>
+                <h3 class="col-md-3 text-center">Role</h3>
+            </div>
+            @foreach($users as $user)
+                <div class="col-md-3 ">
+                    <div class="col-md-12 text-center">{{$user->name}}</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-12 text-center">{{$user->email}}</div>
+                </div>
+                @if($user->role == null)
+                 <div class="col-md-3">
+                     <div class="col-md-6 text-right">user</div>
+                     @can('admin')
+                     <a href="{{route('user.role.edit',['user_id'=>$user->id])}}" class="col-md-6 text-left">
+                         <span class="glyphicon glyphicon-cog"></span>
+                     </a>
+                     @endcan
+                 </div>
+                 @else
+                <div class="col-md-3">
+                    <div class="col-md-8 text-right">{{$user->role}}</div>
+                    @can('admin')
+                    <a href="{{route('user.role.edit',['user_id'=>$user->id])}}" class="col-md-4 text-left">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    @endcan
+                </div>
+                @endif
+                @can('admin')
+                <a href="{{route('user.delete',['id'=>$user->id])}}" class ="col-md-2 text-right">
+                    <span class="glyphicon glyphicon-remove text-danger"></span>
+                </a>
+                @endcan
+            @endforeach
         </div>
         @else
         @endif

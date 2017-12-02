@@ -82,5 +82,4 @@ return [
     'Personal page'                 =>'Personal page',
      'Admin page'                   =>'Trang admin',
     'Create by'                     =>'Create by',
-
 ];

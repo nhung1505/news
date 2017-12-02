@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -11,6 +12,7 @@ use App\Song;
 use App\User;
 use App\Album;
 use App\Artist;
+use App\Comment;
 
 class SongController extends Controller
 {
@@ -59,7 +61,7 @@ class SongController extends Controller
 
     public function index(Request $request){
         $artists = Artist::all();
-        $songs = Song::orderBy('id', 'desc')->paginate(10);
+        $songs = Song::orderBy('id', 'desc')->paginate(8);
         $testsession=$request->session()->get('lacale');
         if ($songs){
             return view('songs.list', compact('songs','testsession','artists'));
@@ -69,13 +71,19 @@ class SongController extends Controller
 
     }
 
-    public function detailSong($id){
-        $artists = Artist::all();
+    public function detailSong(Request $request, $id){
         $detail_song = Song::with('user')->find($id);
-        $lyric = str_limit($detail_song->lyric,100);
-        $albums = Album::with('user')->get();
         if ($detail_song){
-            return view('songs.details_song', compact('detail_song','albums', 'artists','lyric'));
+            $comments = $detail_song->comments()->orderBy('id','desc')->paginate(10);
+            $Allcomment = $detail_song->comments()->orderBy('id','desc')->get();
+            $lyric = str_limit($detail_song->lyric,100);
+        } else {
+            abort('404');
+        }
+        $albums = Album::with('user')->get();
+        $artists = Artist::all();
+        if ($detail_song){
+            return view('songs.details_song', compact('detail_song','albums', 'artists','lyric','comments','Allcomment'));
         } else {
             abort('404');
         }
@@ -142,6 +150,33 @@ class SongController extends Controller
         } else {
             abort('404');
         }
+    }
+    public function storeComment(Request $request, $id){
+        $song = Song::find($id);
+        $comment = new Comment();
+        $comment->content = $request->input('content');
+        $comment->user_id = Auth::id();
+        $comment->save();
+        $song->comments()->attach($comment->id);
+        return redirect()->back();
+    }
+
+    public function deleteComment(Request $request, $id)
+    {
+        $song = Song::find($id);
+        $comment = Comment::find($request->comment_id);
+        if (isset($comment)){
+            $song->comments()->detach($comment->id);
+            $comment->delete();
+            return redirect()->back();
+        }
+    }
+
+    public function like($id){
+        $song = Song::find($id);
+        $song = Song::where('id',$song->id)->update(['likes'=>$song->likes + 1]);
+
+        return redirect()->route('song.details_song',$id);
     }
 
 }

@@ -5,12 +5,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
-
 use App\Song;
 use App\Album;
 use App\Artist;
 use App\User;
-
 use App\Menu;
 
 class HomeController extends Controller
@@ -20,11 +18,6 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -37,7 +30,7 @@ class HomeController extends Controller
         $artists = Artist::orderBy('id','desc')->paginate(10);
         $menu = Menu::all();
         $request->session()->put('menu',$menu );
-        
+//        return redirect()->route('song.list');
         return view('home', compact('songs', 'albums', 'artists','menu'));
 
         

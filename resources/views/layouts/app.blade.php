@@ -16,7 +16,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 </head>
 <body>
 <div class="container-fluid">
@@ -46,8 +45,11 @@
                                 <!-- Authentication Links -->
                                 @guest
                                     <ul class="pl-0">
-                                        <li class="nav navbar-left"><a href="{{ route('login') }}">{{__('label.login')}}</a></li>
-                                        <li class=" nav navbar-right"><a href="{{ route('register') }}">{{__('label.Register')}}</a>
+                                        <li class="nav navbar-left">
+                                            <a href="{{ route('login') }}">{{__('label.login')}}</a>
+                                        </li>
+                                        <li class=" nav navbar-right pl-5">
+                                            <a href="{{ route('register') }}">{{__('label.Register')}}</a>
                                         </li>
                                     </ul>
                                     @else
@@ -66,11 +68,12 @@
                                                aria-haspopup="true">
                                                 {{ Auth::user()->name }}
                                             </a>
-
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    @if(Auth::user()->id == 1)
+                                                    @if(Auth::user()->role == 'admin')
                                                     <a href="{{route('menu')}}" class='text-center'>{{__('label.Admin page')}}</a>
+                                                    @elseif( Auth::user()->role == 'editor')
+                                                    <a href="{{route('menu')}}" class='text-center'>Editor page</a>
                                                     @else
                                                     <a href="{{route('menu')}}" class="text-center">{{__('label.Personal page')}}</a>
                                                     @endif
@@ -106,9 +109,9 @@
                             @endforeach
                             @endif
                         </div>
-                            @can('upload')
-                            <a href="{{ route('song.create') }}" class="btn btn-success" role="button">{{__('label.Upload Song')}}</a>
-                            @endcan
+                        {{--@can('upload')--}}
+                        {{--<a href="{{ route('song.create') }}" class="btn btn-success" role="button">{{__('label.Upload Song')}}</a>--}}
+                        {{--@endcan--}}
                     </div>
                 </nav>
             </div>
@@ -116,6 +119,9 @@
         </div>
     </div>
 </div>
+
+
+</body>
 
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/autocomplete.js') }}"></script>
@@ -128,5 +134,4 @@
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 @yield('footer')
-</body>
 </html>

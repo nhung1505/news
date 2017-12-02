@@ -1,13 +1,22 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('title')
     {{$artist->name}}
 @endsection
+@section('app.css')
+    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+@endsection
 @section('content')
-    <div class="container well">
+    <div class="container mt-5">
         <div>
-            <div class="col-md-12 well" style="overflow: hidden ; height: 300px">
+            <div class="col-md-12" style="overflow: hidden ; height: 300px">
                 <img width="100%" hight="300px" src="https://kenh14cdn.com/thumb_w/600/dpA6uSv3GtBzvbRT7Y4EBtfN37yCA/Image/2014/10/mt3-08c79.jpg">
                 <div class="text-image text-white col-md-4 text-center">
                     <h1>{{$artist->name}}</h1>
@@ -16,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12 well mt-0">
+        <div class="col-md-12 mt-5">
             <ul class="nav nav-tabs col-md-6">
                 <li><a href="{{route('artist.detail',['artist_id'=>$artist->id])}}">{{__('label.Description')}}</a></li>
                 <li class="active"><a href="">{{__('label.Song')}}</a></li>
@@ -73,7 +82,7 @@
                         <div class="text-center text-danger">No Songs</div>
                     @else
                         @foreach($songs as $song)
-                            <div class="col-md-10">{{$song->name}}</div>
+                            <div class="col-md-10 mt-2">{{$song->name}}</div>
                             @can('crud',$song)
                             <a hefr="" class="text-right col-md-1">
                                 <span class="glyphicon glyphicon-edit text-info"></span>
@@ -84,11 +93,21 @@
                             @endcan
                         @endforeach
                     @endif
-                        <div class="col-md-12 text-center paginate_artist_songs">
+                        <div class="col-md-12 text-center ">
                             {!! $songs->links() !!}
                         </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 @endsection
+@section('myjs')
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/autocomplete.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/myJs.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+@endsection
+
