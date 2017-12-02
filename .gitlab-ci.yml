@@ -1,0 +1,3 @@
+sonarqube:
+  script:
+    - date > /tmp/date.log
