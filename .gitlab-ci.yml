@@ -6,4 +6,4 @@ sonarqube:
     - docker:dind
   script:
     - docker pull zaquestion/sonarqube-scanner
-    - docker run -v $(pwd):/root/src zaquestion/sonarqube-scanner
+    - docker run -v $PWD:/root/src binhsonnguyen/sonarqube-scanner
