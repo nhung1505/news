@@ -5,5 +5,4 @@ sonarqube:
   services:
     - docker:dind
   script:
-    - docker pull zaquestion/sonarqube-scanner
-    - docker run -v $PWD:/root/src binhsonnguyen/sonarqube-scanner
+    - docker run --rm -v $PWD:/root/src binhsonnguyen/sonarqube-scanner
