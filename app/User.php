@@ -15,7 +15,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -27,25 +29,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function songs(){
-
-        return $this->hasMany('App\Song');
+    public function comment(){
+        return $this->hasMany('App\Comment','id_user','id');
     }
-
-    public function artists(){
-        return $this->hasMany('App\Artist');
-    }
-
-    public function albums(){
-        return $this->belongsToMany('App\Album');
-    }
-
-    public function comments(){
-        return $this->hasMany('App\Comment');
-    }
-
-    public function commentalbums(){
-        return $this->hasMany('App\Commentalbum');
-    }
-
 }

@@ -6,10 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    public function user(){
-        return $this->belongsTo('App\User');
+    //
+    protected $fillable = [
+        'id_user',
+        'id_post',
+        'description',
+    ];
+
+    public function post(){
+    	return $this->belongsTo('App\Post','id_post','id');
     }
-    public function songs(){
-        return $this->belongsToMany('App\Song','commentalbum_album');
+
+    public function user(){
+    	return $this->belongsTo('App\User','id_user','id');
     }
 }
