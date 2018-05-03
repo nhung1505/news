@@ -9,9 +9,9 @@
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
-                        @if(session('thongbao'))
+                        @if(session('success'))
                             <div class="alert alert-success">
-                                {{session('thongbao')}}
+                                {{session('success')}}
                             </div>
                         @endif
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -31,12 +31,10 @@
                                 <td>{{$category->id}}</td>
                                 <td>{{$category->name}}</td>
                                 <td>{{$category->unsigned_name}}</td>
-                                {{--<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('categories.destroy', [$category->id])}}"> Delete</a></td>--}}
                                 <td>
-                                    <li><a data-toggle="modal" data-target="#confirmDelete-{{$category->id}}"><i class="far fa-trash-alt"></i> Delete</a></li>
+                                   <a data-toggle="modal" data-target="#confirmDelete-{{$category->id}}"><i class="fa fa-trash fa-fw"></i> Delete</a>
                                 </td>
-
-                                <form action="{{route('categories.destroy',[$category->id])}}" method="post">
+                                <form action="{{route('categories.update',[$category->id])}}" method="post">
                                     {{ csrf_field() }}
                                     <div class="modal fade" id="confirmDelete-{{$category->id}}" role="dialog">
                                         <div class="modal-dialog modal-sm">
@@ -45,7 +43,7 @@
                                                     <h4 class="modal-title text-danger text-center">{{__('Confim Delete')}}</h4>
                                                 </div>
                                                 <div class="modal-body text-danger text-center">
-                                                    <p>{{__('Are you sure you wish to delete this Project?')}}</p>
+                                                    <p>{{__('Are you sure you wish to delete this Categoty?')}}</p>
                                                 </div>
                                                 <input type="hidden" name="_method" value="delete">
                                                 <div class="modal-footer ">

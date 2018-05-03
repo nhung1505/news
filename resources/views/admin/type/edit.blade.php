@@ -5,8 +5,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Thể loại
-                            <small>{{$category->name}}</small>
+                        <h1 class="page-header">Loại tin
+                            <small>{{$type->name}}</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -23,18 +23,28 @@
                                 {{session('success')}}
                             </div>
                         @endif
-                            <form action="{{route('categories.update', [$category->id])}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{route('types.update', [$type->id])}}" method="POST" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <input type="hidden" name="_method" value="put">
-
-                                <div class="form-group">
-                                <label>Category Name</label>
-                                <input class="form-control" name="name" placeholder="Please Enter Category Name" value="{{$category->name}}" />
+                            <div class="form-group">
+                                <label>Thể loại</label>
+                                <select class="form-control" name="id_category">
+                                    @foreach($categories as $category)
+                                        <option 
+                                        @if($type->id_category == $category->id) {{'selected'}}
+                                        @endif
+                                         value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Tên loại tin</label>
+                                <input class="form-control" name="name" placeholder="Please Enter Category Name" value="{{$type->name}}" />
                             </div>
                             <button type="submit" class="btn btn-default">Category Edit</button>
                             <button type="reset" class="btn btn-default">Reset</button>
-                        </form>
-                </div>
+                        <form>
+                    </div>
                 </div>
                 <!-- /.row -->
             </div>

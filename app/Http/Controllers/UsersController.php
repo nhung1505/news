@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\LoaiTin;
-use App\TheLoai;
-use App\TinTuc;
 use App\Comment;
 use App\Slide;
 use App\User;
@@ -43,92 +40,92 @@ class UsersController extends Controller
 		Auth::logout();
 		return redirect('admin/dangnhap');
 	}
+	public function index(){
+    	$users = User::all();
+    	return view('admin.user.index',['users'=>$users]);
+    }
 
-//
-//    public function getDanhSach(){
-//    	$user = User::all();
-//    	return view('admin.user.danhsach',['user'=>$user]);
-//    }
+    public function edit(User $user)
+    {
+        $user = User::find($user->id);
+        return view('admin.user.edit', ['user'=>$user]);
 
-//    public function getSua($id){
-//    	$user = User::find($id);
-//    	return view('admin.user.sua',['user'=>$user]);
-//    }
-//    public function postSua(Request $request,$id){
-//    	$this->validate($request,
-//    		[
-//    			'name' => 'required|min:3'
-//    		],
-//    		[
-//    			'name.required' => 'Bạn chưa nhập tên người dùng',
-//    			'name.min' => 'Tên người dùng phải có ít nhất 3 kí tự'
-//    		]);
-//    	$user = User::find($id);
-//    	$user->name = $request->name;
-//    	$user->quyen = $request->quyen;
-//
-//    	if($request->changePassword == "on"){
-//    		$this->validate($request,
-//	    		[
-//	    			'password'=>'required|min:3|max:32',
-//	    			'passwordAgain' =>'required|same:password'
-//	    		],
-//	    		[
-//	    			'password.required' => 'Bạn chưa nhập mật khẩu',
-//	    			'password.min' => 'Mật khẩu phải có ít nhất 3 kí tự',
-//	    			'password.max' => 'Mật khẩu chỉ được phép tối đa 32 kí tự',
-//	    			'passwordAgain.required' => 'Bạn chưa nhập lại mật khẩu',
-//	    			'passwordAgain.same' => 'Mật khẩu nhập lại chưa đúng'
-//	    		]);
-//    		$user->password = bcrypt($request->password);
-//    	}
-//
-//    	$user->save();
-//    	$request->session()->flash('thongbao', 'Bạn đã sửa thành công!');
-//    	return redirect('admin/user/sua/'.$id);
-//
-//    }
+    }
+    public function update(Request $request, User $user)
+    {
+        $userUpdate = User::where('id', $user->id)->first();
+        $this->validate($request,
+            [
+   			   'name' => 'required|min:3'
+   		    ],
+    		[
+    			'name.required' => 'Bạn chưa nhập tên người dùng',
+   			'name.min' => 'Tên người dùng phải có ít nhất 3 kí tự'
+   		]);
 
-//    public function getThem(){
-//		return view('admin.user.them');
-//    }
-//    public function postThem(Request $request){
-//    	$this->validate($request,
-//    		[
-//    			'name' => 'required|min:3',
-//    			'email' => 'required|email|unique:users,email',
-//    			'password'=>'required|min:3|max:32',
-//    			'passwordAgain' =>'required|same:password'
-//    		],
-//    		[
-//    			'name.required' => 'Bạn chưa nhập tên người dùng',
-//    			'name.min' => 'Tên người dùng phải có ít nhất 3 kí tự',
-//    			'email.required' => 'Bạn chưa nhập vào địa chỉ email',
-//    			'email.email' =>'Bạn chưa nhập đúng định dạng email',
-//    			'email.unique' =>'Email đã tồn tại',
-//    			'password.required' => 'Bạn chưa nhập mật khẩu',
-//    			'password.min' => 'Mật khẩu phải có ít nhất 3 kí tự',
-//    			'password.max' => 'Mật khẩu chỉ được phép tối đa 32 kí tự',
-//    			'passwordAgain.required' => 'Bạn chưa nhập lại mật khẩu',
-//    			'passwordAgain.same' => 'Mật khẩu nhập lại chưa đúng'
-//    		]);
-//    	$user = new User;
-//    	$user->name = $request->name;
-//    	$user->email = $request->email;
-//    	$user->password = bcrypt($request->password);
-//    	$user->quyen = $request->quyen;
-//
-//
-//    	$user->save();
-//    	$request->session()->flash('thongbao', 'Bạn đã thêm thành công!');
-//    	return redirect('admin/user/them');
-//
-//    }
+        $userUpdate -> name = $request->name;
+        $userUpdate -> role = $request->role;
+        if($request->change_password == "on"){
+            $this->validate($request,
+                [
+                    'password'=>'required|min:3|max:32',
+                    'password_again' =>'required|same:password'
+                ],
+                [
+                    'password.required' => 'Bạn chưa nhập mật khẩu',
+                    'password.min' => 'Mật khẩu phải có ít nhất 3 kí tự',
+                    'password.max' => 'Mật khẩu chỉ được phép tối đa 32 kí tự',
+                    'password_again.required' => 'Bạn chưa nhập lại mật khẩu',
+                    'password_again.same' => 'Mật khẩu nhập lại chưa đúng'
+                ]);
+            $userUpdate->password = bcrypt($request->password);
+        }
+        $userUpdate->save();
+        if($userUpdate){
+            return redirect()->route('users.index', ['user' => $user->id])
+                ->with('success', 'user update successfully');
+        }
+        return back()->withInput();
+    }
 
-//    public function getXoa(Request $request,$id){
-//    	$user= User::find($id);
-//    	$user->delete();
-//    	$request->session()->flash('thongbao', 'Xóa thành công!');
-//    	return redirect('admin/user/danhsach');
-//    }
+    public function create()
+    {
+        return view('admin.user.create');
+    }
+    public function store(Request $request)
+    {
+        $this->validate($request,
+            [
+                'name' => 'required|min:3',
+                'email' => 'required|email|unique:users,email',
+                'password'=>'required|min:3|max:32',
+                'passwordAgain' =>'required|same:password'
+            ],
+            [
+                'name.required' => 'Bạn chưa nhập tên người dùng',
+                'name.min' => 'Tên người dùng phải có ít nhất 3 kí tự',
+                'email.required' => 'Bạn chưa nhập vào địa chỉ email',
+                'email.email' =>'Bạn chưa nhập đúng định dạng email',
+                'email.unique' =>'Email đã tồn tại',
+                'password.required' => 'Bạn chưa nhập mật khẩu',
+                'password.min' => 'Mật khẩu phải có ít nhất 3 kí tự',
+                'password.max' => 'Mật khẩu chỉ được phép tối đa 32 kí tự',
+                'passwordAgain.required' => 'Bạn chưa nhập lại mật khẩu',
+                'passwordAgain.same' => 'Mật khẩu nhập lại chưa đúng'
+            ]);
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->role = $request->role;
+        $user->save();
+        return redirect()->route('users.index', ['user'=>$user->id])
+            ->with('success', 'User create successfully');
+    }
+
+    public function destroy(User $user)
+   {
+
+  }
+
 }

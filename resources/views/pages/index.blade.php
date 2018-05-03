@@ -7,7 +7,7 @@
 		@include('layouts.slide')
         <!-- end slide -->
 
-		<div class="container" style="margin-top: 80px">
+		<div class="container" >
 
 
         <div class="row main-left">
@@ -82,4 +82,5 @@
         </div>
         <!-- /.row -->
     </div>
+	</div>
     @endsection

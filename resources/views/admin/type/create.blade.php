@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Thể loại
+                        <h1 class="page-header">Loại tin
                             <small>Thêm</small>
                         </h1>
                     </div>
@@ -19,18 +19,26 @@
                                 @endforeach
                             </div>
                         @endif
-                        @if(session('success'))
+                        @if(session('thongbao'))
                             <div class="alert alert-success">
-                                {{session('success')}}
+                                {{session('thongbao')}}
                             </div>
                         @endif
-                        <form action="{{route('categories.store')}}" method="POST">
+                            <form action="{{route('types.store')}}" method="POST">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="form-group">
-                                <label>Tên thể loại</label>
-                                <input class="form-control" name="txtCateName" placeholder="Nhập tên thể loại" />
+                                <label>Thể loại</label>
+                                <select class="form-control" name="id_category">
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <button type="submit" class="btn btn-default">Category Add</button>
+                            <div class="form-group">
+                                <label>Tên loại tin</label>
+                                <input class="form-control" name="name" placeholder="Nhập tên thể loại" />
+                            </div>
+                            <button type="submit" class="btn btn-default">Type Add</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         </form>
                     </div>

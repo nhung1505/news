@@ -17,6 +17,12 @@ Route::get('/', function () {
 Route::group(['prefix'=>'admin'],function() {
 
     Route::resource('categories', 'CategoriesController');
+    Route::resource('types', 'TypesController');
+    Route::resource('posts', 'PostsController');
+    Route::resource('users', 'UsersController');
+    Route::resource('slides', 'SlidesController');
+    Route::get('ajax/types/{id_category}, AjaxController@get_types');
+    Route::get('comments/delete/{id}/{id_post}, CommentsController@get_delete');
 
 });
 

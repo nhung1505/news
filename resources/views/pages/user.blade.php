@@ -19,14 +19,14 @@
                                 @endforeach
                             </div>
                         @endif
-                        @if(session('thongbao'))
+                        @if(session('success'))
                             <div class="alert alert-success">
-                                {{session('thongbao')}}
+                                {{session('success')}}
                             </div>
                         @endif
-                        @if(session('loi'))
+                        @if(session('error'))
                             <div class="alert alert-danger">
-                                {{session('loi')}}
+                                {{session('error')}}
                             </div>
                         @endif
 				    	<form action="user" method="post">

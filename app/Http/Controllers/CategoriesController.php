@@ -38,15 +38,11 @@ class CategoriesController extends Controller
         $categoryUpdate->save();
         if($categoryUpdate){
             return redirect()->route('categories.index', ['category' => $category->id])
-                ->with('success', 'company update successfully');
-        }
-        return back()->withInput();
+               ->with('success', 'category update successfully');
+       }
+       return back()->withInput();
     }
-    	
-//    	$request->session()->flash('thongbao', 'Sửa thành công!');
-//    	return redirect('admin/theloai/sua/'.$categoryUpdate->id);
-//
-//    }
+
     public function create()
     {
 		return view('admin.category.create');
@@ -54,7 +50,6 @@ class CategoriesController extends Controller
 
     public function store(Request $request)
     {
-    	//echo $request->Ten;
     	$this->validate($request,
     		[
     			'txtCateName' => 'required|unique:categories,name|min:3|max:100'
@@ -71,49 +66,16 @@ class CategoriesController extends Controller
         $category->save();
         return redirect()->route('categories.index', ['category'=>$category->id])
             ->with('success', 'Category create successfully');
-//    	$request->session()->flash('thongbao', 'Bạn đã thêm thành công!');
-//    	return redirect('admin/theloai/danhsach');
-
     }
 
     public function destroy(Category $category)
     {
-    	$findCategory= Category::find($category->id);
-        if($findCategory->delete()){
-            return redirect()->route('categories.index')
-                ->with('success', 'Category deleted successfully');
-        }
-//    	$request->session()->flash('thongbao', 'Xóa thành công!');
-//    	return redirect('admin/theloai/danhsach');
+//    	$findCategory= Category::find($category->id);
+//        if($findCategory->delete()){
+//           return redirect()->route('categories.index')
+//               ->with('success', 'Category deleted successfully');
+//        }
     }
 
-//    public function destroy(Company $company)
-//    {
-//        $findCompany = Company::find($company->id);
-//        foreach ($findCompany->projects as $project){
-//            $project_id = $project->id;
-//            $project = Project::where('id', '=', $project_id)->update(['company_id'=>null]);
-//        }
-//        Storage::delete('public/'.$findCompany->company_image);
-//        if($findCompany->delete()){
-//            return redirect()->route('companies.index')
-//                ->with('success', 'Company deleted successfully');
-//        }
-//        return back()->withInput()->with('errors', 'Company could not be delete ');
-//    }
 
-//    public function destroy(Company $company)
-//    {
-//        $findCompany = Company::find($company->id);
-//        foreach ($findCompany->projects as $project){
-//            $project_id = $project->id;
-//            $project = Project::where('id', '=', $project_id)->update(['company_id'=>null]);
-//        }
-//        Storage::delete('public/'.$findCompany->company_image);
-//        if($findCompany->delete()){
-//            return redirect()->route('companies.index')
-//                ->with('success', 'Company deleted successfully');
-//        }
-//        return back()->withInput()->with('errors', 'Company could not be delete ');
-//    }
 }
