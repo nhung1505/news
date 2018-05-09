@@ -14,6 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/upload', 'HomeController@index');
+Route::post('/upload', 'HomeController@store');
+
 Route::group(['prefix'=>'admin'],function() {
 
     Route::resource('categories', 'CategoriesController');
